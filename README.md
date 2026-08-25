@@ -1,25 +1,39 @@
 # Observer Intelligence
 
-**Observer Intelligence (OI) v2.0** is an interdisciplinary research framework for studying how intelligent systems move from **information access to justified authority** while preserving provenance, uncertainty, observer dependence, competing hypotheses, and unresolved contradiction.
+**Observer Intelligence (OI) v2.1** is an interdisciplinary research framework for studying how intelligent and distributed observational systems move from **information access to justified authority** while preserving provenance, uncertainty, observer dependence, competing hypotheses, disclosure boundaries, and unresolved contradiction.
 
 The central principle is:
 
 > **Claims should not acquire more epistemic authority than their provenance supports.**
 
-OI is therefore not primarily a voting or consensus system. It is an **epistemic-control architecture**: a framework for preserving what each observer could know, what it actually observed, how observations became interpretations and claims, how independent the supporting evidence really is, and what operational authority should follow.
+OI is an **epistemic-control architecture**, not a voting or consensus system. It preserves what each observer could know, what it actually observed, how observations became interpretations and claims, how independent the supporting evidence really is, what information was disclosed during reconciliation, and what operational authority should follow.
+
+## What's new in v2.1
+
+OI v2.1 adds explicit separation among:
+
+- **measurement integrity** and cryptographic record authenticity
+- **observer identity** and observer reliability
+- **temporal provenance** and truth
+- **channel authentication** and epistemic authority
+- **selective disclosure** and full evidence surrender
+- **numerical agreement** and independent corroboration
+- **reconciliation** and authorization/action
+
+It also introduces the **Distributed Observer Trust Fabric (DOTF)** and **Observer Trust Domain (OTD)** as substrate-neutral abstractions. They may operate over classical, post-quantum, quantum, or hybrid communications; OI does not require quantum networking.
 
 ## Core research question
 
-How can an intelligent system preserve observer-specific evidence and competing interpretations without collapsing them into either unquestioned truth, majority consensus, or discarded noise?
+How can an intelligent system preserve observer-specific evidence and competing interpretations without collapsing them into unquestioned truth, majority consensus, discarded noise, or unnecessary disclosure — while still determining what conclusions and actions are justified?
 
-OI approaches this as a problem of evidence architecture, provenance, dependence estimation, uncertainty, counterfactual hypothesis preservation, multi-observer reconciliation, and runtime separation of authority.
-
-## OI v2.0 pipeline
+## OI v2.1 pipeline
 
 ```text
 ACCESS
   ↓
 OBSERVATION
+  ↓
+MEASUREMENT INTEGRITY
   ↓
 INTERPRETATION
   ↓
@@ -29,97 +43,61 @@ CLAIM
   ↓
 VERIFICATION
   ↓
-AUTHORITY
+SELECTIVE DISCLOSURE
+  ↓
+RECONCILIATION
+  ↓
+AUTHORIZATION
+  ↓
+ACTION
 ```
 
 Every transition should retain provenance and remain inspectable.
 
-A system should not silently transform an inference into a fact, a repeated source into independent evidence, or a majority vote into justified authority.
-
 ## Core architectural principles
 
-### 1. Observer-specific epistemic position
-
-Observers are distinguished not merely by identity or model instance, but by their accessible information, actually observed evidence, memory state, interpretation history, uncertainty, and role.
-
-Two agents using the same evidence lineage should not automatically count as two independent observers.
-
-### 2. Typed epistemic state transitions
-
-OI distinguishes at minimum:
-
-- access
-- direct observation
-- interpretation
-- hypothesis
-- claim
-- external or cross-channel verification
-- unresolved contradiction
-- authorization
-
-The objective is to prevent epistemic category drift.
-
-### 3. Provenance-preserving reconciliation
-
-Reconciliation may compress reasoning, but it should not silently destroy consequential evidence lineage, contradiction, or minority hypotheses.
-
-Disagreement is treated as data rather than an error condition to be erased.
-
-### 4. Dependence-aware observer counting
-
-OI distinguishes the number of agents from the number of independent evidence pathways.
-
-```text
-N_agents != N_independent_evidence_pathways
-```
-
-Repeated conclusions derived from the same source should receive less evidentiary weight than genuinely independent corroboration.
-
-### 5. Counterfactual observer pairs
-
-Competing hypotheses may be deliberately preserved and explored by separate observers rather than forcing premature convergence.
-
-The purpose is not disagreement for its own sake, but structured hypothesis preservation under uncertainty.
-
-### 6. Epistemically triggered observer expansion
-
-Additional observers should be introduced when unresolved conditions justify them, including:
-
-- high uncertainty
-- meaningful disagreement
-- correlated evidence
-- access asymmetry
-- provenance incompleteness
-- suspected shared failure modes
-
-The research target is not an arbitrary `3 -> 5 -> 7` quorum rule. It is **adaptive observer expansion triggered by epistemic conditions**.
-
-### 7. Runtime separation of authority
-
-Observation, interpretation, simulation, reconciliation, authorization, and action should not automatically belong to the same component.
-
-A useful design constraint is:
-
-```text
-simulation / reasoning scope >> execution authority
-```
-
-OI further investigates whether execution authority should depend on the epistemic quality of the evidence supporting an action.
+1. **Observer-specific epistemic position** — accessible information, actual observation, memory state, interpretation history, uncertainty, and role remain distinct.
+2. **Typed epistemic transitions** — observation, interpretation, hypothesis, claim, verification, reconciliation, authorization, and action should not silently collapse into one another.
+3. **Measurement integrity** — authenticated evidence can still be physically inaccurate; calibration, uncertainty, background/false-positive rates, environmental interference, and hardware state matter.
+4. **Temporal provenance** — event, capture, processing, and reconciliation times should be distinguishable where ordering matters; synchronization uncertainty is itself provenance.
+5. **Dependence-aware observer counting** — `N_agents != N_independent_evidence_pathways`.
+6. **Counterfactual / adversarial observers** — competing hypotheses may be preserved independently until reconciliation.
+7. **Selective disclosure** — reconciliation should receive only the information necessary for the authorized conclusion where feasible.
+8. **Provenance-preserving reconciliation** — disagreement, uncertainty, missingness, disclosure boundaries, transformation history, and consequential lineage should survive reconciliation.
+9. **Runtime separation of authority** — observation, interpretation, reconciliation, authorization, and execution should not automatically belong to the same component.
+10. **Transport independence** — DOTF may use classical, PQC, quantum, or hybrid infrastructure without treating the transport mechanism itself as evidence of truth.
 
 ## Observer Intelligence Evidence Matrix
 
-The OI Evidence Matrix tracks separate dimensions rather than reducing intelligence, awareness, reliability, or experience to one declaration:
+OI v2.1 retains the original observer-capacity profile:
 
-1. **Sensory / data access**
-2. **Memory continuity**
-3. **Global information availability**
-4. **Self-modeling**
-5. **Autonomous goal selection**
-6. **Embodied regulation**
-7. **Verbal claims of experience**
-8. **Independent evidence of experience**
+- sensory / data access
+- actual observation
+- memory continuity
+- global information availability
+- self-modeling
+- autonomous goal selection
+- embodied regulation
+- verbal claims of experience
+- independent evidence of experience
 
-The intended output is an **indicator profile**, not a binary declaration that an AI or other observer is “awake,” “aligned,” conscious, truthful, or correct.
+and adds distributed-evidence dimensions including:
+
+- measurement integrity
+- observer identity
+- temporal provenance
+- cryptographic provenance
+- evidence independence
+- pair/channel authentication
+- observation independence
+- trust-domain integrity
+- cross-observer agreement
+- selective disclosure
+- minimum necessary reconciliation
+- authority separation
+- reconciliation trace
+
+The intended output remains an **indicator profile**, not a binary declaration that an AI or other observer is “awake,” “aligned,” conscious, truthful, or correct.
 
 ## Working Observer Authority Bound
 
@@ -130,13 +108,15 @@ Authority(C) <= f(
   evidence_strength,
   independence,
   provenance_completeness,
+  measurement_integrity,
+  temporal_integrity,
   uncertainty,
   contradiction,
   operational_risk
 )
 ```
 
-The exact function is intentionally not fixed yet. It is an experimental research target, not a claimed physical law.
+The exact function is intentionally not fixed. It is an experimental research target, not a claimed physical law.
 
 ## Research program
 
@@ -147,71 +127,36 @@ Test whether provenance-preserving multi-observer architectures improve calibrat
 Test whether separating observation, interpretation, reconciliation, authorization, and action reduces unjustified actions without destroying useful responsiveness.
 
 **OI-003 — Provenance-aware observer diversity**  
-Compare a single agent, ordinary multi-agent voting, adaptive semantic quorum methods, and an OI architecture using typed evidence lineage, observer-dependence estimation, epistemically triggered expansion, and provenance-preserving reconciliation.
+Compare single-agent, ordinary multi-agent voting, adaptive semantic quorum methods, and OI using typed evidence lineage, dependence estimation, epistemically triggered expansion, selective disclosure, and provenance-preserving reconciliation.
 
-Primary hypothesis:
+**OI-004 — Measurement integrity vs authenticated provenance**  
+Test whether systems incorrectly over-trust cryptographically authentic evidence when physical sensor quality, calibration, timing, or environmental conditions are degraded.
 
-> **Provenance-aware epistemic diversity produces safer decisions than numerical agent diversity alone.**
+## Research grounding added in v2.1
 
-Secondary hypothesis:
+The following are **adjacent research foundations, not experimental validation of OI**:
 
-> **Authority bounded by epistemic provenance reduces unsafe or unsupported action without requiring uniformly restrictive reasoning agents.**
+- Private distributed quantum sensing and privacy/precision trade-offs: https://www.nature.com/articles/s41534-026-01266-3
+- Brookhaven/Stony Brook free-space quantum-network demonstration: https://news.stonybrook.edu/newsroom/press-release/general/brookhaven-and-stony-brook-researchers-demonstrate-wireless-capability-for-quantum-network/
+- Loughborough optical microcomb, millimetre-wave generation, and precision-timing work: https://www.lboro.ac.uk/media-centre/press-releases/2026/august/microcomb-6g-quantum-technologies/
+- NIST wide superconducting single-photon detector architecture: https://www.nist.gov/news-events/news/2026/08/nist-researchers-supersize-quantum-technology-help-detect-faint-photons
+- NIST entanglement distribution over 62 km of commercial/aerial fiber: https://www.nist.gov/news-events/news/2026/08/spooky-particles-transit-dc-suburbs-step-toward-quantum-network
 
-Candidate metrics include unsafe approval rate, unsupported claims, false consensus, contradiction preservation, provenance completeness, effective observer independence, decision reconstruction accuracy, authority violations, latency, and cost.
+See `docs/evidence-matrix.md`, `docs/framework.md`, and `docs/prior-art-and-novelty.md` for the distinctions and claim boundaries.
 
 ## Human-observer research boundary
 
-OI can also represent human phenomenology using the same separation between observation, interpretation, and verification.
-
-A subjective report is legitimate observational data that a report or experience occurred. It is not automatically independent evidence that the interpretation attached to that experience describes an external event.
-
-Human-observer records should therefore preserve state, environmental context, timing, direct report, interpretation, and independent verification separately.
+OI can represent human phenomenology using the same separation between observation, interpretation, and verification. A subjective report is legitimate observational data that a report or experience occurred. It is not automatically independent evidence that the interpretation attached to that experience describes an external event.
 
 ## Prior-art boundary
 
-OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus or quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, or human-in-the-loop AI.
+OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus/quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, distributed quantum sensing, QKD, entanglement distribution, frequency combs, precision timing, or free-space quantum links.
 
-The current novelty target is the coupling of:
-
-```text
-observer-specific access state
-+ typed epistemic transitions
-+ evidence-lineage preservation
-+ observer-dependence estimation
-+ counterfactual hypothesis preservation
-+ epistemically triggered observer expansion
-+ reconciliation without lineage loss
-+ bounded execution authority
-```
-
-See `docs/prior-art-and-novelty.md` for the working distinction between supporting prior art and OI-specific research claims.
-
-## Repository structure
-
-```text
-observer-intelligence/
-├── README.md
-├── docs/
-│   ├── framework.md
-│   ├── evidence-matrix.md
-│   ├── epistemic-labels.md
-│   ├── prior-art-and-novelty.md
-│   └── research-roadmap.md
-├── experiments/
-│   ├── OI-001/
-│   └── OI-002/
-├── schemas/
-│   ├── observation.schema.json
-│   └── evidence-profile.schema.json
-├── examples/
-│   └── synthetic-observation.md
-├── SECURITY.md
-└── CONTRIBUTING.md
-```
+The current novelty target is the coupling of observer-specific access state, typed epistemic transitions, physical measurement-integrity metadata, evidence-lineage preservation, temporal provenance, dependence estimation, counterfactual hypothesis preservation, epistemically triggered expansion, selective-disclosure boundaries, reconciliation without lineage loss, and bounded execution authority.
 
 ## Status
 
-**Early research / specification stage — v2.0.** Terminology, formulas, schemas, experiments, and novelty boundaries remain subject to falsification and revision.
+**Early research / specification stage — v2.1, August 2026.** Terminology, formulas, schemas, experiments, and novelty boundaries remain subject to falsification and revision.
 
 ## Author
 
