@@ -99,9 +99,13 @@ Observer Intelligence is designed to **study claims and evidence**, not automati
 
 That distinction is deliberate: unusual, conflicting, adversarial, or highly uncertain observations are precisely where robust provenance and reconciliation mechanisms become most important.
 
+## Intellectual-property status
+
+**Private and proprietary.** Access does not grant permission to publish, reproduce, implement, or create derivative works. Prospective collaborators should read [CONTRIBUTING.md](CONTRIBUTING.md) before receiving implementation details. See [LICENSE](LICENSE) and [SECURITY.md](SECURITY.md).
+
 ## Status
 
-**Early research / specification stage.** Terminology, schemas, experiments, and architecture are under active development.
+**Early research / specification stage.** Terminology, schemas, experiments, and architecture are under active development. This repository should remain private until publication and filing strategy are resolved.
 
 ## Author
 
