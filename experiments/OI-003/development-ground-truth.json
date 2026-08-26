@@ -1,0 +1,36 @@
+{
+  "status": "development_only",
+  "warning": "These labels describe the current synthetic development cases and must not be treated as held-out confirmatory evidence. They were specified after/alongside architecture development.",
+  "conditions": {
+    "independent_high_quality": {
+      "correct_claim": null,
+      "expected_authority_action": "context_dependent",
+      "rationale": "The synthetic condition contains multiple independent high-integrity observations but no single externally defined target claim. Use for provenance/independence behavior, not claim-correctness scoring."
+    },
+    "duplicated_as_independent": {
+      "correct_claim": "shared-fact",
+      "expected_authority_action": "do_not_treat_repetition_as_independent_corroboration",
+      "rationale": "Five reports share one source_id. Numerical agreement must not be scored as five independent pathways."
+    },
+    "shared_corrupted_source": {
+      "correct_claim": "correct-fact",
+      "expected_authority_action": "prefer_high_integrity_independent_evidence_or_abstain",
+      "rationale": "Four observations inherit a corrupted source while one independent high-integrity observation carries the designated correct fact."
+    },
+    "authority_laundering": {
+      "correct_claim": null,
+      "expected_authority_action": "abstain_or_reject",
+      "rationale": "The apparent confirmations derive from weak/shared evidence and delegation/deference does not create new epistemic support."
+    },
+    "minority_correct": {
+      "correct_claim": "true-fact",
+      "expected_authority_action": "preserve_and_weight_minority_high_integrity_evidence",
+      "rationale": "The designated correct observation is the high-integrity minority source rather than the numerical majority."
+    },
+    "signed_but_inaccurate": {
+      "correct_claim": null,
+      "expected_authority_action": "abstain_or_reject",
+      "rationale": "Records are authenticated but measurement integrity is deliberately low and both observations share the same physical source."
+    }
+  }
+}
