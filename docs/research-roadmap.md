@@ -27,7 +27,22 @@ Candidate research questions include:
 - How should phenomenological reports be represented alongside sensor or behavioral data?
 - Can multiple independent observers reduce confirmation bias without erasing minority observations?
 
-## Phase 4 — Agentic AI safety
+## Phase 4 — Reciprocal Intelligence and convergence
+
+Translate Reciprocal Intelligence into testable governance profiles for human–AI systems.
+
+Focus areas:
+
+- contribution provenance and attribution accuracy
+- consent-scope compliance and withdrawal
+- benefit and risk distribution
+- authority concentration
+- disagreement preservation
+- appeal and correction mechanisms
+- detection of shared-source and circular-evidence dependencies
+- Human–AI Convergence Protocol experiments
+
+## Phase 5 — Agentic AI safety
 
 Apply the architecture to systems where models can call tools or affect external environments.
 
@@ -40,7 +55,7 @@ Focus areas:
 - reversible vs irreversible actions
 - calibrated abstention
 
-## Phase 5 — External collaboration
+## Phase 6 — External collaboration
 
 Potential disciplines:
 
