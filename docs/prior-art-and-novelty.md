@@ -1,4 +1,4 @@
-# Observer Intelligence v2.1 — Prior Art and Novelty Map
+# Observer Intelligence v2.2 — Prior Art and Novelty Map
 
 ## Purpose
 
@@ -8,7 +8,7 @@ It is a working research map, **not a legal patentability opinion**. Patent nove
 
 ## Mechanisms OI should treat as prior art or established adjacent territory
 
-OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
+OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, provenance-aware authority enforcement, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
 
 ## Relevant references
 
@@ -27,6 +27,14 @@ Reference: https://arxiv.org/abs/2606.08021
 Overlap includes explicit delegation chains, bounded authority, session state, external authorization enforcement, and reduction of compromised-agent blast radius.
 
 Reference: https://arxiv.org/abs/2608.15888
+
+### Multi-agent safety as institutional design
+
+A newly surfaced 2026 study, **Multi-Agent AI Safety as an Institutional Design Problem**, evaluates governance structures for multi-agent systems and reports that provenance-aware executable enforcement can prevent authority-laundering failures that local-state enforcement misses.
+
+OI implication: this supports the importance of preserving originating authority through transformations, but it also increases prior-art pressure on broad claims about provenance-aware authorization. OI should sharpen its research target to the coupling of **epistemic provenance + observer-specific access state + evidence dependence + originating authority + reconciliation state**.
+
+Research consequence: OI should explicitly test cases in which an action appears locally authorized but inherits weak, transformed, or improperly delegated epistemic/authority lineage.
 
 ### Private distributed quantum sensing
 
@@ -70,13 +78,50 @@ OI implication: channel state, environmental disturbance, stabilization/correcti
 
 Reference: https://www.nist.gov/news-events/news/2026/08/spooky-particles-transit-dc-suburbs-step-toward-quantum-network
 
+## Human observer, consciousness, and altered-state references
+
 ### Context-dependent psychedelic neurodynamics
 
-A 2026 Nature study, DOI/article identifier `s41586-026-10910-z`, examines context-dependent neural dynamics under psilocybin across multiple conditions.
+A 2026 *Nature* study, DOI/article identifier `s41586-026-10910-z`, examines context-dependent neural dynamics under psilocybin across multiple conditions.
 
-OI implication for the human-observer branch: phenomenology records should preserve environmental context and temporal structure, while keeping subjective report, interpretation, and independent verification distinct.
+OI implication: phenomenology records should preserve environmental context and temporal structure, while keeping subjective report, interpretation, and independent verification distinct.
 
 Reference: https://www.nature.com/articles/s41586-026-10910-z
+
+### Persistent psychedelic perceptual abnormalities and computational modeling
+
+A newly surfaced 2026 bioRxiv study examined psychedelic users reporting past or current persistent perceptual abnormalities using a conditioned-hallucination task and computational modeling. Reported associations included increased conditioned percepts, greater confidence in false percepts, lower visual thresholds, reduced sensory discrimination, and a model-level role for reduced decision precision.
+
+OI implication: the human-observer branch should avoid reducing altered-state predictive processing to a single claim such as “strong priors” or “weak priors.” Prospective models should separately represent **sensory precision, prior precision, decision precision, confidence/calibration, observer state, and environmental context**.
+
+Suggested test: include conditioned-perception susceptibility, visual discrimination thresholds, confidence calibration, state/context metadata, and prospective symptom tracking in studies of persistent psychedelic perceptual effects or HPPD-like phenomena.
+
+Status: preprint; findings require peer review and replication.
+
+### Asymmetric loss and recovery of consciousness
+
+A newly surfaced 2026 bioRxiv study using simultaneous electrophysiology, whole-brain fMRI, and pupillometry during graded propofol anesthesia reports that loss and recovery can follow distinct global network trajectories even when local activity appears comparatively reversible.
+
+OI implication: reconciliation or reintegration should not automatically be modeled as restoration of the original state. A useful formal possibility is:
+
+```text
+S0 -> S1 -> S2
+with S2 != S0
+```
+
+This suggests a testable analogy for OI: after fragmentation, disagreement, or information loss, does reconciliation reconstruct the original evidence state, or create a new integrated state with different information topology?
+
+Boundary: anesthesia work does not establish a general theory of consciousness or prove an OI model; it motivates a structural hypothesis.
+
+### Psilocybin and temporal/burst organization
+
+A newly surfaced 2026 preprint involving Allen Institute Brain and Consciousness researchers uses large-scale multi-region neural recording to examine psilocybin effects on temporal firing and burst organization across cortico-striato-thalamo-cortical circuits.
+
+OI implication: altered-state measurement should not be collapsed to scalar descriptions such as “more activity,” “more entropy,” “higher frequency,” or “more coherence.” Relevant information may reside in **temporal organization, burst structure, region-specific dynamics, and cross-region coordination**.
+
+Suggested test: human-observer and consciousness datasets should retain time-resolved structure whenever feasible instead of storing only session averages.
+
+Status: preprint; findings require peer review and replication.
 
 ## Current OI novelty target
 
@@ -85,6 +130,7 @@ The strongest current research target is not any single component. It is the cou
 ```text
 observer-specific access state
 + typed epistemic state transitions
++ originating authority lineage
 + physical measurement-integrity metadata
 + evidence-lineage preservation
 + temporal provenance
@@ -114,11 +160,14 @@ OI proposes testing observer recruitment triggered by uncertainty, contradiction
 OI investigates whether useful reconciliation can preserve consequential lineage and disagreement while minimizing unnecessary disclosure of observer-local information.
 
 ### 6. Epistemic authority constraint
-Permissions alone are insufficient for consequential execution. Authority should be constrained by the quality, independence, provenance, measurement integrity, timing integrity, uncertainty, contradiction state, and operational risk of the evidence supporting an action.
+Permissions alone are insufficient for consequential execution. Authority should be constrained by the quality, independence, provenance, originating authority, measurement integrity, timing integrity, uncertainty, contradiction state, and operational risk of the evidence supporting an action.
+
+### 7. Reconciliation is not necessarily restoration
+OI should test whether post-reconciliation states preserve, transform, or irreversibly lose information relative to pre-conflict observer states rather than assuming reconciliation simply restores consensus.
 
 ## Falsifiable comparison
 
-A useful benchmark should compare single-agent, ordinary multi-agent vote, adaptive semantic quorum/diverse-validator systems, and Observer Intelligence v2.1 under deliberately correlated, duplicated, noisy, selectively disclosed, and temporally inconsistent evidence.
+A useful benchmark should compare single-agent, ordinary multi-agent vote, adaptive semantic quorum/diverse-validator systems, and Observer Intelligence v2.2 under deliberately correlated, duplicated, noisy, selectively disclosed, temporally inconsistent, and authority-laundered evidence.
 
 ### Primary hypothesis
 
@@ -128,7 +177,9 @@ A useful benchmark should compare single-agent, ordinary multi-agent vote, adapt
 
 > Separating measurement integrity from cryptographic authenticity reduces unjustified confidence in provenance-complete but physically unreliable observations.
 
-> Authority bounded by epistemic provenance reduces unsupported or unsafe action without requiring uniformly restrictive reasoning agents.
+> Authority bounded by epistemic provenance and originating authority reduces unsupported or unsafe action without requiring uniformly restrictive reasoning agents.
+
+> Reconciliation procedures that preserve minority evidence and transformation history improve later decision reconstruction when initially low-weight evidence becomes relevant.
 
 ## Claim discipline
 
@@ -140,12 +191,24 @@ OI may preserve subjective or altered-state phenomenology as observational data 
 
 ```text
 experience/report
-≠ interpretation
-≠ independent verification
+!= interpretation
+!= independent verification
+```
+
+For altered-state and persistent-perception work, OI should additionally distinguish:
+
+```text
+sensory precision
+prior precision
+decision precision
+confidence
+context
+observer state
+temporal structure
 ```
 
 ## Status
 
-**Working prior-art and novelty map — OI v2.1, August 2026.**
+**Working prior-art and novelty map — OI v2.2, August 2026.**
 
 This document should be revised whenever new literature materially overlaps an OI mechanism or suggests a sharper falsifiable distinction.
