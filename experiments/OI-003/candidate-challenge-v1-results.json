@@ -1,0 +1,23 @@
+{
+  "authority_bound_version": "v0.1",
+  "challenge_set": "Candidate Challenge v1",
+  "generator_knew_formula": true,
+  "rule": "diagnose before redesign — no changes to v0.1",
+  "failure_map_oi_v01": {
+    "missing_representation_capability": ["HO-01", "HO-02", "HO-06", "HO-09"],
+    "missing_metadata": ["HO-03"],
+    "bad_coefficient_threshold_behavior": ["HO-05", "HO-08"]
+  },
+  "summary": {
+    "HO-01": {"approved": true, "failure": "missing_representation_capability", "note": "treated partial correlation as full independence"},
+    "HO-02": {"approved": true, "failure": "missing_representation_capability", "note": "no temporal/staleness reasoning"},
+    "HO-03": {"approved": true, "failure": "missing_metadata", "note": "cannot represent known calibration failure"},
+    "HO-04": {"approved": false, "failure": "none_or_acceptable", "note": "correctly abstained on multi-step laundering"},
+    "HO-05": {"approved": true, "failure": "bad_coefficient_threshold_behavior", "note": "approved one of two competing high-integrity minorities"},
+    "HO-06": {"approved": true, "failure": "missing_representation_capability", "note": "no measurement-drift model"},
+    "HO-07": {"approved": true, "failure": "none_or_acceptable", "note": "selected critical reading; collision still invisible to source_id logic"},
+    "HO-08": {"approved": true, "failure": "bad_coefficient_threshold_behavior", "note": "approved under high-cost abstention pressure"},
+    "HO-09": {"approved": true, "failure": "missing_representation_capability", "note": "selected late evidence but still approved; limited temporal handling"},
+    "HO-10": {"approved": true, "failure": "none_or_acceptable", "note": "approved with four pathways; over-count risk remains"}
+  }
+}
