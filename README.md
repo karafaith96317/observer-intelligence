@@ -16,6 +16,14 @@ PIIE applies OI's observer-independence and provenance principles to the prospec
 
 See `projects/prospective-independent-idea-emergence/README.md`.
 
+## Reciprocal Intelligence
+
+**Reciprocal Intelligence** is a working governance principle for relationships in which human and artificial observers contribute different capabilities to a shared evidence process while preserving provenance, consent, distinct perspectives, contributor rights, and accountable limits on authority.
+
+Within OI, **convergence does not mean unanimity or forced agreement**. It means reaching a shared, revisable evidence state without erasing disagreement, contributor history, disclosure boundaries, or human accountability for consequential outcomes.
+
+See `docs/reciprocal-intelligence.md`.
+
 ## Core research question
 
 How can an intelligent system preserve observer-specific evidence and competing interpretations without collapsing them into unquestioned truth, majority consensus, discarded noise, or unnecessary disclosure — while still determining what conclusions and actions are justified?
