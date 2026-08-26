@@ -1,6 +1,6 @@
 # Observer Intelligence
 
-**Observer Intelligence (OI) v2.1** is an interdisciplinary research framework for studying how intelligent and distributed observational systems move from **information access to justified authority** while preserving provenance, uncertainty, observer dependence, competing hypotheses, disclosure boundaries, and unresolved contradiction.
+**Observer Intelligence (OI) v2.2** is an interdisciplinary research framework for studying how intelligent and distributed observational systems move from **information access to justified authority** while preserving provenance, uncertainty, observer dependence, competing hypotheses, disclosure boundaries, and unresolved contradiction.
 
 The central principle is:
 
@@ -8,25 +8,19 @@ The central principle is:
 
 OI is an **epistemic-control architecture**, not a voting or consensus system. It preserves what each observer could know, what it actually observed, how observations became interpretations and claims, how independent the supporting evidence really is, what information was disclosed during reconciliation, and what operational authority should follow.
 
-## What's new in v2.1
+## Current extensions
 
-OI v2.1 adds explicit separation among:
+OI now includes research branches for distributed observation, measurement integrity, altered-state/human-observer modeling, and **Prospective Independent Idea Emergence (PIIE)**.
 
-- **measurement integrity** and cryptographic record authenticity
-- **observer identity** and observer reliability
-- **temporal provenance** and truth
-- **channel authentication** and epistemic authority
-- **selective disclosure** and full evidence surrender
-- **numerical agreement** and independent corroboration
-- **reconciliation** and authorization/action
+PIIE applies OI's observer-independence and provenance principles to the prospective study of similar ideas emerging among separated people. It uses immutable source artifacts, cryptographic timestamps, information-exposure provenance, blinded semantic comparison, null models, and contamination audits to distinguish independent convergence from shared sources, diffusion, convergent reasoning, and chance.
 
-It also introduces the **Distributed Observer Trust Fabric (DOTF)** and **Observer Trust Domain (OTD)** as substrate-neutral abstractions. They may operate over classical, post-quantum, quantum, or hybrid communications; OI does not require quantum networking.
+See `projects/prospective-independent-idea-emergence/README.md`.
 
 ## Core research question
 
 How can an intelligent system preserve observer-specific evidence and competing interpretations without collapsing them into unquestioned truth, majority consensus, discarded noise, or unnecessary disclosure — while still determining what conclusions and actions are justified?
 
-## OI v2.1 pipeline
+## OI pipeline
 
 ```text
 ACCESS
@@ -65,43 +59,15 @@ Every transition should retain provenance and remain inspectable.
 7. **Selective disclosure** — reconciliation should receive only the information necessary for the authorized conclusion where feasible.
 8. **Provenance-preserving reconciliation** — disagreement, uncertainty, missingness, disclosure boundaries, transformation history, and consequential lineage should survive reconciliation.
 9. **Runtime separation of authority** — observation, interpretation, reconciliation, authorization, and execution should not automatically belong to the same component.
-10. **Transport independence** — DOTF may use classical, PQC, quantum, or hybrid infrastructure without treating the transport mechanism itself as evidence of truth.
+10. **Transport independence** — distributed OI may use classical, PQC, quantum, or hybrid infrastructure without treating the transport mechanism itself as evidence of truth.
 
 ## Observer Intelligence Evidence Matrix
 
-OI v2.1 retains the original observer-capacity profile:
-
-- sensory / data access
-- actual observation
-- memory continuity
-- global information availability
-- self-modeling
-- autonomous goal selection
-- embodied regulation
-- verbal claims of experience
-- independent evidence of experience
-
-and adds distributed-evidence dimensions including:
-
-- measurement integrity
-- observer identity
-- temporal provenance
-- cryptographic provenance
-- evidence independence
-- pair/channel authentication
-- observation independence
-- trust-domain integrity
-- cross-observer agreement
-- selective disclosure
-- minimum necessary reconciliation
-- authority separation
-- reconciliation trace
+OI retains the original observer-capacity profile and extends it with distributed-evidence dimensions including measurement integrity, observer identity, temporal and cryptographic provenance, evidence independence, cross-observer agreement, selective disclosure, authority separation, and reconciliation trace.
 
 The intended output remains an **indicator profile**, not a binary declaration that an AI or other observer is “awake,” “aligned,” conscious, truthful, or correct.
 
 ## Working Observer Authority Bound
-
-A provisional OI design principle is:
 
 ```text
 Authority(C) <= f(
@@ -132,31 +98,32 @@ Compare single-agent, ordinary multi-agent voting, adaptive semantic quorum meth
 **OI-004 — Measurement integrity vs authenticated provenance**  
 Test whether systems incorrectly over-trust cryptographically authentic evidence when physical sensor quality, calibration, timing, or environmental conditions are degraded.
 
-## Research grounding added in v2.1
+**PIIE-001 — Prospective Independent Idea Emergence**  
+Test whether the rate and specificity of apparently independent conceptual convergence exceeds a preregistered null expectation after shared information pathways, participant background, diffusion, and chance are accounted for.
 
-The following are **adjacent research foundations, not experimental validation of OI**:
+## Timestamping principle
 
-- Private distributed quantum sensing and privacy/precision trade-offs: https://www.nature.com/articles/s41534-026-01266-3
-- Brookhaven/Stony Brook free-space quantum-network demonstration: https://news.stonybrook.edu/newsroom/press-release/general/brookhaven-and-stony-brook-researchers-demonstrate-wireless-capability-for-quantum-network/
-- Loughborough optical microcomb, millimetre-wave generation, and precision-timing work: https://www.lboro.ac.uk/media-centre/press-releases/2026/august/microcomb-6g-quantum-technologies/
-- NIST wide superconducting single-photon detector architecture: https://www.nist.gov/news-events/news/2026/08/nist-researchers-supersize-quantum-technology-help-detect-faint-photons
-- NIST entanglement distribution over 62 km of commercial/aerial fiber: https://www.nist.gov/news-events/news/2026/08/spooky-particles-transit-dc-suburbs-step-toward-quantum-network
+Prospective claims are strongest when their source artifacts are frozen before later evidence is known. OI/PIIE therefore supports cryptographic timestamping, including OpenTimestamps-style hash commitments, as provenance evidence.
 
-See `docs/evidence-matrix.md`, `docs/framework.md`, and `docs/prior-art-and-novelty.md` for the distinctions and claim boundaries.
+A timestamp can establish that committed digital data existed by a verifiable time. It does **not** by itself establish authorship, originality, independent creation, or truth.
+
+OpenTimestamps: https://opentimestamps.org/
 
 ## Human-observer research boundary
 
 OI can represent human phenomenology using the same separation between observation, interpretation, and verification. A subjective report is legitimate observational data that a report or experience occurred. It is not automatically independent evidence that the interpretation attached to that experience describes an external event.
 
+Likewise, recurring ideas among separated observers are evidence of recurrence only after independence has been evaluated; recurrence itself is not proof of a shared field, anomalous information transfer, or truth.
+
 ## Prior-art boundary
 
-OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus/quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, distributed quantum sensing, QKD, entanglement distribution, frequency combs, precision timing, or free-space quantum links.
+OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus/quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, cryptographic timestamping, distributed quantum sensing, QKD, entanglement distribution, frequency combs, precision timing, or free-space quantum links.
 
-The current novelty target is the coupling of observer-specific access state, typed epistemic transitions, physical measurement-integrity metadata, evidence-lineage preservation, temporal provenance, dependence estimation, counterfactual hypothesis preservation, epistemically triggered expansion, selective-disclosure boundaries, reconciliation without lineage loss, and bounded execution authority.
+The current novelty target is the coupling of observer-specific access state, typed epistemic transitions, physical measurement-integrity metadata, evidence-lineage preservation, temporal provenance, dependence estimation, counterfactual hypothesis preservation, epistemically triggered expansion, selective-disclosure boundaries, reconciliation without lineage loss, and bounded execution authority — plus prospective applications of these principles to independently timestamped human idea emergence.
 
 ## Status
 
-**Early research / specification stage — v2.1, August 2026.** Terminology, formulas, schemas, experiments, and novelty boundaries remain subject to falsification and revision.
+**Early research / specification stage — v2.2, August 2026.** Terminology, formulas, schemas, experiments, and novelty boundaries remain subject to falsification and revision.
 
 ## Author
 
