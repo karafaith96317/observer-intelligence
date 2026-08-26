@@ -168,7 +168,26 @@ S2 may differ from S0 even when function appears restored.
 
 This can be tested computationally first using observer networks before making claims about biological consciousness.
 
-## Phase 5 — Agentic AI safety
+## Phase 5 — Reciprocal Intelligence and convergence
+
+Translate Reciprocal Intelligence into testable governance profiles for human–AI systems.
+
+Focus areas:
+
+- contribution provenance and attribution accuracy
+- consent-scope compliance, refusal, and withdrawal
+- benefit and risk distribution
+- authority concentration
+- disagreement preservation
+- appeal and correction mechanisms
+- detection of shared-source and circular-evidence dependencies
+- Human–AI Convergence Protocol experiments
+
+Primary research question:
+
+> Can human and artificial observers establish a shared, provenance-preserving evidence state while protecting distinct perspectives, contributor rights, consent, and human accountability for consequential outcomes?
+
+## Phase 6 — Agentic AI safety
 
 Apply the architecture to systems where models can call tools or affect external environments.
 
@@ -186,7 +205,7 @@ Focus areas:
 - evidence-sensitive authorization
 - blast-radius reduction
 
-## Phase 6 — Distributed observation infrastructure
+## Phase 7 — Distributed observation infrastructure
 
 Evaluate how OI metadata and reconciliation rules behave across heterogeneous sensing and communication substrates.
 
@@ -202,7 +221,7 @@ Focus areas:
 
 OI should not assume that quantum transport, entanglement, cryptographic signing, or high-precision timing independently establishes truth or epistemic authority.
 
-## Phase 7 — External collaboration
+## Phase 8 — External collaboration
 
 Potential disciplines:
 
