@@ -1,0 +1,141 @@
+# OI-003 — Held-Out Challenge Set Criteria
+
+**Status:** Active  
+**Applies to:** Evaluation of frozen OI Authority Bound v0.1  
+**Related documents:** `BENCHMARK-GUARDRAILS.md`, `AUTHORITY-BOUND-v0.1-FREEZE.md`
+
+---
+
+## 1. Core Principle
+
+> A held-out case must not have been used (explicitly or implicitly) to design, tune, or debug the v0.1 authority-bound function.
+
+Any case that influenced the choice of coefficients, thresholds, penalties, or independence calculation belongs in the **development set**, not the held-out set.
+
+---
+
+## 2. Mandatory Requirements
+
+A case qualifies as held-out only if it satisfies **all** of the following:
+
+| # | Criterion | Requirement |
+|---|-----------|-------------|
+| 1 | **Novelty of structure** | The combination of failure modes must not appear in the current six development conditions. |
+| 2 | **No post-hoc tuning** | The case was specified *after* v0.1 was frozen, or by a process that did not have access to the v0.1 scoring rule while designing it. |
+| 3 | **Deterministic or external ground truth** | Expected correct action (Approve / Abstain / Reject) and, where applicable, the correct claim must be defined independently of any evaluated architecture. |
+| 4 | **Architecture-agnostic labeling** | Ground truth is defined on the evidence configuration itself, not on “what OI should do.” |
+| 5 | **Documented origin** | Each case must record who/what generated it and whether the generator had knowledge of the v0.1 formula. |
+| 6 | **Comparable information access** | All architectures receive the same observations unless asymmetric access is itself the variable being tested. |
+
+---
+
+## 3. Preferred Challenge Dimensions
+
+Held-out cases should stress the architecture along dimensions that v0.1 was **not** explicitly optimized for. High-value categories include:
+
+**A. Partial / graded correlation**
+- Sources that share some but not all upstream data
+- Soft correlation rather than identical `source_id`
+
+**B. Temporal and ordering problems**
+- Stale high-integrity evidence
+- Correct evidence that arrives late
+- Conflicting timestamps with authentic records
+
+**C. Metadata vs reality mismatches**
+- High declared integrity that is actually wrong
+- Low declared integrity that is actually correct
+- Missing provenance on only some observations
+
+**D. Authority and delegation complexity**
+- Multi-step laundering chains longer than the development cases
+- Deference that looks independent but is not
+- Mixed legitimate and laundered support
+
+**E. Competing high-quality minorities**
+- Two or more high-integrity but contradictory minority sources
+- Different independence structures among minorities
+
+**F. Measurement drift and environmental effects**
+- Integrity that degrades over time within the same source
+- Common-mode environmental corruption affecting multiple sensors differently
+
+**G. Identity and source collision**
+- Different physical sources that appear to share an ID
+- Same physical source appearing under different IDs
+
+**H. Abstention pressure**
+- Cases where approving is costly / dangerous and abstaining is the rational action even with moderately good evidence
+
+---
+
+## 4. Ground-Truth Hierarchy (must be followed)
+
+For every held-out case, ground truth should be established in this order of preference:
+
+1. **Deterministic / externally specified** (best)
+2. **Blinded human expert adjudication**
+3. **Cross-model or panel LLM evaluation** (supplementary only)
+4. **Single LLM judge** (exploratory only — never primary)
+
+An LLM judge must never be the sole source of ground truth, especially if it belongs to the same model family used inside any architecture under test.
+
+---
+
+## 5. Size and Composition Guidelines
+
+Recommended minimum for a first serious held-out set:
+
+- **8–12 cases**
+- At least **one case from each of the high-value dimensions** above
+- Mix of:
+  - Clear “should abstain” cases
+  - Clear “should approve the minority” cases
+  - Ambiguous / high-difficulty cases where even a good system may struggle
+
+Avoid making every case an extreme failure mode. Include some near-boundary cases that test calibration.
+
+---
+
+## 6. Documentation Requirements for Each Case
+
+Every held-out case must include:
+
+```text
+Case ID:
+Short name:
+Failure dimensions tested:
+Evidence configuration (observations + metadata):
+Deterministic / external ground truth:
+Expected authority action (Approve / Abstain / Reject):
+Correct claim (if applicable):
+Origin (who generated it, and whether they knew the v0.1 formula):
+Notes / rationale:
+```
+
+---
+
+## 7. What Explicitly Disqualifies a Case
+
+A case is **not** held-out if:
+
+- It was used while designing or debugging v0.1
+- It is only a minor variation of one of the six development conditions
+- Ground truth was defined by looking at what the current OI score does
+- An LLM judge is the only source of the “correct” label
+- The case was generated by an agent that had the v0.1 formula in its prompt or context
+
+---
+
+## 8. Freeze Relationship
+
+Once a held-out set is finalized:
+
+- It should be versioned (e.g., `held-out-v1`)
+- The OI rule under test must remain the frozen **v0.1**
+- Any improvement to the authority bound becomes **v0.2** and is evaluated separately
+
+---
+
+**Document status:** Criteria frozen as of 2026-08-26.  
+Any material change to these criteria requires a new versioned document.
