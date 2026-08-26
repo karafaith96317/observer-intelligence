@@ -59,6 +59,12 @@ The framework distinguishes categories such as:
 
 This prevents a compelling interpretation from silently becoming a factual claim.
 
+## Reciprocal Intelligence
+
+**Reciprocal Intelligence** is the proposed relationship in which human and artificial observers contribute different capabilities to a shared evidence process while preserving provenance, consent, distinct perspectives, contributor rights, and accountable limits on authority.
+
+Within this framework, convergence does not mean forced agreement. It means reaching a shared, revisable evidence state without erasing disagreement, contributor history, or human accountability for consequential outcomes. See [docs/reciprocal-intelligence.md](docs/reciprocal-intelligence.md).
+
 ## Research program
 
 The repository will develop OI through falsifiable experiments and implementation prototypes.
@@ -80,6 +86,7 @@ observer-intelligence/
 │   ├── framework.md
 │   ├── evidence-matrix.md
 │   ├── epistemic-labels.md
+│   ├── reciprocal-intelligence.md
 │   └── research-roadmap.md
 ├── experiments/
 │   ├── OI-001/
