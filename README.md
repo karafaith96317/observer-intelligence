@@ -16,6 +16,12 @@ PIIE applies OI's observer-independence and provenance principles to the prospec
 
 See `projects/prospective-independent-idea-emergence/README.md`.
 
+## Living evidence integration
+
+External research that materially supports, challenges, duplicates, or suggests a test of OI is maintained in `docs/research-findings-log.md`. Entries preserve publication status, source, OI connection, and research consequence so that later similarities are not retroactively treated as proof.
+
+The prior-art boundary remains separately maintained in `docs/prior-art-and-novelty.md`.
+
 ## Core research question
 
 How can an intelligent system preserve observer-specific evidence and competing interpretations without collapsing them into unquestioned truth, majority consensus, discarded noise, or unnecessary disclosure — while still determining what conclusions and actions are justified?
