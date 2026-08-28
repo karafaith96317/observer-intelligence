@@ -19,6 +19,26 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-08-27 — Red Queen Gödel Machine: co-evolving agents and evaluators
+
+**Finding.** Iacob et al. introduced the Red Queen Gödel Machine (RQGM), an evolutionary framework for recursive self-improvement under non-stationary utilities. Evaluation becomes part of the improvement loop: search proceeds in epochs with a fixed criterion within an epoch while the utility/evaluation criterion may change at epoch boundaries. The paper also studies adversarial objectives and agent-as-a-judge evaluation.
+
+**Demonstrated / reported.** The preprint reports improved coding test pass rate over prior SOTA with a complementary code-review signal while using 1.35x–1.72x fewer tokens; higher acceptance rates for co-evolved scientific writers; improved ground-truth accuracy for co-evolved graders; and an adversarial objective that reduced a reviewer's differential over-acceptance of AI-generated papers.
+
+**Status / boundary.** Preliminary preprint and work in progress, first submitted 24 June 2026 and revised 29 June 2026. It does not validate Observer Intelligence and does not establish that unrestricted recursive self-improvement is safe.
+
+**OI connection.** Adversarial evaluation; observer/evaluator evolution; non-stationary evaluation criteria; iterative selection; reward-hacking resistance; observer succession.
+
+**Effect on OI.** **Duplicates / prior art + suggests a test + sharpens the novelty boundary.** Generic co-evolving evaluators and adversarial evaluator improvement should be treated as adjacent prior art. The more specific OI research question is whether epistemic integrity can survive evaluator succession without collapsing raw evidence, provenance, minority contradiction, historical interpretation, and authority into the currently dominant evaluator.
+
+**Research consequence.** Add an **Evaluator Evolution / Observer Succession** benchmark. Construct epochs in which evaluator O1 is replaced by O2 after O2 passes an improvement criterion. Measure whether the system preserves: (1) raw evidence, (2) O1's historical interpretation, (3) O2's new interpretation, (4) minority counterevidence, (5) evidence/evaluator dependence, (6) originating authority, and (7) separation between evaluation competence and execution authority. Include a failure condition in which O2 is better on the anchor set but worse on an unseen dimension.
+
+**Comparison target.** Fixed evaluator vs controlled co-evolving evaluator vs OI-style provenance-preserving evaluator succession under evaluator drift, reward hacking, correlated judges, anchor blind spots, minority counterevidence, and authority laundering.
+
+**Source.** Iacob, A. et al., *The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators*, arXiv:2606.26294 (v1 submitted 24 June 2026; v2 29 June 2026). https://arxiv.org/abs/2606.26294
+
+---
+
 ## 2026-08-27 — GPS-free maritime quantum gravimetric navigation
 
 **Finding.** Q-CTRL reported a maritime field demonstration in the Coral Sea using a software-ruggedized quantum gravimeter for autonomous gravity mapping and GPS-free navigation. The company reports approximately one nautical mile positioning accuracy over the mission duration.
@@ -173,13 +193,18 @@ state
 + channel/correction state
 + synchronization lineage
 + source/modality independence
++ evaluator lineage
 + provenance
 ```
 
-may carry information that is lost when observations are reduced to a single confidence score, average activity measure, agent count, verbal report, timestamp, or transport-success flag.
+may carry information that is lost when observations are reduced to a single confidence score, average activity measure, agent count, verbal report, timestamp, transport-success flag, or current evaluator score.
 
 A further refinement is now warranted:
 
-> **Observer independence is not static. It is a time-varying property of observers, physical modalities, source lineages, transformations, channels, clocks, correction systems, models, and network topology.**
+> **Observer independence is not static. It is a time-varying property of observers, evaluators, physical modalities, source lineages, transformations, channels, clocks, correction systems, models, and network topology.**
 
-This is a research hypothesis and data-modeling principle, not an established universal law. See `docs/research-refinement-protocol.md` for how findings should be converted into candidate OI revisions and experiments.
+A second testable refinement is:
+
+> **Improving or replacing an evaluator should not silently rewrite the evidence history on which earlier decisions were made.**
+
+These are research hypotheses and data-modeling principles, not established universal laws. See `docs/research-refinement-protocol.md` for how findings should be converted into candidate OI revisions and experiments.
