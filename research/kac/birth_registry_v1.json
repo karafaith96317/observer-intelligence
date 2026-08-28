@@ -1,0 +1,36 @@
+{
+  "status": "working research registry; astrology is treated as a symbolic/exploratory coordinate system, not established causal science",
+  "people": {
+    "Kara": {"date":"1989-09-06","time":"15:17","place":"Cleveland, OH","time_status":"known"},
+    "Tony": {"date":"1985-02-14","time":"11:15","place":"Cleveland, OH","time_status":"approximate 11:00-11:30"},
+    "Nick": {"date":"1982-08-13","time":"13:53","place":"Cleveland, OH","time_status":"known"},
+    "Nicole": {"date":"1996-03-06","time":"17:46","place":"Phoenix, AZ","time_status":"known to about one minute"},
+    "Twins": {"date":"2020-10-16","time":"20:07","place":"Cleveland, OH","time_status":"known"},
+    "Johnny": {"date":"1988-05-14","time":"05:15","place":"Middleburg Heights, OH","time_status":"known from supplied image"},
+    "Taylor": {"date":"1999-09-27","time":"04:30","place":"Alliance, OH","time_status":"working corrected time; angle cusp sensitive"},
+    "Hunter": {"date":"1998-01-28","time":"09:20","place":"Garfield Heights, OH","time_status":"known"},
+    "Blaise": {"date":"1994-07-03","time":"15:14","place":"Cleveland, OH","time_status":"known"},
+    "Mom": {"date":"1966-07-03","place":"Sioux Falls, SD","time_status":"unknown; no houses/angles and Moon treated as time-sensitive"},
+    "Russ Dailey": {"date":"1968-08-21","time":"09:35","place":"Ravenna, OH","time_status":"known","relationship":"biological father, per user"},
+    "Russ Sypen": {"date":"1964-11-09","place":"Cleveland area","time_status":"unknown","relationship":"recorded father; kept separate from biological-father analysis"},
+    "Maria Ann Prentiss nee Skarupa": {"date":"1940-03-08","time_status":"unknown"},
+    "David R. Sypen": {"date":"1941-12-05","place":"Cleveland, OH","time_status":"unknown"},
+    "Mary A. Skarupa": {"date":"1910-09-12","time_status":"unknown; year remains working correction pending primary record"},
+    "Sharon Norris formerly Puccini": {"month_day":"07-03","time_status":"year/place/time unknown"},
+    "Late Lydia Puccini": {"month_day":"03-08","place":"Westlake, OH area","time_status":"year/time unknown; do not confuse with younger cousin of same name"}
+  },
+  "events": {
+    "Johnny first talk":"2006-06-06",
+    "Johnny probable relationship start":"2006-06-29",
+    "Johnny death":"2012-12-13",
+    "twins conception window":"2020-03-08 to 2020-03-09",
+    "twins birth":"2020-10-16 20:07 Cleveland OH",
+    "Maria death":"2024-02-23",
+    "Tony first texts":"2024-09-03",
+    "Tony first sex window":"2024-09-15 to 2024-09-16"
+  },
+  "calendar_recurrences": {
+    "July 3":["Mom birthday","Blaise birthday","Sharon birthday","Mary A. Skarupa death 2003-07-03"],
+    "March 8":["Maria birthday","Late Lydia birthday","twins conception-window start around 2020-03-08"]
+  }
+}
