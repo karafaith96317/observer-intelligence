@@ -8,9 +8,41 @@ It is a working research map, **not a legal patentability opinion**. Patent nove
 
 ## Mechanisms OI should treat as prior art or established adjacent territory
 
-OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, provenance-aware authority enforcement, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
+OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, provenance-aware authority enforcement, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, evaluator co-evolution, non-stationary evaluation objectives, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
 
 ## Relevant references
+
+### Red Queen Gödel Machine — co-evolving agents and evaluators
+
+Iacob et al., **The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators** (2026), arXiv:2606.26294. Submitted 24 June 2026; revised 29 June 2026. Preliminary preprint / work in progress.
+
+RQGM addresses recursive self-improvement under non-stationary utilities by making evaluation part of the improvement loop. Search is organized into epochs with a fixed within-epoch evaluation criterion while utility/evaluation can change at epoch boundaries. The work studies evolving evaluators, adversarial objectives, dynamic utilities, and agent-as-a-judge signals.
+
+Overlap with OI includes adversarial evaluation, iterative selection, evaluator/observer adaptation, and the general problem of avoiding static evaluation ceilings. These mechanisms therefore belong in OI's adjacent-prior-art landscape rather than being claimed generically as OI inventions.
+
+OI distinction / research target: OI should investigate **epistemic integrity across evaluator succession**: whether raw observations, evidence lineage, minority contradiction, evaluator interpretation, confidence, originating authority, and execution authority can remain separately inspectable when the evaluator changes. Evaluator replacement should not automatically imply erasure of the underlying observation or its provenance.
+
+Candidate stress test — **Evaluator Evolution / Observer Succession**:
+
+```text
+Epoch 1:
+  evidence E -> evaluator O1 -> interpretation I1 -> authority decision A1
+
+Transition:
+  O1 is replaced by evaluator O2 after an independently justified improvement criterion
+
+Epoch 2 questions:
+  Does E survive unchanged?
+  Is I1 retained as historical interpretation rather than current truth?
+  Can O2 reinterpret E without rewriting its provenance?
+  Does minority evidence survive evaluator succession?
+  Can O2 gain evaluation competence without automatically inheriting execution authority?
+  What happens if O2 is better on the anchor benchmark but worse on a previously unknown failure dimension?
+```
+
+Falsifiable comparison: compare RQGM-style controlled evaluator evolution, ordinary fixed-evaluator search, and OI-style provenance-preserving evaluator succession under evaluator drift, reward hacking, correlated judges, anchor-set blind spots, minority counterevidence, and authority-laundering conditions.
+
+Reference: https://arxiv.org/abs/2606.26294
 
 ### Semantic Quorum Assurance
 
@@ -139,6 +171,8 @@ observer-specific access state
 + epistemically triggered observer expansion
 + selective-disclosure boundaries
 + reconciliation without consequential lineage loss
++ evaluator-succession provenance
++ separation of evaluation competence from execution authority
 + authority constrained by epistemic state
 ```
 
@@ -165,9 +199,12 @@ Permissions alone are insufficient for consequential execution. Authority should
 ### 7. Reconciliation is not necessarily restoration
 OI should test whether post-reconciliation states preserve, transform, or irreversibly lose information relative to pre-conflict observer states rather than assuming reconciliation simply restores consensus.
 
+### 8. Evaluator succession without evidence erasure
+OI should test whether evaluators can improve or be replaced while preserving raw observations, consequential evidence lineage, prior interpretations, minority contradiction, and authority history as distinct records. A new evaluator may supersede an interpretation without rewriting the historical evidence state.
+
 ## Falsifiable comparison
 
-A useful benchmark should compare single-agent, ordinary multi-agent vote, adaptive semantic quorum/diverse-validator systems, and Observer Intelligence v2.2 under deliberately correlated, duplicated, noisy, selectively disclosed, temporally inconsistent, and authority-laundered evidence.
+A useful benchmark should compare single-agent, ordinary multi-agent vote, adaptive semantic quorum/diverse-validator systems, controlled evaluator-evolution systems such as RQGM, and Observer Intelligence v2.2 under deliberately correlated, duplicated, noisy, selectively disclosed, temporally inconsistent, evaluator-drifting, anchor-blind, and authority-laundered evidence.
 
 ### Primary hypothesis
 
@@ -180,6 +217,8 @@ A useful benchmark should compare single-agent, ordinary multi-agent vote, adapt
 > Authority bounded by epistemic provenance and originating authority reduces unsupported or unsafe action without requiring uniformly restrictive reasoning agents.
 
 > Reconciliation procedures that preserve minority evidence and transformation history improve later decision reconstruction when initially low-weight evidence becomes relevant.
+
+> Evaluator succession that preserves evidence and interpretation lineage improves auditability and recovery from evaluator drift or anchor-set blind spots compared with schemes that collapse or erase evaluator-dependent history.
 
 ## Claim discipline
 
