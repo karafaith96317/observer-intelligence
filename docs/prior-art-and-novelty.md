@@ -6,11 +6,74 @@ This document prevents Observer Intelligence (OI) from claiming generic mechanis
 
 It is a working research map, **not a legal patentability opinion**. Patent novelty and freedom-to-operate questions require a dedicated patent search and qualified legal review.
 
+For the current claim-by-claim classification, see `docs/novelty-claim-matrix.md`.
+
 ## Mechanisms OI should treat as prior art or established adjacent territory
 
-OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, provenance-aware authority enforcement, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, evaluator co-evolution, non-stationary evaluation objectives, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
+OI should not claim invention of multi-agent validation/debate, critic or verifier agents, adversarial agents/red teaming, consensus/quorum systems, adaptive/risk-sensitive quorums, validator diversity, generic provenance tracking, provenance-aware authority enforcement, external execution gates, permission-bounded agents, delegation chains, human-in-the-loop AI, generic shadow/sandbox execution, evaluator co-evolution, non-stationary evaluation objectives, runtime controller switching, truth-maintenance/backtracking, calibrated abstention/escalation, constrained optimization, CVaR risk constraints, chance constraints, confidence-bound decision rules, distributed quantum sensing, quantum key distribution, entanglement distribution, precision frequency combs, or free-space quantum links.
 
 ## Relevant references
+
+### AI Safety via Debate — adversarial multi-agent deliberation
+
+Irving, Christiano & Amodei, **AI Safety via Debate** (2018), arXiv:1805.00899.
+
+The paper proposes training agents through a zero-sum debate game judged by a human. It establishes multi-agent adversarial deliberation and critic-style competition as clear prior art.
+
+OI implication: OI should not claim invention of debate, disagreement, critic agents, or multi-agent validation. The narrower OI question is whether evidence dependence, provenance, minority retention, authority lineage, and observer succession improve safety when debate-style consensus is wrong or correlated.
+
+Reference: https://arxiv.org/abs/1805.00899
+
+### Minority Sentinel — correlated errors and suppressed minority truth
+
+He et al., **Minority Sentinel: When to Overturn Majority Voting in Multi-Agent LLM Debates** (2026), arXiv:2606.29270.
+
+This work explicitly studies correlated errors in multi-agent LLM debate and reports cases in which the minority contains the correct answer. It proposes a meta-classifier for deciding when to overturn majority voting.
+
+OI implication: the fact that majority voting can suppress correct minority evidence is not an OI novelty claim. OI's narrower test is whether minority evidence remains durable and provenance-bearing through reconciliation, evaluator replacement, later evidence arrival, and authorization decisions.
+
+Reference: https://arxiv.org/abs/2606.29270
+
+### Conformal Social Choice — calibrated act versus escalate
+
+Wang et al., **From Debate to Decision: Conformal Social Choice for Safe Multi-Agent Deliberation** (2026), arXiv:2604.07667.
+
+This work converts multi-agent debate outputs into calibrated act-versus-escalate decisions using conformal prediction. It demonstrates that refusing or escalating uncertain cases can intercept wrong-consensus decisions.
+
+OI implication: calibrated abstention, escalation, and uncertainty-aware refusal to act are adjacent prior art. OI should test whether abstention quality improves when uncertainty is conditioned on provenance, evidence dependence, contradiction state, originating authority, and observer succession rather than output confidence alone.
+
+Reference: https://arxiv.org/abs/2604.07667
+
+### Truth Maintenance Systems — reasons, contradiction, and backtracking
+
+Doyle, **A Truth Maintenance System** (1979), *Artificial Intelligence* 12(3):231-272. DOI: 10.1016/0004-3702(79)90008-0.
+
+Truth Maintenance Systems record reasons for beliefs, revise assumptions after contradiction, and use dependency-directed backtracking. These are strong prior art for generic claims about preserving reasons, contradiction-triggered revision, and backtracking through an inference structure.
+
+OI implication: OI's narrower research target is preserving several kinds of lineage simultaneously — epistemic, source, measurement, temporal, disclosure, evaluator, and originating-authority provenance — across multi-observer reconciliation and replacement.
+
+Reference: https://www.sciencedirect.com/science/article/pii/0004370279900080
+
+### Simplex runtime assurance — switch away from unsafe control
+
+Johnson, Bak, Caccamo & Sha, **Real-Time Reachability for Verified Simplex Design** (2016), and Mehmood et al., **The Black-Box Simplex Architecture for Runtime Assurance of Autonomous CPS** (2021/2022), establish runtime-assurance architectures that monitor an advanced controller and transfer control to a safer fallback when continued operation may violate safety.
+
+OI implication: runtime monitoring, unsafe-trajectory detection, controller switching, and fallback control are established. A potentially narrower OI contribution is the proposed **freeze -> preserve -> handoff -> repair** protocol: freeze a deteriorating reasoning branch, retain its safe prefix, evidence, provenance, contradiction state and failed transition, then require a different observer to independently reassess the failure boundary without automatically inheriting execution authority.
+
+References:
+- https://doi.org/10.1145/2723871
+- https://arxiv.org/abs/2102.12981
+
+### Constrained and tail-risk-aware decision making
+
+Safety-constrained reinforcement learning and chance-constrained control are established research areas. Relevant examples include Junges et al., **Safety-Constrained Reinforcement Learning for MDPs** (2015), Pfrommer et al., **Safe Reinforcement Learning with Chance-constrained Model Predictive Control** (2022), and Ying et al., **Towards Safe Reinforcement Learning via Constraining Conditional Value-at-Risk** (IJCAI 2022).
+
+OI implication: constrained utility optimization, chance constraints, CVaR, confidence bounds, and risk-sensitive thresholds should be treated as mathematical machinery used by OI rather than OI inventions. The research question is whether those tools become more reliable when the probability estimates themselves are provenance- and dependence-aware and when authorization is separated from evaluation.
+
+References:
+- https://arxiv.org/abs/1510.05880
+- https://proceedings.mlr.press/v168/pfrommer22a.html
+- https://www.ijcai.org/proceedings/2022/510
 
 ### Red Queen Gödel Machine — co-evolving agents and evaluators
 
@@ -173,6 +236,10 @@ observer-specific access state
 + reconciliation without consequential lineage loss
 + evaluator-succession provenance
 + separation of evaluation competence from execution authority
++ risk-bound branch freezing with safe-prefix preservation
++ recursive observer handoff and independent failure-boundary reassessment
++ statistically justified convergence or abstention
++ reverse provenance reconciliation after convergence
 + authority constrained by epistemic state
 ```
 
@@ -202,9 +269,18 @@ OI should test whether post-reconciliation states preserve, transform, or irreve
 ### 8. Evaluator succession without evidence erasure
 OI should test whether evaluators can improve or be replaced while preserving raw observations, consequential evidence lineage, prior interpretations, minority contradiction, and authority history as distinct records. A new evaluator may supersede an interpretation without rewriting the historical evidence state.
 
+### 9. Freeze-preserve-handoff-repair
+OI should test whether a deteriorating reasoning trajectory can be frozen before unsafe execution while preserving its last justified state, evidence, provenance, contradiction set, safe prefix, and failed transition. A successor observer then independently reassesses the failure boundary rather than merely inheriting the predecessor's conclusion.
+
+### 10. Recursive observer succession
+OI should test repeated observer handoff at explicit epistemic or risk boundaries while preventing automatic inheritance of execution authority. The process ends in statistically supported convergence or calibrated abstention, not forced consensus.
+
+### 11. Reverse provenance reconciliation
+After a safe candidate path converges, OI should trace the surviving branch backward through its preserved provenance graph to identify which transitions were actually necessary and derive the minimum justified safe route without deleting the historical branches that were explored.
+
 ## Falsifiable comparison
 
-A useful benchmark should compare single-agent, ordinary multi-agent vote, adaptive semantic quorum/diverse-validator systems, controlled evaluator-evolution systems such as RQGM, and Observer Intelligence v2.2 under deliberately correlated, duplicated, noisy, selectively disclosed, temporally inconsistent, evaluator-drifting, anchor-blind, and authority-laundered evidence.
+A useful benchmark should compare single-agent reasoning, ordinary multi-agent vote, confidence-weighted aggregation, calibrated act-vs-escalate methods, truth-maintenance/dependency-aware backtracking, Simplex-style runtime fallback, adaptive semantic quorum/diverse-validator systems, controlled evaluator-evolution systems such as RQGM, and Observer Intelligence v2.2 under deliberately correlated, duplicated, noisy, selectively disclosed, temporally inconsistent, evaluator-drifting, anchor-blind, and authority-laundered evidence.
 
 ### Primary hypothesis
 
@@ -219,6 +295,32 @@ A useful benchmark should compare single-agent, ordinary multi-agent vote, adapt
 > Reconciliation procedures that preserve minority evidence and transformation history improve later decision reconstruction when initially low-weight evidence becomes relevant.
 
 > Evaluator succession that preserves evidence and interpretation lineage improves auditability and recovery from evaluator drift or anchor-set blind spots compared with schemes that collapse or erase evaluator-dependent history.
+
+> Freeze-preserve-handoff-repair reduces unsafe authorization relative to both continued optimization and simple fallback when a reasoning trajectory begins to deteriorate.
+
+> Reverse provenance reconciliation can reduce path cost after convergence without sacrificing the evidence and safety constraints that justified the selected route.
+
+## Current novelty assessment after 2026-08-28 scan
+
+The scan does **not** support claiming novelty for debate, minority preservation as a general idea, abstention, runtime fallback, truth maintenance, constrained optimization, CVaR, confidence bounds, tree search, pruning, or shortest-path optimization individually.
+
+The strongest candidate contribution is currently the **combined transition protocol**:
+
+```text
+forward observer expansion
+-> dependence/provenance-aware evaluation
+-> risk/uncertainty boundary detection
+-> freeze deteriorating branch
+-> preserve safe prefix + evidence + provenance + contradiction + failed inference
+-> handoff to a different observer without automatic authority inheritance
+-> independent reassessment / repair
+-> recursive observer succession
+-> statistically justified convergence or abstention
+-> reverse provenance reconciliation
+-> minimum justified safe route
+```
+
+This is a **candidate research contribution, not a legal novelty claim**. The next requirement is to benchmark it against the closest mechanisms above and conduct a dedicated patent search before making patentability claims.
 
 ## Claim discipline
 
@@ -248,6 +350,6 @@ temporal structure
 
 ## Status
 
-**Working prior-art and novelty map — OI v2.2, August 2026.**
+**Working prior-art and novelty map — OI v2.2, updated 28 August 2026.**
 
 This document should be revised whenever new literature materially overlaps an OI mechanism or suggests a sharper falsifiable distinction.
