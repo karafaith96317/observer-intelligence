@@ -21,6 +21,7 @@ Relevant research may come from any field that materially affects observation, e
 - sensing, robotics, and sensor fusion
 - control theory and safety engineering
 - information theory and statistics
+- risk modeling, model validation, and decision science
 - neuroscience and cognitive science
 - psychology and phenomenology
 - human-computer interaction
@@ -90,6 +91,8 @@ transport security != epistemic authority
 verbal report != independent verification
 privacy != correctness
 observer count != evidence-path count
+evidence strength != evidence fitness
+evidence fitness != authority
 ```
 
 ## Source-quality discipline
@@ -106,6 +109,7 @@ Every logged item should explicitly record its evidence status:
 - government or laboratory announcement
 - company/vendor field report
 - secondary reporting
+- established domain practice / validation methodology
 
 Claims should never be upgraded merely because they are technologically exciting or resemble an OI concept.
 
@@ -158,6 +162,52 @@ Does it suggest a better way to preserve disagreement, missingness, alternatives
 ### Authority
 Does it change what evidence should be required before a conclusion, authorization, or action is permitted?
 
+### Evidence fitness / stability
+Does an apparently informative feature, observer, source, or evidence pathway remain discriminative and reliable across time, environments, populations, models, sensors, or distribution shift?
+
+## Evidence Fitness and longitudinal stability
+
+OI should not treat a single high evidence score, confidence value, correlation, or information metric as sufficient evidence quality.
+
+A useful domain-general validation pattern, analogous to established feature-validation practice in risk modeling, is to separate at least three questions:
+
+1. **Evidentiary Contribution** — does this evidence materially change the hypothesis space or improve prediction?
+2. **Discriminative Evidence** — does it actually distinguish competing hypotheses, outcomes, or risk states under testing?
+3. **Evidence Stability** — does that relationship remain reliable across time and changing observational regimes?
+
+The core distinction is:
+
+```text
+evidence_strength != evidence_fitness != authority
+```
+
+A source may be highly informative in one reference population or environment while becoming unstable, misleading, or non-discriminative after drift.
+
+OI should therefore preserve, where relevant:
+
+```text
+baseline distribution
+→ current distribution
+→ measured shift
+→ suspected cause
+→ recalibration / revalidation
+→ resulting authority change
+```
+
+Candidate drift dimensions include:
+
+- observer behavior drift
+- sensor/calibration drift
+- model/version drift
+- provenance-quality drift
+- evidence-independence drift
+- network/topology drift
+- environmental drift
+- population or task-distribution shift
+- temporal degradation of an evidentiary relationship
+
+OI should not directly import domain-specific formulas such as Information Value, Weight of Evidence, Characteristic Stability Index, Population Stability Index, or credit-risk binning rules as universal OI metrics. Their value here is methodological: **do not trust a variable merely because one metric says it is informative; separately test contribution, discrimination, calibration, stability, and behavior under shift.**
+
 ## Time-varying independence
 
 OI should treat independence as dynamic rather than a permanent property of an observer.
@@ -206,6 +256,9 @@ Record what disturbance was estimated, what correction was applied, by which mec
 ### Modality Independence
 Record whether apparently independent observers rely on different physical reference mechanisms or simply different software processing of the same upstream source.
 
+### Evidence Stability / Drift Provenance
+Record how the evidentiary contribution, discrimination, calibration, or independence of a feature/source changes relative to a defined reference regime.
+
 ## Refinement gate
 
 A finding should change the core OI framework only if at least one of the following is true:
@@ -216,7 +269,8 @@ A finding should change the core OI framework only if at least one of the follow
 4. it provides a concrete benchmark or test fixture;
 5. it reveals prior art that changes the novelty boundary;
 6. it enables a previously abstract mechanism to be operationalized;
-7. multiple independent findings converge on the same representation requirement.
+7. multiple independent findings converge on the same representation requirement;
+8. it demonstrates that an evidence relationship is informative but unstable across regimes.
 
 Otherwise, the finding should remain in the research log without expanding the core framework.
 
@@ -231,7 +285,8 @@ For example:
 - adaptive optics should motivate **Correction Provenance**, not an “adaptive-optics OI module”;
 - wavelength conversion should motivate **Transformation-Chain Integrity**, not a quantum-specific evidence rule;
 - co-propagating clocks should motivate **Synchronization-Lineage Provenance**, not dependence on one timing technology;
-- quantum gravimetry should motivate **Modality Independence**, not a requirement that OI use quantum sensors.
+- quantum gravimetry should motivate **Modality Independence**, not a requirement that OI use quantum sensors;
+- credit-risk feature validation should motivate **Evidence Fitness and Stability**, not direct adoption of credit-scoring formulas.
 
 This abstraction rule keeps OI substrate-neutral and testable.
 
@@ -239,19 +294,20 @@ This abstraction rule keeps OI substrate-neutral and testable.
 
 The standing research objective is:
 
-> **Continuously search for evidence that helps decompose trust into measurable components, reveals hidden dependence, preserves provenance through transformation, improves reconciliation under disagreement, or better constrains authority under uncertainty.**
+> **Continuously search for evidence that helps decompose trust into measurable components, reveals hidden dependence, preserves provenance through transformation, improves reconciliation under disagreement, tests evidence stability under changing conditions, or better constrains authority under uncertainty.**
 
 The strongest OI revisions should come not from resemblance alone, but from research that forces the framework to distinguish variables it previously conflated.
 
 ## Current refinement priorities
 
 1. Formalize a time-varying evidence-independence model.
-2. Extend schemas to include synchronization lineage, transformation chain, correction provenance, and modality/source dependence.
+2. Extend schemas to include synchronization lineage, transformation chain, correction provenance, modality/source dependence, and evidence-stability metadata.
 3. Build adversarial fixtures where multiple agents appear independent but secretly share clocks, maps, preprocessing, or upstream evidence.
 4. Test whether provenance-aware systems outperform majority consensus when authentic evidence is physically wrong.
 5. Test reconciliation under selective disclosure and missing data.
-6. Benchmark authority gating under contradictory, low-quality, delayed, or transformed evidence.
-7. Continue cross-domain prior-art searches before making novelty claims.
+6. Benchmark authority gating under contradictory, low-quality, delayed, transformed, or distribution-shifted evidence.
+7. Build longitudinal tests in which evidence is initially predictive/discriminative but degrades after sensor, model, population, or environmental shift.
+8. Continue cross-domain prior-art searches before making novelty claims.
 
 ## Relation to other OI documents
 
