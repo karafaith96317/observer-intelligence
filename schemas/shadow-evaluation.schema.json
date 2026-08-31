@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://observer-intelligence.org/schemas/shadow-evaluation.schema.json",
+  "title": "Observer Intelligence Shadow / Adversarial Evaluation",
+  "description": "Isolated critic or counterfactual observer. Must declare exact information received and any correlation with the primary path. Isolation until reconciliation is required for independence credit.",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "critic_id",
+    "created_at",
+    "input_scope",
+    "isolation_flag",
+    "findings"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "critic_id": {
+      "type": "string",
+      "description": "Identifier of the shadow/adversarial component."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input_scope": {
+      "type": "object",
+      "required": ["observation_refs", "information_received_summary"],
+      "properties": {
+        "observation_refs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Observation Record IDs the critic was allowed to see."
+        },
+        "information_received_summary": {
+          "type": "string",
+          "description": "Human- or machine-readable description of exactly what content was provided (raw observations, already-interpreted claims, filtered subset, etc.)."
+        },
+        "received_interpretations": {
+          "type": "boolean",
+          "description": "True if the critic received primary-path interpretations or claims rather than only raw observations."
+        }
+      },
+      "additionalProperties": false
+    },
+    "isolation_flag": {
+      "type": "boolean",
+      "description": "True if this evaluation was produced without exposure to the primary reconciler's intermediate state and without shared mutable context."
+    },
+    "correlation_with_primary": {
+      "type": "object",
+      "properties": {
+        "same_model_family": {"type": "boolean"},
+        "same_checkpoint_or_weights": {"type": "boolean"},
+        "shared_prompt_template": {"type": "boolean"},
+        "shared_upstream_data": {"type": "boolean"},
+        "estimated_dependence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "0 = fully independent critic path; 1 = fully correlated."
+        }
+      },
+      "additionalProperties": false
+    },
+    "findings": {
+      "type": "object",
+      "required": ["contradictions", "alternative_hypotheses", "semantic_leap_flags"],
+      "properties": {
+        "contradictions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Claims or observations the critic identifies as inconsistent."
+        },
+        "alternative_hypotheses": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "semantic_leap_flags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Places where valid evidence appears to have been over-claimed."
+        },
+        "support_for_primary": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Optional: points on which the critic agrees."
+        }
+      },
+      "additionalProperties": false
+    },
+    "uncertainty": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
