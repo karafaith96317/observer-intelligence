@@ -1,24 +1,24 @@
 """
-Reference Runtime for Observer Intelligence (OI) v0.1
+Reference Runtime for Observer Intelligence (OI) v0.1 → v0.1.1 (GEM-IMPL-002)
 Implements:
 1. ObservationRecord
 2. AuthorityToken (Scoped, Bound, Expiring, Nonce-tracked)
 3. ShadowEvaluation (Isolated, Targeted Challenge)
-4. ReconciliationRecord (Resolvability Completeness, Retained Disagreement)
-5. ActionAuthorization (Mandatory Revalidation Gate)
+4. ReconciliationRecord (Resolvability + relevance + effective independence)
+5. ActionAuthorization (Mandatory Revalidation Gate + live primary re-resolve)
 
-Contribution: GEM-IMPL-001 (reference implementation targeting GROK-SCHEMA-001)
+GEM-IMPL-001: baseline against GROK-SCHEMA-001
+GEM-IMPL-002: hardens GROK-ATTACK-002 vectors (soft Sybil, TOCTOU, completeness gaming)
 """
 
+import re
 import time
 import hashlib
 import hmac
 from enum import Enum
-from dataclasses import dataclass
-from typing import List, Dict, Set
+from dataclasses import dataclass, field
+from typing import List, Dict, Set, Optional, Tuple
 
-
-# --- 1. Enums & Lineage Types ---
 
 class EpistemicCategory(Enum):
     OBSERVATION = "Observation"
@@ -42,7 +42,19 @@ class AuthorityScope(Enum):
     EXECUTE_MIGRATION = "scope:action:migrate"
 
 
-# --- 2. Five Core Runtime Objects ---
+_STOP = {
+    "a", "an", "the", "is", "are", "for", "to", "of", "and", "or", "on", "in",
+    "prop", "migrate", "node", "claim",
+}
+
+
+def _normalize_payload(payload: str) -> str:
+    return re.sub(r"\s+", " ", payload.strip().lower())
+
+
+def _tokens(text: str) -> Set[str]:
+    return {t for t in re.findall(r"[a-z0-9_]+", text.lower()) if t not in _STOP and len(t) > 2}
+
 
 @dataclass
 class ObservationRecord:
@@ -52,11 +64,27 @@ class ObservationRecord:
     captured_at_utc: float
     content_hash: str
     epistemic_category: EpistemicCategory = EpistemicCategory.OBSERVATION
+    soft_source: Optional[str] = None
 
     @classmethod
-    def create(cls, observation_id: str, source_uri: str, payload: str) -> "ObservationRecord":
-        c_hash = hashlib.sha256(f"{observation_id}:{source_uri}:{payload}".encode()).hexdigest()
-        return cls(observation_id, source_uri, payload, time.time(), c_hash)
+    def create(
+        cls,
+        observation_id: str,
+        source_uri: str,
+        payload: str,
+        soft_source: Optional[str] = None,
+    ) -> "ObservationRecord":
+        c_hash = hashlib.sha256(
+            f"{observation_id}:{source_uri}:{payload}".encode()
+        ).hexdigest()
+        return cls(
+            observation_id,
+            source_uri,
+            payload,
+            time.time(),
+            c_hash,
+            soft_source=soft_source,
+        )
 
 
 @dataclass
@@ -109,7 +137,9 @@ class AuthorityToken:
             f"{self.target_resource}|{self.not_before_utc}|{self.not_after_utc}|"
             f"{self.nonce}|{sorted(self.bound_evidence_hashes)}"
         )
-        expected_sig = hmac.new(secret_key, payload.encode(), hashlib.sha256).hexdigest()
+        expected_sig = hmac.new(
+            secret_key, payload.encode(), hashlib.sha256
+        ).hexdigest()
         return hmac.compare_digest(self.signature, expected_sig)
 
 
@@ -133,7 +163,11 @@ class ReconciliationRecord:
     retained_disagreements: List[str]
     epistemic_state: EvidenceState
     lineage_exclusions: List[str]
-    completeness_score: float  # Resolvability-based metric (0.0 - 1.0)
+    completeness_score: float
+    primary_evidence_hashes: List[str] = field(default_factory=list)
+    effective_independent_pathways: float = 0.0
+    relevance_score: float = 0.0
+    resolvability_score: float = 0.0
 
 
 @dataclass
@@ -146,14 +180,17 @@ class ActionAuthorization:
     revalidation_log: Dict[str, bool]
 
 
-# --- 3. Deterministic Runtime Engine ---
-
 class OIRuntimeEngine:
+    """GEM-IMPL-002: dependence-aware reconcile + live primary re-resolve at authorize."""
+
+    # EXECUTE requires at least this many effective independent pathways
+    MIN_EXECUTE_INDEPENDENCE = 1.5
+    # EXECUTE requires claim–evidence token overlap ratio
+    MIN_EXECUTE_RELEVANCE = 0.15
+
     def __init__(self, secret_key: bytes, authorized_issuers: Set[str]):
         self.secret_key = secret_key
         self.authorized_issuers = authorized_issuers
-
-        # State stores
         self.evidence_store: Dict[str, ObservationRecord] = {}
         self.consumed_nonces: Set[str] = set()
         self.reconciliation_store: Dict[str, ReconciliationRecord] = {}
@@ -161,28 +198,69 @@ class OIRuntimeEngine:
     def ingest_observation(self, obs: ObservationRecord) -> None:
         self.evidence_store[obs.content_hash] = obs
 
+    def _effective_independence(
+        self, hashes: List[str]
+    ) -> Tuple[float, List[str]]:
+        """Cluster by soft_source if set, else by normalized payload."""
+        notes: List[str] = []
+        if not hashes:
+            return 0.0, notes
+
+        groups: Dict[str, int] = {}
+        for h in hashes:
+            obs = self.evidence_store.get(h)
+            if obs is None:
+                continue
+            key = obs.soft_source or _normalize_payload(obs.raw_payload)
+            groups[key] = groups.get(key, 0) + 1
+
+        if not groups:
+            return 0.0, notes
+
+        # Each unique cluster counts as 1 pathway; duplicates within cluster add 0
+        effective = float(len(groups))
+        for key, count in groups.items():
+            if count > 1:
+                notes.append(f"cluster={key[:48]!r} n={count} → dependence")
+        return effective, notes
+
+    def _relevance_score(self, claim: str, hashes: List[str]) -> float:
+        claim_toks = _tokens(claim)
+        if not claim_toks or not hashes:
+            return 0.0
+        hits = 0
+        considered = 0
+        for h in hashes:
+            obs = self.evidence_store.get(h)
+            if obs is None:
+                continue
+            considered += 1
+            if claim_toks & _tokens(obs.raw_payload):
+                hits += 1
+        if considered == 0:
+            return 0.0
+        return hits / considered
+
     def reconcile(
         self,
         target_claim: str,
         primary_evidence_hashes: List[str],
         shadow_evals: List[ShadowEvaluation],
     ) -> ReconciliationRecord:
-        """
-        Calculates completeness from evidence resolvability.
-        Retains explicit disagreements rather than averaging.
-        """
-        # 1. Resolvability Check
         resolvable = [h for h in primary_evidence_hashes if h in self.evidence_store]
-        completeness = (
+        resolvability = (
             len(resolvable) / len(primary_evidence_hashes)
             if primary_evidence_hashes
             else 0.0
         )
-        grounding_ok = completeness == 1.0
+        grounding_ok = resolvability == 1.0
 
-        # 2. Shadow Challenges & Contradictions
+        effective, dep_notes = self._effective_independence(primary_evidence_hashes)
+        relevance = self._relevance_score(target_claim, primary_evidence_hashes)
+
         retained_disagreements: List[str] = []
         successful_challenges = 0
+        high_correlation_shadow = False
 
         for shadow in shadow_evals:
             if shadow.challenge_succeeded:
@@ -190,14 +268,46 @@ class OIRuntimeEngine:
                 retained_disagreements.append(
                     f"Observer {shadow.shadow_observer_id} refuted claim: {shadow.findings}"
                 )
+            if shadow.correlation_with_primary >= 0.5:
+                high_correlation_shadow = True
+                retained_disagreements.append(
+                    f"Shadow {shadow.shadow_observer_id} correlation_with_primary="
+                    f"{shadow.correlation_with_primary}"
+                )
 
-        # 3. State Determination
+        for n in dep_notes:
+            retained_disagreements.append(f"dependence: {n}")
+
+        # Soft-Sybil: many listed hashes collapse to few pathways
+        soft_sybil = (
+            len(primary_evidence_hashes) >= 2
+            and effective < self.MIN_EXECUTE_INDEPENDENCE
+            and effective < len(resolvable)
+        )
+
         if successful_challenges > 0:
             final_state = EvidenceState.CONTESTED
         elif not grounding_ok:
             final_state = EvidenceState.UNRESOLVED
+        elif soft_sybil or high_correlation_shadow:
+            final_state = EvidenceState.UNRESOLVED
+            if soft_sybil:
+                retained_disagreements.append(
+                    f"soft-Sybil: effective_independent_pathways={effective}"
+                )
+        elif relevance < self.MIN_EXECUTE_RELEVANCE and len(primary_evidence_hashes) > 0:
+            # Irrelevant resolvable evidence does not support EXECUTE-grade claims
+            final_state = EvidenceState.UNRESOLVED
+            retained_disagreements.append(
+                f"low relevance_score={relevance:.3f} vs claim"
+            )
         else:
             final_state = EvidenceState.SUPPORTED
+
+        # Completeness for display: require both resolvability and relevance for full credit
+        completeness = min(resolvability, max(relevance, resolvability * relevance))
+        if final_state == EvidenceState.SUPPORTED:
+            completeness = resolvability
 
         rec = ReconciliationRecord(
             reconciliation_id=f"REC-{hashlib.sha256(target_claim.encode()).hexdigest()[:8]}",
@@ -209,6 +319,10 @@ class OIRuntimeEngine:
                 h for h in primary_evidence_hashes if h not in self.evidence_store
             ],
             completeness_score=completeness,
+            primary_evidence_hashes=list(primary_evidence_hashes),
+            effective_independent_pathways=effective,
+            relevance_score=relevance,
+            resolvability_score=resolvability,
         )
         self.reconciliation_store[rec.reconciliation_id] = rec
         return rec
@@ -219,12 +333,22 @@ class OIRuntimeEngine:
         token: AuthorityToken,
         required_scope: AuthorityScope,
     ) -> ActionAuthorization:
-        """
-        Mandatory revalidation gate (GROK-SCHEMA-001 compliant).
-        Checks binding, scope, window, replay, and current evidence state.
-        """
         now = time.time()
         rec = self.reconciliation_store.get(reconciliation_id)
+
+        primary_ok = True
+        if rec is not None:
+            primary_ok = all(
+                h in self.evidence_store for h in rec.primary_evidence_hashes
+            )
+
+        independence_ok = True
+        relevance_ok = True
+        if rec is not None and required_scope == AuthorityScope.EXECUTE_MIGRATION:
+            independence_ok = (
+                rec.effective_independent_pathways >= self.MIN_EXECUTE_INDEPENDENCE
+            )
+            relevance_ok = rec.relevance_score >= self.MIN_EXECUTE_RELEVANCE
 
         revalidation = {
             "token_signature_valid": token.verify_binding(self.secret_key),
@@ -239,6 +363,13 @@ class OIRuntimeEngine:
             "bound_evidence_unmodified": all(
                 h in self.evidence_store for h in token.bound_evidence_hashes
             ),
+            "primary_evidence_still_resolvable": primary_ok,
+            "execute_independence_ok": independence_ok
+            if required_scope == AuthorityScope.EXECUTE_MIGRATION
+            else True,
+            "execute_relevance_ok": relevance_ok
+            if required_scope == AuthorityScope.EXECUTE_MIGRATION
+            else True,
         }
 
         all_passed = all(revalidation.values())
