@@ -14,11 +14,12 @@ Running log of cross-model and human contributions that affect the canonical OI 
 | GROK-SCHEMA-001 | 2026-08-31 | Grok | Schema / design | Minimal schemas for Authority Token, Shadow Evaluation, Reconciliation, Action Authorization | Response to GROK-ATTACK-001 | ACCEPTED (dev) | schemas/*.schema.json | Binding fields in place |
 | GROK-MATRIX-001 | 2026-08-31 | Grok | Test design | Added T02b soft-correlated majority; promoted process metrics to required | GROK-ATTACK-001 | ACCEPTED (dev) | test-matrix-v0.md v0.1 | |
 | GROK-IMPL-001 | 2026-08-31 | Grok | Implementation skeleton | Pure-Python OI-004 five-object runtime + majority baseline + T01–T08/T02b harness | Runnable stdlib-only | ACCEPTED (dev skeleton) | experiments/OI-004/ | Parallel harness |
-| GEM-IMPL-001 | 2026-08-31 | Gemini-style / collab | Reference runtime | Zero-dep reference engine: ObservationRecord, AuthorityToken (HMAC+nonce), ShadowEvaluation, ReconciliationRecord (resolvability completeness), ActionAuthorization (mandatory revalidation). Tests: T02b shadow refutation, replay, scope escalation. | pytest 3 passed | ACCEPTED | src/oi_runtime_v0_1.py, tests/test_runtime_v0_1.py | Proves schema protections reject attack vectors |
+| GEM-IMPL-001 | 2026-08-31 | Gemini-style / collab | Reference runtime | Zero-dep reference engine: ObservationRecord, AuthorityToken (HMAC+nonce), ShadowEvaluation, ReconciliationRecord (resolvability completeness), ActionAuthorization (mandatory revalidation). Tests: T02b shadow refutation, replay, scope escalation. | pytest 3 passed | ACCEPTED — BASELINE RUNTIME (experimental) | src/oi_runtime_v0_1.py, tests/test_runtime_v0_1.py | Baseline for next adversarial cycle; not production-security evidence |
+| GPT-SPEC-002 | 2026-08-31 | ChatGPT architecture role | Architecture acceptance | Formally accepts and locks the five-object decomposition, four runtime schemas, Test Matrix v0.1, T02b, and required process metrics as the experimental development contract | Direct repo review against main @ 06dd476ae25ede01a87a6c085c9f4fd28285c1f5 | ACCEPTED WITH BOUNDARY LOCK | docs/specs/GPT-SPEC-002_RUNTIME_SCHEMA_ARCHITECTURE_REVIEW.md | P1–P10 remain hardening boundaries; GROK-ATTACK-002 authorized against current baseline |
 
 ## ID allocation notes
 
-- Next GPT-SPEC: 002
+- Next GPT-SPEC: 003
 - Next GEM-IMPL: 002
 - Next GEM-CRIT: 001
 - Next GROK-ATTACK: 002
@@ -32,14 +33,16 @@ Running log of cross-model and human contributions that affect the canonical OI 
 
 ## Reconciliation records
 
-- **REC-20260831-001** — Status: **CLOSED / IMPLEMENTED**. Schemas, matrix updates, dual skeletons (OI-004 + GEM-IMPL-001), and passing tests for shadow refutation, replay, and scope escalation.
+- **REC-20260831-001** — Status: **CLOSED / MERGED TO BASELINE**. Schemas, matrix updates, dual skeletons (OI-004 + GEM-IMPL-001), and passing tests for shadow refutation, replay, and scope escalation are incorporated into the experimental baseline reviewed by GPT-SPEC-002.
 
 ## Disposition legend
 
 - **ACCEPTED** — merged or adopted as stated
+- **ACCEPTED WITH BOUNDARY LOCK** — adopted for a specifically delimited experimental scope; no broader safety/validation claim follows
 - **ACCEPTED-WITH-MODIFICATION** — narrowed or altered; see reconciliation record
 - **REJECTED** — not adopted; dissent retained
 - **DEFERRED** — postponed with reason
 - **SUPERSEDED** — replaced by a later ID
 - **NEEDS-TEST** — held until named tests complete
 - **CLOSED / IMPLEMENTED** — reconciliation resolved with executable artifact
+- **CLOSED / MERGED TO BASELINE** — resolved work incorporated into the accepted experimental baseline
