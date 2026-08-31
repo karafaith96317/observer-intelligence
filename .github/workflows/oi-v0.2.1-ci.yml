@@ -1,6 +1,13 @@
 name: OI v0.2.1 CI
 
 on:
+  push:
+    branches:
+      - 'oi-v0.2.1-hardening-2026-08-27'
+    paths:
+      - 'src/oi_protocol_v0_2_1.py'
+      - 'tests/test_oi_protocol_v0_2_1.py'
+      - '.github/workflows/oi-v0.2.1-ci.yml'
   pull_request:
     paths:
       - 'src/oi_protocol_v0_2_1.py'
