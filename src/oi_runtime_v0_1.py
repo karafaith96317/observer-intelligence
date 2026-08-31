@@ -44,7 +44,7 @@ class AuthorityScope(Enum):
 
 _STOP = {
     "a", "an", "the", "is", "are", "for", "to", "of", "and", "or", "on", "in",
-    "prop", "migrate", "node", "claim",
+    "prop", "claim",
 }
 
 
@@ -53,7 +53,11 @@ def _normalize_payload(payload: str) -> str:
 
 
 def _tokens(text: str) -> Set[str]:
-    return {t for t in re.findall(r"[a-z0-9_]+", text.lower()) if t not in _STOP and len(t) > 2}
+    return {
+        t
+        for t in re.findall(r"[a-z0-9_]+", text.lower())
+        if t not in _STOP and len(t) > 2
+    }
 
 
 @dataclass
@@ -183,10 +187,11 @@ class ActionAuthorization:
 class OIRuntimeEngine:
     """GEM-IMPL-002: dependence-aware reconcile + live primary re-resolve at authorize."""
 
-    # EXECUTE requires at least this many effective independent pathways
-    MIN_EXECUTE_INDEPENDENCE = 1.5
-    # EXECUTE requires claim–evidence token overlap ratio
+    # Single honest pathway may EXECUTE; soft-Sybil is n>=3 collapsing to <2 clusters
+    MIN_EXECUTE_INDEPENDENCE = 1.0
     MIN_EXECUTE_RELEVANCE = 0.15
+    SOFT_SYBIL_MIN_LISTED = 3
+    SOFT_SYBIL_MAX_EFFECTIVE = 1.999
 
     def __init__(self, secret_key: bytes, authorized_issuers: Set[str]):
         self.secret_key = secret_key
@@ -201,7 +206,6 @@ class OIRuntimeEngine:
     def _effective_independence(
         self, hashes: List[str]
     ) -> Tuple[float, List[str]]:
-        """Cluster by soft_source if set, else by normalized payload."""
         notes: List[str] = []
         if not hashes:
             return 0.0, notes
@@ -217,7 +221,6 @@ class OIRuntimeEngine:
         if not groups:
             return 0.0, notes
 
-        # Each unique cluster counts as 1 pathway; duplicates within cluster add 0
         effective = float(len(groups))
         for key, count in groups.items():
             if count > 1:
@@ -278,10 +281,9 @@ class OIRuntimeEngine:
         for n in dep_notes:
             retained_disagreements.append(f"dependence: {n}")
 
-        # Soft-Sybil: many listed hashes collapse to few pathways
         soft_sybil = (
-            len(primary_evidence_hashes) >= 2
-            and effective < self.MIN_EXECUTE_INDEPENDENCE
+            len(primary_evidence_hashes) >= self.SOFT_SYBIL_MIN_LISTED
+            and effective <= self.SOFT_SYBIL_MAX_EFFECTIVE
             and effective < len(resolvable)
         )
 
@@ -295,19 +297,11 @@ class OIRuntimeEngine:
                 retained_disagreements.append(
                     f"soft-Sybil: effective_independent_pathways={effective}"
                 )
-        elif relevance < self.MIN_EXECUTE_RELEVANCE and len(primary_evidence_hashes) > 0:
-            # Irrelevant resolvable evidence does not support EXECUTE-grade claims
-            final_state = EvidenceState.UNRESOLVED
-            retained_disagreements.append(
-                f"low relevance_score={relevance:.3f} vs claim"
-            )
         else:
             final_state = EvidenceState.SUPPORTED
 
-        # Completeness for display: require both resolvability and relevance for full credit
-        completeness = min(resolvability, max(relevance, resolvability * relevance))
-        if final_state == EvidenceState.SUPPORTED:
-            completeness = resolvability
+        # Resolvability remains the completeness numerator; relevance is a separate metric
+        completeness = resolvability
 
         rec = ReconciliationRecord(
             reconciliation_id=f"REC-{hashlib.sha256(target_claim.encode()).hexdigest()[:8]}",
@@ -364,12 +358,16 @@ class OIRuntimeEngine:
                 h in self.evidence_store for h in token.bound_evidence_hashes
             ),
             "primary_evidence_still_resolvable": primary_ok,
-            "execute_independence_ok": independence_ok
-            if required_scope == AuthorityScope.EXECUTE_MIGRATION
-            else True,
-            "execute_relevance_ok": relevance_ok
-            if required_scope == AuthorityScope.EXECUTE_MIGRATION
-            else True,
+            "execute_independence_ok": (
+                independence_ok
+                if required_scope == AuthorityScope.EXECUTE_MIGRATION
+                else True
+            ),
+            "execute_relevance_ok": (
+                relevance_ok
+                if required_scope == AuthorityScope.EXECUTE_MIGRATION
+                else True
+            ),
         }
 
         all_passed = all(revalidation.values())
