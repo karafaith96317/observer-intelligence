@@ -43,11 +43,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare artifact directory
+        run: mkdir -p artifacts
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: pip
 
       - name: Install test dependencies
         run: |
@@ -56,7 +58,6 @@ jobs:
 
       - name: Record environment
         run: |
-          mkdir -p artifacts
           {
             echo "commit_sha=${GITHUB_SHA}"
             echo "ref=${GITHUB_REF}"
