@@ -1,0 +1,65 @@
+name: OI v0.2.1 CI
+
+on:
+  pull_request:
+    paths:
+      - 'src/oi_protocol_v0_2_1.py'
+      - 'tests/test_oi_protocol_v0_2_1.py'
+      - '.github/workflows/oi-v0.2.1-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest cryptography
+
+      - name: Record environment
+        run: |
+          mkdir -p artifacts
+          {
+            echo "commit_sha=${GITHUB_SHA}"
+            echo "ref=${GITHUB_REF}"
+            echo "python_version=$(python --version 2>&1)"
+            echo "pytest_version=$(pytest --version 2>&1)"
+            echo "cryptography_version=$(python -c 'import cryptography; print(cryptography.__version__)')"
+            echo "runner_os=${RUNNER_OS}"
+            echo "run_id=${GITHUB_RUN_ID}"
+            echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+            date -u '+timestamp_utc=%Y-%m-%dT%H:%M:%SZ'
+          } | tee artifacts/environment.txt
+
+      - name: Run OI v0.2.1 acceptance suite
+        run: |
+          set -o pipefail
+          pytest tests/test_oi_protocol_v0_2_1.py -vv -ra 2>&1 | tee artifacts/pytest-output.txt
+
+      - name: Upload reproducibility record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oi-v0.2.1-ci-python-${{ matrix.python-version }}-${{ github.sha }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 90
