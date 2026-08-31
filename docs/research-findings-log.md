@@ -19,6 +19,64 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-08-31 — Preserved arousability during dexmedetomidine sedation
+
+**Finding.** Zhang et al. report a mouse study of dexmedetomidine sedation in which a moderate dose produced sedation from which animals could be transiently aroused by tactile stimulation, while a higher dose produced deeper unresponsiveness. Functional mapping and fiber photometry implicated glutamatergic neurons in the central medial thalamus (CMT). Manipulating this circuit altered arousability.
+
+**Demonstrated / reported.** Peer-reviewed original research showing dissociation between overt behavioral unresponsiveness and preserved latent transition capacity under moderate sedation.
+
+**Status / boundary.** Peer-reviewed, *Neuroscience Bulletin*, published 29 August 2026. Does not establish a general theory of consciousness or validate OI.
+
+**OI connection.** Observer capability; consciousness-oriented evidence matrix; distinction between overt output and latent causal capacity; stimulus accessibility; state-transition capacity.
+
+**Effect on OI.** **Supports + suggests a test.** Consistent with the methodological principle that absence of current behavioral output is not equivalent to absence of underlying transition capacity.
+
+**Research consequence.** OI should represent, when measurable, both realized state and latent transition capacity. Candidate fields include current observable state, available transition repertoire, stimulus accessibility, perturbation required for transition, response threshold, and uncertainty about latent capacity.
+
+**Source.** Zhang, Y., Wang, S., Li, H. et al. “The Central Medial Thalamus Serves as a Critical Hub for Preserved Arousability During Dexmedetomidine Sedation.” *Neuroscience Bulletin* (2026). DOI: 10.1007/s12264-026-01702-6. https://link.springer.com/article/10.1007/s12264-026-01702-6
+
+---
+
+## 2026-08-31 — 128-element optical phased array with per-channel digital reconstruction
+
+**Finding.** Gurses et al. report a 128-element integrated optical phased array in which each antenna channel is routed to its own coherent receiver and digitized independently. Per-channel amplitude and phase are recovered and beam/image reconstruction is performed numerically after acquisition rather than by on-chip phase shifting. Supporting measurement data and analysis code were released through CaltechDATA.
+
+**Demonstrated / reported.** Peer-reviewed hardware architecture that preserves local channel records while enabling post-acquisition global reconstruction, with open data and code.
+
+**Status / boundary.** Peer-reviewed *Scientific Reports* article, published 28 August 2026, with associated open research dataset. The hardware is not an OI implementation.
+
+**OI connection.** Distributed observation; local evidence preservation; provenance-preserving reconciliation; transformation lineage; dependence-aware observer counting; auditable global reconstruction.
+
+**Effect on OI.** **Enabling infrastructure + suggests a test.** Provides a useful physical analogue for architectures in which local observations remain available after a global estimate is reconstructed.
+
+**Research consequence.** Build an OI benchmark inspired by the architecture: preserve each channel record, deliberately introduce drift, corruption, delay, common-mode noise, and shared-source dependence, then compare ordinary aggregate reconstruction with provenance/dependence-aware reconciliation. Explicitly test whether the system distinguishes `N_channels` from `N_independent_evidence_pathways`.
+
+**Sources.**
+- Gurses, V., Sarkar, D., Khachaturian, A. et al. “A large-scale integrated optical phased array with digital beamforming.” *Scientific Reports* (2026). DOI: 10.1038/s41598-026-68798-8. https://www.nature.com/articles/s41598-026-68798-8
+- Gurses, V. et al. “Measurement data and analysis code for ‘A large-scale integrated optical phased array with digital beamforming’.” CaltechDATA (2026). https://data.caltech.edu/records/40wk6-9fa71
+
+---
+
+## 2026-08-31 — Quantum-internet governance: technical security is not sufficient for trust
+
+**Finding.** Vermaas, Possati, and Seskir analyze the governance of quantum internet systems and argue that technically secure network functions do not, by themselves, guarantee user trust. They emphasize governance, operation, regulation, transparency, organizational separation, and independent checking as additional trust-producing conditions.
+
+**Demonstrated / reported.** Peer-reviewed analysis of trust requirements beyond technical security for quantum-internet systems.
+
+**Status / boundary.** Peer-reviewed original research paper in *Ethics and Society*, published 28 August 2026; earlier preprint available as arXiv:2505.15852. Organizational separation and independent checking should not be claimed as uniquely OI.
+
+**OI connection.** Runtime separation of authority; transport independence; institutional independence; provenance of authority; distinction among secure transport, authentic observation, independent verification, and justified action.
+
+**Effect on OI.** **Supports an architectural principle + adjacent prior art.** OI’s narrower research contribution remains the coupling of epistemic provenance, observer access state, evidence dependence, reconciliation state, and authority lineage.
+
+**Research consequence.** OI should model institutional independence as an empirical property rather than a label. Separate organizations may still share infrastructure, measurements, incentives, software, timing sources, data pipelines, or authority dependencies.
+
+**Sources.**
+- Vermaas, P. E., Possati, L. M., & Seskir, Z. C. “Quantum Internet, Governance, Trust, and the Promise of Secure Communication.” *Ethics and Society* (2026). DOI: 10.1007/s11569-026-00516-0. https://link.springer.com/article/10.1007/s11569-026-00516-0
+- Earlier preprint: arXiv:2505.15852. https://arxiv.org/abs/2505.15852
+
+---
+
 ## 2026-08-27 — Red Queen Gödel Machine: co-evolving agents and evaluators
 
 **Finding.** Iacob et al. introduced the Red Queen Gödel Machine (RQGM), an evolutionary framework for recursive self-improvement under non-stationary utilities. Evaluation becomes part of the improvement loop: search proceeds in epochs with a fixed criterion within an epoch while the utility/evaluation criterion may change at epoch boundaries. The paper also studies adversarial objectives and agent-as-a-judge evaluation.
@@ -195,6 +253,8 @@ state
 + source/modality independence
 + evaluator lineage
 + provenance
++ realized vs latent capability
++ reconstruction / reconciliation lineage
 ```
 
 may carry information that is lost when observations are reduced to a single confidence score, average activity measure, agent count, verbal report, timestamp, transport-success flag, or current evaluator score.
@@ -206,5 +266,11 @@ A further refinement is now warranted:
 A second testable refinement is:
 
 > **Improving or replacing an evaluator should not silently rewrite the evidence history on which earlier decisions were made.**
+
+Additional principles arising from the 2026-08-31 update:
+
+1. **Observed output is not identical to latent capability.**
+2. **Aggregate output is not a complete description of the observations that generated it.**
+3. **Institutional or agent multiplicity is not sufficient evidence of independence.**
 
 These are research hypotheses and data-modeling principles, not established universal laws. See `docs/research-refinement-protocol.md` for how findings should be converted into candidate OI revisions and experiments.
