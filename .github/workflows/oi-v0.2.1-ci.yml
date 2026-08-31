@@ -8,12 +8,18 @@ on:
       - 'src/oi_protocol_v0_2_1.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
       - 'tests/report_oi_v0_2_1_metrics.py'
+      - 'scripts/archive_historical_reports.py'
+      - 'schemas/resonance_record_schema_v1.json'
+      - 'records/chained_manifests/2026-08_lucidfluence_master_ledger.json'
       - '.github/workflows/oi-v0.2.1-ci.yml'
   pull_request:
     paths:
       - 'src/oi_protocol_v0_2_1.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
       - 'tests/report_oi_v0_2_1_metrics.py'
+      - 'scripts/archive_historical_reports.py'
+      - 'schemas/resonance_record_schema_v1.json'
+      - 'records/chained_manifests/2026-08_lucidfluence_master_ledger.json'
       - '.github/workflows/oi-v0.2.1-ci.yml'
   workflow_dispatch:
 
@@ -71,6 +77,14 @@ jobs:
           PYTHONPATH="${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/tests" \
             python tests/report_oi_v0_2_1_metrics.py --output artifacts/monte-carlo-metrics.json \
             2>&1 | tee artifacts/monte-carlo-output.txt
+
+      - name: Regenerate and verify historical resonance ledger
+        if: always()
+        run: |
+          set -o pipefail
+          python scripts/archive_historical_reports.py 2>&1 | tee artifacts/historical-ledger-output.txt
+          git diff --exit-code -- records/chained_manifests/2026-08_lucidfluence_master_ledger.json
+          cp records/chained_manifests/2026-08_lucidfluence_master_ledger.json artifacts/
 
       - name: Upload reproducibility record
         if: always()
