@@ -10,17 +10,22 @@ Running log of cross-model and human contributions that affect the canonical OI 
 | KARA-001 | 2026-08-31 | Human (Kara) | Process | Established multi-model asymmetric roles, first-build target, and contribution ID scheme | Process docs | ACCEPTED | docs/collaboration/* | Originating process definition |
 | GPT-SPEC-001 | 2026-08-31 | ChatGPT (via user) | Spec / process | Proposed asymmetric roles (ChatGPT architecture, Gemini implementation, Grok red-team), five-object runtime, test conditions, and contribution IDs | User message + prior OI docs | ACCEPTED (with formalization) | multi-model-process.md, test-matrix-v0.md | Formalized into repo by Grok under human direction |
 | GROK-PROC-001 | 2026-08-31 | Grok | Process implementation | Created collaboration directory, test matrix, prompt packs, reconciliation template, and this ledger | Repo commits | ACCEPTED | docs/collaboration/ | Operationalization of GPT-SPEC-001 |
+| GROK-ATTACK-001 | 2026-08-31 | Grok | Adversarial | Completeness-theater provenance, soft Sybil, authority-token replay/scope expansion, critic starvation, process-metric gap, schema underspecification vs framework claims | Attack scenarios mapped to T01–T08; concrete minimal catches proposed | NEEDS-TEST | docs/collaboration/attacks/GROK-ATTACK-001.md | First red-team pass; opens REC-20260831-001 |
 
 ## ID allocation notes
 
 - Next GPT-SPEC: 002
 - Next GEM-IMPL: 001
 - Next GEM-CRIT: 001
-- Next GROK-ATTACK: 001
+- Next GROK-ATTACK: 002
 - Next GROK-ALT: 001
 - Next JOINT: 001
 - Next KARA: 002
-- Next REC: REC-20260831-001
+- Next REC: REC-20260831-002
+
+## Open reconciliation records
+
+- **REC-20260831-001** — Triggered by GROK-ATTACK-001. Status: OPEN / NEEDS-TEST. See `docs/collaboration/reconciliations/REC-20260831-001.md`.
 
 ## Disposition legend
 
