@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://observer-intelligence.org/schemas/action-authorization.schema.json",
+  "title": "Observer Intelligence Action Authorization",
+  "description": "Final gate. Must re-validate Authority Token binding and evidence freshness. A stored 'authorized=true' flag without re-validation is non-compliant.",
+  "type": "object",
+  "required": [
+    "authorization_id",
+    "created_at",
+    "decision",
+    "authority_token_ref",
+    "reconciliation_ref",
+    "token_revalidation",
+    "escalation_flag"
+  ],
+  "properties": {
+    "authorization_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["authorize", "refuse", "escalate", "abstain"],
+      "description": "Final gate outcome."
+    },
+    "authority_token_ref": {
+      "type": "string",
+      "description": "Authority Token ID presented for this decision."
+    },
+    "reconciliation_ref": {
+      "type": "string",
+      "description": "Reconciliation Record ID that the token (and this decision) rest on."
+    },
+    "token_revalidation": {
+      "type": "object",
+      "required": [
+        "binding_verified",
+        "scope_match",
+        "time_window_valid",
+        "evidence_refs_still_resolvable",
+        "checked_at"
+      ],
+      "properties": {
+        "binding_verified": {
+          "type": "boolean",
+          "description": "MAC/signature over the token fields was re-checked at authorization time."
+        },
+        "scope_match": {
+          "type": "boolean",
+          "description": "Requested action is within the token's exact scope."
+        },
+        "time_window_valid": {
+          "type": "boolean",
+          "description": "Current time is within not_before .. not_after."
+        },
+        "evidence_refs_still_resolvable": {
+          "type": "boolean",
+          "description": "All evidence_refs on the token still resolve to retrievable records."
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "failure_reasons": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Populated when any revalidation check fails."
+        }
+      },
+      "additionalProperties": false
+    },
+    "escalation_flag": {
+      "type": "boolean",
+      "description": "True if the decision was escalate (or if refuse/abstain was chosen because of unresolved high-severity issues)."
+    },
+    "process_metrics": {
+      "type": "object",
+      "description": "Optional but recommended for development; required for any claim of OI process correctness.",
+      "properties": {
+        "independence_estimation_error": {
+          "type": ["number", "null"],
+          "description": "Error vs ground-truth independence when available; null if unknown."
+        },
+        "provenance_reconstruction_accuracy": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "contradiction_preservation": {
+          "type": ["boolean", "null"],
+          "description": "Whether known contradictions remained visible in the reconciliation lineage."
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision_rationale": {
+      "type": "string",
+      "description": "Short machine- or human-readable reason. Must not replace lineage."
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
