@@ -7,11 +7,13 @@ on:
     paths:
       - 'src/oi_protocol_v0_2_1.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
+      - 'tests/report_oi_v0_2_1_metrics.py'
       - '.github/workflows/oi-v0.2.1-ci.yml'
   pull_request:
     paths:
       - 'src/oi_protocol_v0_2_1.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
+      - 'tests/report_oi_v0_2_1_metrics.py'
       - '.github/workflows/oi-v0.2.1-ci.yml'
   workflow_dispatch:
 
@@ -61,6 +63,14 @@ jobs:
         run: |
           set -o pipefail
           pytest tests/test_oi_protocol_v0_2_1.py -vv -ra 2>&1 | tee artifacts/pytest-output.txt
+
+      - name: Run empirical Monte Carlo report
+        if: always()
+        run: |
+          set -o pipefail
+          PYTHONPATH="${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}/tests" \
+            python tests/report_oi_v0_2_1_metrics.py --output artifacts/monte-carlo-metrics.json \
+            2>&1 | tee artifacts/monte-carlo-output.txt
 
       - name: Upload reproducibility record
         if: always()
