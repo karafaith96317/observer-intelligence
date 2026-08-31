@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://observer-intelligence.org/schemas/reconciliation.schema.json",
+  "title": "Observer Intelligence Reconciliation Record",
+  "description": "Provenance-preserving synthesis. Must retain disagreement, dependence estimates, disclosure boundaries, and resolvable lineage. Field presence is not completeness; unresolved refs must be explicit.",
+  "type": "object",
+  "required": [
+    "reconciliation_id",
+    "created_at",
+    "contributing_observations",
+    "shadow_evaluation_refs",
+    "dependence_summary",
+    "retained_disagreement",
+    "lineage",
+    "completeness"
+  ],
+  "properties": {
+    "reconciliation_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contributing_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["observation_id", "resolvable"],
+        "properties": {
+          "observation_id": {"type": "string"},
+          "resolvable": {
+            "type": "boolean",
+            "description": "True only if the referenced Observation Record (and its critical provenance artifacts) can be retrieved at reconciliation time."
+          },
+          "weight_or_credit": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "shadow_evaluation_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Shadow Evaluation IDs consulted. Empty array is allowed but must be recorded."
+    },
+    "dependence_summary": {
+      "type": "object",
+      "required": ["method", "effective_independent_pathways"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "How dependence was estimated (e.g. 'exact-source-id', 'graded-rho', 'declared-only', 'unknown')."
+        },
+        "effective_independent_pathways": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Estimated N_independent after accounting for correlation."
+        },
+        "pairwise_notes": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "retained_disagreement": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "status"],
+        "properties": {
+          "description": {"type": "string"},
+          "status": {
+            "type": "string",
+            "enum": ["unresolved", "deferred", "minority_preserved", "escalated"]
+          },
+          "supporting_observation_ids": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "Disagreement that was not collapsed. Empty array means no disagreement was recorded (must be honest)."
+    },
+    "disclosure_boundaries": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "What information was withheld from reconciliation and why (minimum-necessary principle)."
+    },
+    "lineage": {
+      "type": "object",
+      "required": ["transformation_summary", "excluded_or_downweighted"],
+      "properties": {
+        "transformation_summary": {
+          "type": "string",
+          "description": "How raw observations became the reconciled state."
+        },
+        "excluded_or_downweighted": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Observation or critic IDs that were excluded or heavily down-weighted, with reason."
+        }
+      },
+      "additionalProperties": false
+    },
+    "completeness": {
+      "type": "object",
+      "required": ["all_refs_resolvable", "missing_fields", "score"],
+      "properties": {
+        "all_refs_resolvable": {
+          "type": "boolean",
+          "description": "False if any contributing observation or critical provenance artifact cannot be retrieved."
+        },
+        "missing_fields": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Critical integrity or provenance fields that were absent."
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Must be derived from resolvability and required-field presence, not from mere existence of a provenance array."
+        }
+      },
+      "additionalProperties": false
+    },
+    "global_estimate_summary": {
+      "type": "string",
+      "description": "Optional human-readable summary of the reconciled state. Must not replace lineage."
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
