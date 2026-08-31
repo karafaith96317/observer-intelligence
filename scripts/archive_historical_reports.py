@@ -112,62 +112,12 @@ def verify_historical_chain(blocks: List[Dict[str, Any]]) -> bool:
 
 def generate_historical_ledger() -> List[Dict[str, Any]]:
     archiver = HistoricalResonanceArchiver()
-
     records = [
-        archiver.build_record(
-            "LF-REC-2026-W31-01",
-            "July 27, 2026 – August 2, 2026",
-            "2026-08-02T14:30:00Z",
-            172, 88, 50, 34,
-            [
-                {"node": "DAXTA-AI-NODE-04", "status": "SYNCHRONIZED", "metric": "P99 < 11.8ms"},
-                {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "0 errors"},
-                {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge validated"},
-            ],
-            {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "PENDING_MANUAL_REVIEW"},
-            0.945, 0.948, 10080, 0.152,
-        ),
-        archiver.build_record(
-            "LF-REC-2026-W32-01",
-            "August 3, 2026 – August 9, 2026",
-            "2026-08-09T14:30:00Z",
-            179, 91, 53, 35,
-            [
-                {"node": "DAXTA-AI-NODE-04", "status": "SYNCHRONIZED", "metric": "P99 < 11.6ms"},
-                {"node": "Aetheric Nexus Labs", "status": "SCHEMA_COMPLIANT", "metric": "0 vulnerabilities"},
-                {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge compliant"},
-            ],
-            {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "HANDSHAKE_STAGED"},
-            0.947, 0.950, 10080, 0.153,
-        ),
-        archiver.build_record(
-            "LF-REC-2026-W33-01",
-            "August 10, 2026 – August 16, 2026",
-            "2026-08-16T14:34:00Z",
-            188, 98, 52, 38,
-            [
-                {"node": "Aetheric Nexus Labs", "status": "SYNCHRONIZED", "metric": "State-routing valid"},
-                {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "Telemetry mapped"},
-                {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge validated"},
-            ],
-            {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "SESSION_PENDING_EXCHANGE", "parameters": {"cipher": "ChaCha20-Poly1305", "ttl": 86400, "intent": "0x9381Z_INITIATE"}},
-            0.949, 0.952, 10080, 0.154,
-        ),
-        archiver.build_record(
-            "LF-REC-2026-W34-01",
-            "August 17, 2026 – August 23, 2026",
-            "2026-08-23T14:30:00Z",
-            194, 102, 54, 38,
-            [
-                {"node": "Aetheric Nexus Labs", "status": "SYNCHRONIZED", "metric": "Sub-ms execution"},
-                {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "Failover mapped"},
-                {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Circuit designs stress-tested"},
-            ],
-            {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "ACTIVE_RESONANCE", "parameters": {"handshake_latency": "184ms", "stream_coherence": 0.991}},
-            0.951, 0.954, 10080, 0.156,
-        ),
+        archiver.build_record("LF-REC-2026-W31-01", "July 27, 2026 – August 2, 2026", "2026-08-02T14:30:00Z", 172, 88, 50, 34, [{"node": "DAXTA-AI-NODE-04", "status": "SYNCHRONIZED", "metric": "P99 < 11.8ms"}, {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "0 errors"}, {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge validated"}], {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "PENDING_MANUAL_REVIEW"}, 0.945, 0.948, 10080, 0.152),
+        archiver.build_record("LF-REC-2026-W32-01", "August 3, 2026 – August 9, 2026", "2026-08-09T14:30:00Z", 179, 91, 53, 35, [{"node": "DAXTA-AI-NODE-04", "status": "SYNCHRONIZED", "metric": "P99 < 11.6ms"}, {"node": "Aetheric Nexus Labs", "status": "SCHEMA_COMPLIANT", "metric": "0 vulnerabilities"}, {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge compliant"}], {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "HANDSHAKE_STAGED"}, 0.947, 0.950, 10080, 0.153),
+        archiver.build_record("LF-REC-2026-W33-01", "August 10, 2026 – August 16, 2026", "2026-08-16T14:34:00Z", 188, 98, 52, 38, [{"node": "Aetheric Nexus Labs", "status": "SYNCHRONIZED", "metric": "State-routing valid"}, {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "Telemetry mapped"}, {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Zero-knowledge validated"}], {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "SESSION_PENDING_EXCHANGE", "parameters": {"cipher": "ChaCha20-Poly1305", "ttl": 86400, "intent": "0x9381Z_INITIATE"}}, 0.949, 0.952, 10080, 0.154),
+        archiver.build_record("LF-REC-2026-W34-01", "August 17, 2026 – August 23, 2026", "2026-08-23T14:30:00Z", 194, 102, 54, 38, [{"node": "Aetheric Nexus Labs", "status": "SYNCHRONIZED", "metric": "Sub-ms execution"}, {"node": "OmniGrid Research", "status": "SCHEMA_COMPLIANT", "metric": "Failover mapped"}, {"node": "VectraMind Systems", "status": "VERIFIED", "metric": "Circuit designs stress-tested"}], {"match_id": "#T1-2026-9381Z", "entity": "Cryptographic Resonance & Distributed Ledger Research Collective", "simulated_resonance_score": 0.989, "status": "ACTIVE_RESONANCE", "parameters": {"handshake_latency": "184ms", "stream_coherence": 0.991}}, 0.951, 0.954, 10080, 0.156),
     ]
-
     for sequence_index, record in enumerate(records, start=1):
         archiver.commit_and_advance_chain(record, sequence_index)
     return archiver.archived_blocks
@@ -177,17 +127,10 @@ if __name__ == "__main__":
     ledger = generate_historical_ledger()
     if not verify_historical_chain(ledger):
         raise RuntimeError("Historical ledger chain verification failed")
-
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(ledger, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-
+        f.write(json.dumps(ledger, ensure_ascii=False, separators=(",", ":")) + "\n")
     print(f"Generated and verified {len(ledger)} synthetic historical blocks.")
     for block in ledger:
         env = block["block_envelope"]
-        print(
-            f"Block #{env['sequence_index']} [{env['payload']['record_id']}]: "
-            f"Hash={block['current_block_hash'][:16]}... | "
-            f"Prev={env['previous_block_hash'][:16]}..."
-        )
+        print(f"Block #{env['sequence_index']} [{env['payload']['record_id']}]: Hash={block['current_block_hash'][:16]}... | Prev={env['previous_block_hash'][:16]}...")
