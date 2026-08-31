@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://observer-intelligence.org/schemas/authority-token.schema.json",
+  "title": "Observer Intelligence Authority Token",
+  "description": "Time-bounded, scope-bounded authorization derived from evidence. Must be re-validated at Action Authorization time; presence of a prior token is not sufficient.",
+  "type": "object",
+  "required": [
+    "token_id",
+    "scope",
+    "not_before",
+    "not_after",
+    "evidence_refs",
+    "issuer",
+    "issued_at",
+    "binding"
+  ],
+  "properties": {
+    "token_id": {
+      "type": "string",
+      "description": "Unique identifier for this token."
+    },
+    "scope": {
+      "type": "string",
+      "description": "Exact permission or action class this token authorizes (e.g. 'read-status', 'execute-action:shutdown'). Scope expansion requires a new token."
+    },
+    "not_before": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Token is invalid before this time."
+    },
+    "not_after": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Token is invalid at or after this time. Replay after expiry must fail."
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "Observation Record and/or Reconciliation Record IDs that justify this token. Must remain resolvable."
+    },
+    "issuer": {
+      "type": "string",
+      "description": "Component or role that minted the token (must be an Authorizer, not an Observer or Executor)."
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "independence_estimate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Effective independent evidence pathways used at mint time (optional but recommended)."
+    },
+    "risk_bound": {
+      "type": "string",
+      "description": "Declared downside or risk context under which the token was issued."
+    },
+    "binding": {
+      "type": "object",
+      "required": ["method", "value"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["hmac-sha256", "ed25519", "opaque-mac", "dev-none"],
+          "description": "Integrity binding over (token_id|scope|not_before|not_after|evidence_refs|issuer). 'dev-none' is allowed only in non-production test harnesses and must force an authority penalty."
+        },
+        "value": {
+          "type": "string",
+          "description": "MAC or signature value. Action Authorization must recompute/verify."
+        }
+      },
+      "additionalProperties": false
+    },
+    "reconciliation_ref": {
+      "type": "string",
+      "description": "Optional pointer to the Reconciliation Record that produced this token."
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": false
+}
