@@ -6,7 +6,9 @@ on:
       - 'oi-v0.2.1-hardening-2026-08-27'
     paths:
       - 'src/oi_protocol_v0_2_1.py'
+      - 'src/matchmaking_identity.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
+      - 'tests/test_matchmaking_identity.py'
       - 'tests/report_oi_v0_2_1_metrics.py'
       - 'scripts/archive_historical_reports.py'
       - 'schemas/resonance_record_schema_v1.json'
@@ -15,7 +17,9 @@ on:
   pull_request:
     paths:
       - 'src/oi_protocol_v0_2_1.py'
+      - 'src/matchmaking_identity.py'
       - 'tests/test_oi_protocol_v0_2_1.py'
+      - 'tests/test_matchmaking_identity.py'
       - 'tests/report_oi_v0_2_1_metrics.py'
       - 'scripts/archive_historical_reports.py'
       - 'schemas/resonance_record_schema_v1.json'
@@ -68,7 +72,7 @@ jobs:
       - name: Run OI v0.2.1 acceptance suite
         run: |
           set -o pipefail
-          pytest tests/test_oi_protocol_v0_2_1.py -vv -ra 2>&1 | tee artifacts/pytest-output.txt
+          pytest tests/test_oi_protocol_v0_2_1.py tests/test_matchmaking_identity.py -vv -ra 2>&1 | tee artifacts/pytest-output.txt
 
       - name: Run empirical Monte Carlo report
         if: always()
