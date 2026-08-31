@@ -39,6 +39,21 @@ Candidate domains include:
 
 Any composite qualification profile must be built from validated or separately validated measures. No single “adaptability score” should be used for high-stakes decisions until reliability and predictive validity are demonstrated.
 
+### Adaptive Transfer Profile
+
+Rather than treating adaptability as a single trait, candidate performance may be characterized across distinct stages:
+
+- **T0 — Baseline capability:** performance before specialized training;
+- **T1 — Acquisition:** rate and quality of competency development in a trained environment;
+- **T2 — Retention:** persistence of capability after a defined delay;
+- **T3 — Near transfer:** performance when familiar tasks are altered;
+- **T4 — Far transfer:** application of underlying principles in a substantially different environment or system;
+- **T5 — Novel inference:** safe problem-solving where the exact solution was not explicitly trained;
+- **T6 — Adversarial resilience:** performance under misleading, incomplete, stale, or conflicting information;
+- **T7 — Autonomous performance:** performance under delayed or unavailable external support.
+
+These stages are candidate constructs requiring operational definitions and validation; they are not assumed to form a validated scale.
+
 ## 2. Standardized human-performance backbone
 
 Use established NASA and validated human-factors measures where appropriate, including workload, cognition, sleep/circadian, behavioral performance, team/social processes, and relevant physiological measures.
@@ -86,11 +101,41 @@ External claims must remain comparative and falsifiable: evaluate whether OI imp
 Participants should demonstrate that learned capabilities generalize beyond the exact environment or scenario in which they were trained.
 
 Example progression:
-baseline task → trained challenge → altered conditions → unrelated transfer challenge.
+baseline task → trained challenge → altered conditions → substantially different transfer environment → novel operational challenge.
 
 Transfer tests should change enough dimensions to prevent simple memorization while retaining a measurable underlying competency.
 
-## 7. Successive-cohort learning
+The central distinction is between **acclimation** to one habitat or procedure and **adaptive transfer** across unfamiliar contexts. High performance in one analog does not by itself establish generalizable adaptability.
+
+## 7. Federated Analog Academy Network
+
+The Academy should initially connect and learn from existing heterogeneous analog, simulation, laboratory, and operational-training environments rather than duplicate mature infrastructure.
+
+The proposed contribution is a common qualification and evidence protocol that can operate across different facilities while preserving each environment's distinct experimental value.
+
+Candidate architecture:
+
+existing analog/simulation environments → common baseline semantics → environment-specific challenge → transfer challenge → independent prospective prediction → OI evidence/reconciliation → cross-environment comparison → protocol revision.
+
+The environments do not need to be identical. Instead, the framework should standardize the semantics of:
+- observation;
+- exposure;
+- task;
+- competency;
+- uncertainty;
+- intervention;
+- failure;
+- recovery;
+- transfer;
+- provenance;
+- authorization;
+- outcome.
+
+This creates a candidate **Cross-Analog Qualification & Evidence Standard** through which heterogeneous sites may produce comparable evidence without falsely treating their environmental conditions as equivalent.
+
+A purpose-built Academy node should be considered only if evidence shows that an important training or research requirement cannot be adequately supplied through existing infrastructure.
+
+## 8. Successive-cohort learning
 
 The Academy’s training architecture should itself be versioned and evaluated.
 
@@ -105,7 +150,7 @@ Protocol revisions should preserve:
 
 Evaluation must distinguish improvement caused by training from selection, practice effects, cohort composition, regression to the mean, or measurement drift.
 
-## 8. Adaptive mentoring — constrained version
+## 9. Adaptive mentoring — constrained version
 
 A mentor/trajectory system may be tested only with safeguards against subjective labeling.
 
@@ -120,7 +165,7 @@ Requirements:
 
 The purpose is developmental guidance, not biological or personality ranking.
 
-## 9. Education/research separation
+## 10. Education/research separation
 
 Academy qualification and optional human-subject research must be structurally separated.
 
@@ -128,7 +173,7 @@ A participant’s refusal to join optional research should not adversely affect 
 
 Research protocols require appropriate informed consent, independent ethics/IRB review where applicable, privacy protections, and defined withdrawal procedures.
 
-## 10. Data governance
+## 11. Data governance
 
 Before enrollment or testing, define:
 - purpose of each data stream;
@@ -142,12 +187,6 @@ Before enrollment or testing, define:
 - incident-response procedures.
 
 Genetic/omics research is not part of the initial federal core.
-
-## 11. Use existing analog infrastructure first
-
-The first studies should use existing or lightly modified analog, simulation, laboratory, or operational-training environments wherever possible.
-
-A future distributed network or purpose-built Vertical Analog Academy Node may be considered only after the core evaluation architecture demonstrates value.
 
 ## 12. Pilot sequence
 
@@ -186,9 +225,19 @@ OI reduces unsupported or unauthorized execution under asymmetric/adversarial ev
 **H4 — Successive-cohort improvement**
 Versioned protocol changes improve predefined outcomes beyond selection and practice effects.
 
+### Pilot 2 — Cross-analog transfer validation
+
+If Pilots 0 and 1 justify expansion, evaluate whether qualification evidence and learned capabilities generalize across two or more substantially different analog environments using the common evidence semantics defined above.
+
+Primary question:
+
+> Can the Academy distinguish site-specific proficiency from capabilities that remain reliable after environmental displacement?
+
 ## 13. Candidate primary metrics
 
 - novel-task/transfer performance;
+- time to proficiency and recovery;
+- retention after delay;
 - expert forecast calibration;
 - workload;
 - cognitive/task error rate;
@@ -202,25 +251,41 @@ Versioned protocol changes improve predefined outcomes beyond selection and prac
 - decision latency;
 - adverse events and withdrawal.
 
-## 14. Deferred research architecture
+## 14. Infrastructure progression
+
+The architecture should scale only as evidence warrants:
+
+**Phase 0:** protocol/simulation and instrumentation validation.
+
+**Phase 1:** one existing analog or controlled operational environment.
+
+**Phase 2:** transfer between two contrasting environments.
+
+**Phase 3:** federated distributed Academy analog network.
+
+**Phase 4:** purpose-built Academy node only if an unmet requirement is demonstrated.
+
+**Phase 5:** where authorized and operationally appropriate, connect Earth-based qualification evidence to orbital, lunar, or other operational space environments.
+
+## 15. Deferred research architecture
 
 The following are intentionally outside the initial federal core and may be considered only through separate scientific justification and governance:
 - multi-omics/genetic personalization;
 - family/twin/multigenerational designs;
 - advanced pharmacology and neuropsychopharmacology;
 - expanded neuroenvironment research;
-- large distributed analog-node network;
 - purpose-built vertical analog infrastructure.
 
 Low-evidence frontier hypotheses such as anomalous/nonlocal information transfer, antipodal/resonance effects, and unconventional consciousness mechanisms are not part of the initial federal package and cannot be used as evidence supporting this architecture.
 
-## 15. Intended value to the Space Academy
+## 16. Intended value to the Space Academy
 
-This architecture is intended to help the Academy answer four practical questions:
+This architecture is intended to help the Academy answer five practical questions:
 
 1. What can a participant reliably do under realistic operational stress and uncertainty?
-2. Does that capability transfer when conditions change?
+2. Does that capability transfer when the task, system, or environment changes?
 3. Can multidisciplinary evaluators predict performance and failure before the outcome is known?
-4. Can the Academy preserve enough provenance and contradiction history to improve its next cohort without rewriting the past?
+4. Can the Academy distinguish site-specific acclimation from generalizable adaptive capability?
+5. Can the Academy preserve enough provenance and contradiction history to improve its next cohort without rewriting the past?
 
 The long-term goal is a continuously improving training and qualification system that develops personnel capable of safe, autonomous, evidence-disciplined operation across increasingly unfamiliar spaceflight environments.
