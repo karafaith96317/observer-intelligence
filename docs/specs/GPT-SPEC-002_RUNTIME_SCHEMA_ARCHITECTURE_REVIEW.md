@@ -1,139 +1,119 @@
 # GPT-SPEC-002 — Runtime Schema Architecture Review
 
-**Status:** ACCEPTED WITH REQUIRED PATCHES / experimental v0.1 only  
+**Status:** ACCEPTED WITH BOUNDARY LOCK / experimental v0.1 baseline  
 **Date:** 2026-08-31  
-**Reviewed against:** `main` runtime schemas and `docs/collaboration/test-matrix-v0.md` v0.1  
+**Baseline commit:** `main` @ `06dd476ae25ede01a87a6c085c9f4fd28285c1f5`  
+**Reviewed against:** `schemas/*.schema.json` and `docs/collaboration/test-matrix-v0.md` v0.1  
 **Architecture role:** ChatGPT governance/spec review, subject to KFS root authorization
 
-## Scope
+## Boundary lock
 
-This review covers the first five-object OI runtime:
+This acceptance is intentionally narrow. It approves the current five-object decomposition and test matrix as the development contract for the next adversarial cycle. It does **not** approve the current schemas or runtime as hardened, production-safe, externally validated, or superior to competing architectures.
+
+The locked development boundary is:
 
 `Observation Record → Authority Token → Shadow/Adversarial Evaluation → Reconciliation Record → Action Authorization`
 
-The following schema shapes are accepted as the correct experimental decomposition for continued implementation and falsification work:
+Accepted governing artifacts:
 
 - `schemas/authority-token.schema.json`
 - `schemas/shadow-evaluation.schema.json`
 - `schemas/reconciliation.schema.json`
 - `schemas/action-authorization.schema.json`
-- existing Observation Record schema used by the OI-004 runtime
-
-The v0.1 test matrix is also accepted as the current development target, including T02b soft-correlated majority and the rule that correct outcomes with failed process metrics count as partial failures.
+- the existing Observation Record schema used by OI-004
+- `docs/collaboration/test-matrix-v0.md` v0.1, including T02b and required process metrics
 
 ## Architectural acceptance
 
-The schemas correctly encode several core OI invariants:
+The schema family correctly encodes the core experimental separation required by OI:
 
 1. Authority is a separate runtime object rather than an inference side effect.
 2. Shadow/adversarial evaluation records its information boundary and claimed isolation.
 3. Reconciliation preserves disagreement and provenance rather than collapsing to a vote.
 4. Action authorization revalidates authority instead of trusting a stored authorization bit.
 5. Process correctness is evaluated separately from outcome correctness.
+6. T02b soft-correlation and the partial-failure rule are mandatory acceptance criteria.
 
-These are accepted for experimental implementation and red-team testing.
+`src/oi_runtime_v0_1.py`, `tests/test_runtime_v0_1.py`, and OI-004 are recognized as valid **reference implementations against this experimental contract**. Their currently passing fixtures establish a baseline for adversarial testing only; they do not establish full architectural compliance.
 
-## Required patches before any claim of hardened or production-safe enforcement
+## Required hardening boundaries
+
+The following remain unresolved requirements before any claim of hardened or production-safe enforcement:
 
 ### P1 — Authorization must be conditionally constrained by revalidation
 
-`action-authorization.schema.json` currently permits `decision: authorize` even when one or more token revalidation booleans are false. Add conditional schema logic and runtime enforcement so an authorize decision requires, at minimum:
-
-- `binding_verified == true`
-- `scope_match == true`
-- `time_window_valid == true`
-- `evidence_refs_still_resolvable == true`
-
-A schema-valid object must not be able to represent authorization after failed mandatory checks.
+A schema-valid authorization must not be able to represent execution when mandatory revalidation fails. Runtime enforcement and schema conditionals should require, at minimum, successful binding verification, exact scope match, valid time window, and resolvable evidence.
 
 ### P2 — Replay protection is runtime state, not a schema guarantee
 
-`authority-token.schema.json` describes replay resistance but JSON Schema cannot establish token uniqueness, nonce consumption, or one-time-use state across records. Treat replay prevention as a runtime invariant. Add an explicit nonce / consumption identifier or equivalent state reference and test duplicate presentation across authorization attempts.
+Token uniqueness, nonce consumption, and one-time-use state must be enforced by runtime state. Replay must not be described as prevented merely because a token has an ID, expiry, or binding field.
 
-Do not claim that replay is "schema-invalid" merely because `token_id`, expiry, or binding fields exist.
+### P3 — Scope comparison requires a reconstructable requested action
 
-### P3 — Scope comparison needs a requested-action object
-
-Action Authorization currently references a token but does not structurally record the exact requested action against which scope was checked. Add `requested_action` (or equivalent canonical action descriptor) to the authorization record so the `scope_match` decision is reconstructable rather than merely asserted.
+Action Authorization should structurally record the exact requested action or canonical action descriptor so scope matching is reconstructable rather than asserted.
 
 ### P4 — Freshness must be stronger than resolvability
 
-A record can remain retrievable while becoming stale. Add explicit freshness/state-transition checks at authorization time, such as:
+Retrievable evidence can still be stale. T08 requires explicit freshness/state-version checks at authorization time, including reconciliation validity windows and observation freshness where applicable.
 
-- reconciliation age / valid-through
-- observation freshness constraints
-- world-state or state-version reference where applicable
+### P5 — Process metrics must align with the accepted test matrix
 
-T08 cannot be considered satisfied by `evidence_refs_still_resolvable` alone.
+Claims of OI process correctness must report the required process metrics: provenance completeness/resolvability, independence-estimation error, contradiction preservation, and authority-lineage reconstruction accuracy.
 
-### P5 — Required process metrics must align with the test matrix
+### P6 — Shadow independence cannot be self-certified
 
-The test matrix requires four process metrics for claims of OI process correctness:
+`isolation_flag` is provenance, not proof of independence. T02b requires inspectable dependence/correlation evidence or an explicit unknown state when independence is scored.
 
-- provenance completeness / resolvability
-- independence-estimation error
-- contradiction preservation
-- authority-lineage reconstruction accuracy
+### P7 — Reconciliation completeness must be derived
 
-`action-authorization.schema.json` currently contains only a partial/mismatched set. Either make the full required metric set structurally available in the runtime output or define a separate benchmark-result object that is mandatory whenever a process-correctness claim is made.
+Completeness and resolvability scores must be recomputed from actual reference resolution rather than trusted as asserted fields.
 
-### P6 — Shadow independence cannot be self-certified by one boolean
+### P8 — Exclusion/down-weight lineage should be structured
 
-`isolation_flag` is useful provenance but is only a declared property. Independence credit must be computed from inspectable execution/context evidence where possible. For T02b, correlation information should be required or explicitly marked unknown when independence is scored.
+Excluded, down-weighted, and retained contributions should use structured records with contribution/evaluation ID, disposition, reason code, and weight/credit where relevant.
 
-### P7 — Reconciliation completeness must be derived, not trusted
+### P9 — Development-only unsigned binding cannot receive production-equivalent authority
 
-`completeness.score` and `all_refs_resolvable` are currently representable as asserted values. Runtime code must recompute them from actual reference resolution and required-field checks. Tests should attempt to submit dishonest completeness fields and confirm they are rejected or overwritten.
+Any `dev-none` or equivalent fixture mode is development-only and must be refused or explicitly marked non-authoritative in production-equivalent paths.
 
-### P8 — Exclusion/down-weight lineage should become structured
+### P10 — Cross-field temporal invariants require runtime enforcement
 
-`lineage.excluded_or_downweighted` is currently an array of free-form strings. Replace or supplement it with structured records containing at least:
-
-- referenced contribution/evaluation ID
-- disposition (`excluded`, `downweighted`, `retained`)
-- reason code
-- weight/credit where relevant
-
-This is needed for authority-lineage reconstruction and machine-verifiable reconciliation audits.
-
-### P9 — Development-only unsigned binding must never receive production authority
-
-`binding.method = dev-none` may remain for local fixtures, but runtime policy must guarantee it cannot produce production-equivalent authorization. Tests must verify that dev-only binding is refused or receives explicitly non-authoritative test status.
-
-### P10 — Cross-field temporal invariants require runtime tests
-
-JSON Schema date-time formatting alone does not enforce `not_before < not_after`, `issued_at <= not_after`, or authorization check time within the interval. These must be explicit runtime invariants with falsification fixtures.
+Formatting alone does not establish `not_before < not_after`, valid issuance ordering, or authorization within the valid interval. These require runtime falsification tests.
 
 ## Test-matrix verdict
 
-`docs/collaboration/test-matrix-v0.md` v0.1 is **accepted as the current development matrix**.
+`docs/collaboration/test-matrix-v0.md` v0.1 is **accepted and locked as the current development matrix**.
 
-T02b and the required process metrics materially improve falsifiability. The partial-failure rule is retained: a correct action reached with broken provenance, dependence estimation, contradiction preservation, or authority reconstruction is not a full success.
+T02b and the required process metrics are mandatory. A correct action reached with broken provenance, dependence estimation, contradiction preservation, or authority reconstruction remains a **partial failure**, not a full success.
 
 Before promotion to a confirmatory benchmark, thresholds, ground truth, seeds, baseline definitions, and primary metrics must be frozen independently of observed OI performance.
 
-## Disposition of GEM-IMPL-001 and OI-004
+## Disposition of GEM-IMPL-001 / OI-004
 
-Existing implementation work may now be reviewed as an **experimental implementation attempt against this accepted-with-patches architecture**. Its current passing tests are evidence only for the fixtures actually executed; they do not establish compliance with P1–P10 or the full T01–T08 matrix.
+**GEM-IMPL-001:** ACCEPTED — BASELINE RUNTIME (experimental).  
+**OI-004:** ACCEPTED — PARALLEL DEVELOPMENT HARNESS (experimental).
 
-The next implementation revision should be labeled `GEM-IMPL-002` (or a patch revision to GEM-IMPL-001 if the contribution ledger prefers) and target the required patches above before the next broad red-team cycle.
+The three existing passing GEM-IMPL-001 fixtures establish only that the tested shadow-refutation, replay, and scope-escalation paths behaved as expected in that harness. They do not establish P1–P10, T01–T08 completeness, or production security.
 
-## Next adversarial gate
+## Next adversarial gate — GROK-ATTACK-002
 
-After implementation of the required patches, `GROK-ATTACK-002` should specifically attempt:
+The current baseline is sufficiently specified to red-team **now**, before hardening it further. GROK-ATTACK-002 should attempt to falsify the accepted development baseline, specifically:
 
+- T02b soft-Sybil/upstream contamination using distinct observer IDs and unique hashes
+- token issuance followed by evidence mutation/revocation or state drift before authorization (TOCTOU)
+- completeness-score gaming with irrelevant but resolvable evidence
 - authorize-with-failed-revalidation construction
 - replay using a still-valid duplicated token
-- scope ambiguity / action canonicalization mismatch
+- scope ambiguity/action canonicalization mismatch
 - stale-but-resolvable evidence
-- false completeness assertions
-- soft-correlation hidden behind distinct observer IDs
 - contradiction erasure through exclusion/down-weighting
-- dev-only unsigned token escalation
+- development-only unsigned token escalation
 - inconsistent cross-field timestamps
+
+Any successful falsification becomes input to `GEM-IMPL-002` or a narrowly scoped schema/runtime patch. Dissent and failed attacks remain preserved in the contribution ledger.
 
 ## Architecture verdict
 
-**ACCEPTED WITH REQUIRED PATCHES.**
+**ACCEPTED WITH BOUNDARY LOCK.**
 
-The object decomposition and test matrix are strong enough to continue implementation. They are not yet approved as hardened enforcement schemas, and no production-safety or superiority claim is authorized from schema presence or the current three passing runtime tests alone.
+The five-object decomposition, four runtime schemas, T02b, and required process metrics are accepted as the v0.1 experimental baseline for the next adversarial cycle. No hardened, production-safe, externally validated, or superiority claim is authorized by this acceptance.
