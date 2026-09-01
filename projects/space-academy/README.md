@@ -1,40 +1,77 @@
-# Observer Intelligence — Space Operations Pilot
+# Observer Intelligence — U.S. Space Academy Research Track
 
-Status: draft federal-facing concept track; not a claim of NASA endorsement, adoption, or demonstrated operational superiority.
+Status: private research and proposal-development track. No file in this folder claims NASA, Presidential Commission, DoD, or other federal endorsement, adoption, procurement interest, or demonstrated operational superiority.
 
-## Purpose
+## Canonical federal-facing concept
 
-This project isolates a testable application of Observer Intelligence (OI) for high-stakes space decision training and AI-assisted operations. It is designed as a candidate pilot/research concept relevant to the August 28, 2026 Presidential Commission on the United States Space Academy, especially its work on experiential training, pilot programs and partnerships, implementation strategy, and stakeholder consultation.
+Start here:
 
-## Core research question
+- `SA-CONCEPT-002-federal-core.md` — current reduced Adaptive Operations & Qualification Architecture.
+- `complementary-crew-composition-framework.md` — supporting crew, faculty, human-performance, and institutional-transfer framework.
+- `pilot-evaluation-protocol.md` — OI-Space comparative pilot protocol.
+- `space-academy-crosswalk.md` — mapping to the August 28, 2026 Presidential Commission order.
 
-Does separating observation, interpretation, reconciliation, authorization, and execution reduce unjustified actions under incomplete, conflicting, dependent, stale, or adversarial evidence while preserving useful operational responsiveness?
+`SA-CONCEPT-001` is the broader source architecture and should not be treated as the current initial federal submission package.
 
-## Candidate use case
+## Federal-facing core proposition
 
-A simulated lunar/orbital incident presents multiple observers or agents with asymmetric evidence. Test conditions can include majority error, minority counterevidence, stale or replayed authorization, compromised evidence pathways, measurement degradation, conflicting telemetry, incomplete provenance, and time pressure.
+The strongest current proposition is a cross-environment adaptive-transfer qualification and evidence architecture that asks whether operational capability generalizes when conditions, tasks, teams, support, information, or institutional context change.
 
-Compare:
-1. a documented baseline multi-agent decision process; and
-2. the OI provenance-preserving architecture.
+The architecture combines:
 
-Candidate metrics include false/unsupported execution rate, contradiction retention, independent-evidence retention, authorization violations, replay rejection, provenance completeness, reconstruction/auditability, calibration, and decision latency.
+- demonstrated capability rather than coursework alone;
+- near/far transfer and novel-task testing;
+- delayed-support/autonomous operations;
+- complementary crew composition and adaptive role allocation;
+- prospective independent multidisciplinary prediction before consensus;
+- provenance-preserving evidence, contradiction, reconciliation, authorization, and audit history;
+- successive-cohort learning;
+- staged use of existing simulation/analog infrastructure before new capital construction.
 
-## Federal-facing scope
+## Observer Intelligence subtrack
 
-Lead with implemented or directly testable OI components: typed epistemic transitions, provenance, measurement integrity, dependence-aware evidence, adversarial/counterfactual observers, selective disclosure, reconciliation, bounded authorization, runtime separation of authority, schemas, runtime, and reproducible tests.
+OI is one candidate implementation of the evidence/reconciliation layer and must be evaluated comparatively rather than assumed superior.
 
-Do not use broader speculative or phenomenological research branches as evidence that the engineering architecture works. Those branches remain separate research and are not required for this pilot.
+Core OI research question:
+
+> Does separating observation, interpretation, reconciliation, authorization, and execution reduce unjustified actions under incomplete, conflicting, dependent, stale, or adversarial evidence while preserving useful operational responsiveness?
+
+Candidate simulated space-operational conditions include majority error, minority counterevidence, stale/replayed authorization, compromised evidence pathways, measurement degradation, conflicting telemetry, incomplete provenance, and time pressure.
+
+Candidate metrics include unsupported execution, contradiction retention, independent-evidence retention, authorization violations, replay rejection, provenance completeness, reconstruction/auditability, calibration, and decision latency.
 
 ## Evidence standard
 
-Claims in any external submission must be tagged as one of: IMPLEMENTED, TESTED, PROPOSED, or HYPOTHESIS. Comparative performance claims require reproducible benchmark results; architecture alone is not evidence of superiority.
+External claims must be tagged or written clearly as one of:
 
-## Next artifacts
+- **IMPLEMENTED** — architecture/code exists;
+- **TESTED** — supported by reproducible test evidence within a defined scope;
+- **PROPOSED** — design or application not yet validated;
+- **HYPOTHESIS** — falsifiable research claim awaiting comparative evidence.
 
-- `space-academy-crosswalk.md`
-- `pilot-evaluation-protocol.md`
-- sanitized architecture diagram
-- benchmark/results sheet
-- one-page executive summary
-- researcher bio
+Architecture alone is not evidence of superiority. Comparative claims require frozen non-strawman baselines, reproducible methods, effect sizes/uncertainty where applicable, and preservation of null/negative results.
+
+## Federal submission boundary
+
+Initial Commission/NASA materials should emphasize only the defensible core: capability qualification, transfer, complementary crews, human performance, delayed support/autonomy, multidisciplinary prediction, provenance/reconciliation, successive-cohort learning, and integration with existing infrastructure.
+
+Do not attach or rely on frontier research topics in the initial federal package. Those are intentionally separated in `frontier-research-annex.md` and are not evidence supporting SA-CONCEPT-002.
+
+## Recommended disclosure sequence
+
+1. concise federal concept brief;
+2. `SA-CONCEPT-002-federal-core.md` or selected technical excerpt if requested;
+3. relevant pilot/evaluation material;
+4. controlled access to deeper private repository materials only when useful for technical review.
+
+Repository access should not be required for initial concept evaluation.
+
+## Current build priorities
+
+- freeze a versioned federal concept package;
+- maintain citations/standards crosswalk;
+- freeze baseline comparators before benchmarking;
+- define primary endpoints before power analysis;
+- implement and run reproducible OI-Space comparative trials;
+- preserve failure/null results;
+- develop a sanitized architecture diagram and results sheet for selective external review.
