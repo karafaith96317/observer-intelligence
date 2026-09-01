@@ -1,0 +1,28 @@
+name: HRS v0.2.1 prototype
+
+on:
+  push:
+    branches: ["hrs-v0.2"]
+  pull_request:
+    paths:
+      - "projects/human-resilience-state-system/**"
+      - ".github/workflows/hrs-v021.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic and Monte Carlo tests
+        run: python -m unittest projects/human-resilience-state-system/tests/test_hrs_v0_2_1.py -v
+      - name: Run 1,000-iteration benchmark
+        run: |
+          cd projects/human-resilience-state-system/src
+          python - <<'PY'
+          import json
+          from hrs_v021 import run_monte_carlo
+          print(json.dumps(run_monte_carlo(runs=1000, seed=42, noise_sd=0.006), indent=2, sort_keys=True))
+          PY
