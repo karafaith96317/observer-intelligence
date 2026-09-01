@@ -10,7 +10,11 @@ OI is an **epistemic-control architecture**, not a voting or consensus system. I
 
 ## Current extensions
 
-OI now includes research branches for distributed observation, measurement integrity, altered-state/human-observer modeling, and **Prospective Independent Idea Emergence (PIIE)**.
+OI now includes research branches for distributed observation, measurement integrity, altered-state/human-observer modeling, **Human/Hybrid Resilience State (HRS)** modeling, and **Prospective Independent Idea Emergence (PIIE)**.
+
+**HRS** is the state-and-dynamics layer for estimating context-conditioned operational state, detecting multidimensional drift, distinguishing adaptive from destabilizing divergence, tracing propagation through human/AI/system dependency graphs, and retaining competing root-cause hypotheses before OI reconciliation and authorization. HRS is intentionally subordinate to OI's authority model: a state estimate or anomaly does not automatically justify intervention.
+
+See `projects/human-resilience-state-system/README.md`.
 
 PIIE applies OI's observer-independence and provenance principles to the prospective study of similar ideas emerging among separated people. It uses immutable source artifacts, cryptographic timestamps, information-exposure provenance, blinded semantic comparison, null models, and contamination audits to distinguish independent convergence from shared sources, diffusion, convergent reasoning, and chance.
 
@@ -34,6 +38,8 @@ ACCESS
 OBSERVATION
   ↓
 MEASUREMENT INTEGRITY
+  ↓
+HRS STATE / DRIFT ESTIMATION
   ↓
 INTERPRETATION
   ↓
@@ -66,6 +72,7 @@ Every transition should retain provenance and remain inspectable.
 8. **Provenance-preserving reconciliation** — disagreement, uncertainty, missingness, disclosure boundaries, transformation history, and consequential lineage should survive reconciliation.
 9. **Runtime separation of authority** — observation, interpretation, reconciliation, authorization, and execution should not automatically belong to the same component.
 10. **Transport independence** — distributed OI may use classical, PQC, quantum, or hybrid infrastructure without treating the transport mechanism itself as evidence of truth.
+11. **State-estimate restraint** — HRS deviation, anomaly, or risk estimates do not by themselves establish fault, incapacity, intent, or justified intervention.
 
 ## Observer Intelligence Evidence Matrix
 
@@ -104,6 +111,9 @@ Compare single-agent, ordinary multi-agent voting, adaptive semantic quorum meth
 **OI-004 — Measurement integrity vs authenticated provenance**  
 Test whether systems incorrectly over-trust cryptographically authentic evidence when physical sensor quality, calibration, timing, or environmental conditions are degraded.
 
+**HRS-001 — State drift and root-cause discrimination**  
+Test whether context-conditioned vector drift, temporal dynamics, dependency-graph propagation, and competing hypotheses distinguish adaptive drift, human-origin degradation, sensor corruption, AI-induced downstream error, and cascading system failure better than a scalar anomaly detector.
+
 **PIIE-001 — Prospective Independent Idea Emergence**  
 Test whether the rate and specificity of apparently independent conceptual convergence exceeds a preregistered null expectation after shared information pathways, participant background, diffusion, and chance are accounted for.
 
@@ -121,11 +131,13 @@ OI can represent human phenomenology using the same separation between observati
 
 Likewise, recurring ideas among separated observers are evidence of recurrence only after independence has been evaluated; recurrence itself is not proof of a shared field, anomalous information transfer, or truth.
 
+HRS extends the same restraint to operational-state modeling: deviation from baseline is not automatically evidence of human failure, diagnosis, incapacity, deception, or fault. State variables and risk estimates remain model-dependent research outputs whose validity must be established empirically.
+
 ## Prior-art boundary
 
-OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus/quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, cryptographic timestamping, distributed quantum sensing, QKD, entanglement distribution, frequency combs, precision timing, or free-space quantum links.
+OI does **not** claim invention of multi-agent validation, AI debate, adversarial agents, consensus/quorum systems, adaptive quorums, validator diversity, generic provenance, external execution gates, permission-bounded agents, cryptographic timestamping, distributed quantum sensing, QKD, entanglement distribution, frequency combs, precision timing, free-space quantum links, generic anomaly detection, state-space estimation, Mahalanobis distance, graph-based fault propagation, or human-performance monitoring.
 
-The current novelty target is the coupling of observer-specific access state, typed epistemic transitions, physical measurement-integrity metadata, evidence-lineage preservation, temporal provenance, dependence estimation, counterfactual hypothesis preservation, epistemically triggered expansion, selective-disclosure boundaries, reconciliation without lineage loss, and bounded execution authority — plus prospective applications of these principles to independently timestamped human idea emergence.
+The current novelty target is the coupling of observer-specific access state, typed epistemic transitions, physical measurement-integrity metadata, evidence-lineage preservation, temporal provenance, dependence estimation, counterfactual hypothesis preservation, epistemically triggered expansion, selective-disclosure boundaries, reconciliation without lineage loss, bounded execution authority, and HRS-style context-conditioned drift/root-cause modeling without automatically converting anomaly into human fault or action authority — plus prospective applications of these principles to independently timestamped human idea emergence.
 
 ## Status
 
