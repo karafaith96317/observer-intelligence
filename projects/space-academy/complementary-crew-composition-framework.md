@@ -1,4 +1,4 @@
-# Complementary Crew Composition, Faculty & Human Observation Framework
+# Complementary Crew Composition, Faculty & Human Performance Framework
 
 Status: supporting research architecture for SA-CONCEPT-002. This document defines testable program-design hypotheses; it is not an established selection doctrine, demographic ranking system, or claim of participation by any named agency.
 
@@ -24,7 +24,7 @@ The optimization target is not a crew of uniformly high scorers. It is a crew sy
 - Social/relational: mediation, teaching, caregiving, negotiation, leadership, followership, conflict recovery, morale, cross-disciplinary communication.
 - Linguistic/cultural: multilingual communication, translation, technical-language transfer, cross-cultural competence, multinational teamwork.
 - Analytical: mathematics, statistics, formal reasoning, modeling, systems analysis, causal reasoning, uncertainty estimation, decision science.
-- Information/epistemic: research, source verification, intelligence analysis where authorized, provenance assessment, contradiction detection, calibrated confidence, evidence/inference separation.
+- Information/epistemic: research, source verification, provenance assessment, contradiction detection, calibrated confidence, evidence/inference separation.
 - Physical: endurance, strength, dexterity, coordination, fine-motor capability, mobility, spatial operation, recovery, and task-specific physical capacity. Requirements should be mission/task based and compatible with accessibility obligations rather than based on one ideal body type.
 - Technology orientation: advanced technical users plus people capable of effective operations when technology is degraded or unavailable.
 - Experience: specialists, generalists, high-learning-potential novices, technicians, researchers, operators, and cross-domain practitioners.
@@ -80,12 +80,12 @@ Can a minority observer preserve counterevidence when the majority favors anothe
 
 Candidate role transitions:
 
-- medical emergency -> medical expertise takes task lead;
-- system failure -> engineering/technical expertise;
-- environmental/terrain problem -> field/geology/environment expertise;
-- interpersonal breakdown -> behavioral/team expertise;
-- cyber or anomalous information problem -> security/data/evidence expertise;
-- logistics/resource failure -> operations/logistics expertise.
+- medical emergency → medical expertise takes task lead;
+- system failure → engineering/technical expertise;
+- environmental/terrain problem → field/geology/environment expertise;
+- interpersonal breakdown → behavioral/team expertise;
+- cyber or anomalous information condition → security/data/evidence expertise;
+- logistics/resource failure → operations/logistics expertise.
 
 Expertise does not automatically equal authorization. Preserve distinctions among subject-matter leadership, recommendation, command authority, and execution authority.
 
@@ -95,7 +95,7 @@ Treat multilingual and cross-cultural capability as an operational resource.
 
 Candidate challenge:
 
-language ambiguity -> translation -> technical terminology -> cultural interpretation -> reconciliation -> operational action.
+language ambiguity → translation → technical terminology → cultural interpretation → reconciliation → operational action.
 
 Measure information loss, translation error, uncertainty preservation, correction latency, and survival of critical meaning.
 
@@ -115,7 +115,7 @@ Test whether advanced technical capability is complemented by manual, ecological
 
 Candidate scenario:
 
-normal digital operations -> degraded automation -> partial sensor loss -> communications loss -> manual/local reconstruction -> restored system -> audit.
+normal digital operations → degraded automation → partial sensor loss → communications loss → manual/local reconstruction → restored system → audit.
 
 ## 9. Three levels of adaptability
 
@@ -126,7 +126,7 @@ Can an individual learn, recover, transfer knowledge, revise beliefs, and operat
 Can a combination of people redistribute roles, preserve critical capabilities, reconcile disagreement, and reorganize when the problem changes?
 
 ### Institutional adaptability
-Can individuals and teams move among scientific, engineering, civil-space, military, intelligence where authorized, commercial, emergency-response, educational, and international environments without losing evidence discipline, communication effectiveness, or clarity of authority?
+Can individuals and teams move among scientific, engineering, civil-space, defense, commercial, emergency-response, educational, and international environments without losing evidence discipline, communication effectiveness, or clarity of authority?
 
 ## 10. Institutional and organizational transfer
 
@@ -134,7 +134,7 @@ Potential stakeholder classes:
 
 - civil space;
 - defense and military;
-- Intelligence Community/national-security partners where mission requirements and authorities warrant;
+- national-security partners where mission requirements and authorities warrant;
 - science agencies and national laboratories;
 - universities/research institutions;
 - community colleges, technical schools, and skilled trades;
@@ -164,7 +164,7 @@ Candidate appointment categories:
 
 Evaluate candidates on relevant combinations of scientific expertise, operational expertise, engineering/technical expertise, field experience, teaching ability, research quality, innovation, cross-domain capability, mentoring effectiveness, and demonstrated knowledge transfer.
 
-These are conceptual appointment tiers, not federal pay grades. Compensation and appointment authority would require separate analysis of applicable personnel authorities, institutional agreements, fellowships, grants, contracts, details, or other authorized mechanisms.
+These are conceptual appointment categories, not federal pay grades. Compensation and appointment authority would require separate analysis of applicable personnel authorities and institutional mechanisms.
 
 ## 12. Human Performance & Behavioral Health Directorate
 
@@ -187,81 +187,19 @@ Care != research != qualification.
 
 Confidential clinical/support information should not casually become qualification data. Optional research participation should not determine advancement. Operational fitness assessments require defined purpose, authority, standards, and safeguards.
 
-## 13. Anomalous Observations & Unresolved Phenomena Program — later research track
-
-A later, separately governed program may study unresolved observations and UAP-related reporting as a scientific, human-factors, sensor, and evidence-quality problem.
-
-The program must not presuppose extraterrestrial origin or any other preferred explanation.
-
-Candidate disciplines:
-
-- astronomy/astrophysics;
-- atmospheric/environmental science;
-- aviation;
-- radar, EO/IR, and sensor engineering;
-- space-domain awareness;
-- statistics/data science;
-- image/signal forensics;
-- cognitive psychology/perception;
-- neuroscience;
-- human factors;
-- flight/mission operations;
-- intelligence/security analysis where authorized;
-- researchers with credible experience investigating UAP/anomalous observations.
-
-Candidate competency:
-
-> Can investigators study a genuinely unusual observation without prematurely dismissing it and without prematurely assigning an extraordinary explanation?
-
-Evidence workflow:
-
-raw observation -> provenance -> sensor/human-source characterization -> competing hypotheses -> prospective predictions -> independent testing -> contradiction retention -> explained / partially explained / unresolved.
-
-This track is not part of initial Academy qualification and should not be used to imply federal endorsement of any explanation for UAP.
-
-## 14. Voluntary Experiencer Research Cohorts — later research track
-
-People reporting UAP encounters, close encounters, perceived abduction/contact experiences, missing-time experiences, unusual sleep/dream-related encounters, military/aviation UAP observations, or other high-strangeness experiences may be studied as voluntary research participants under appropriately reviewed protocols.
-
-Use neutral terminology such as **experiencer cohort** rather than treating a participant's interpretation as an established event.
-
-The initial research question should be:
-
-> What measurable characteristics accompany reported anomalous encounter experiences, what ordinary mechanisms can be evaluated, and can any observations be independently corroborated?
-
-Potential research variables, where scientifically justified and ethically approved, include sleep, cognition, memory, perception, stress/trauma response, dissociation, psychometrics, autonomic physiology, environmental context, contemporaneous records, and independently available sensor evidence.
-
-Design requirements:
-
-- appropriate comparison/control cohorts;
-- voluntary informed consent;
-- independent ethics/IRB review where applicable;
-- participant welfare and stigma protections;
-- separation of participant report from external corroboration;
-- ordinary explanations tested before extraordinary claims;
-- prospective/preregistered methods where feasible;
-- blinded analysis where feasible;
-- data-leakage and information-pathway audits;
-- preservation of null and contradictory results;
-- no use for Academy admissions or ranking.
-
-A participant report is evidence that the report/experience occurred for the participant; it is not by itself proof of the participant's proposed external explanation.
-
-## 15. Observer Intelligence role
+## 13. Observer Intelligence role
 
 OI can preserve distinctions among:
 
-observer -> observation -> interpretation -> hypothesis -> evidence -> contradiction -> reconciliation -> authority -> action -> audit.
+observer → observation → interpretation → hypothesis → evidence → contradiction → reconciliation → authority → action → audit.
 
 At the crew level, OI can preserve minority evidence and expertise-sensitive recommendations while maintaining explicit authority boundaries.
 
 At the institutional level, OI can preserve provenance across organizations with different information access and decision authorities.
 
-In anomalous-observation research, OI can preserve the participant report, sensor evidence, investigator hypotheses, ordinary-mechanism tests, unresolved contradictions, and later updates without retrospectively rewriting the original record.
-
 OI's value must be evaluated comparatively against frozen non-strawman baselines rather than assumed.
 
-## 16. Candidate falsifiable hypothesis
+## 14. Candidate falsifiable hypothesis
 
 **H5 — Complementary Crew Composition**
 
@@ -285,8 +223,8 @@ Candidate endpoints:
 
 This hypothesis requires preregistered definitions, appropriate comparators, statistical power analysis, and controls for selection effects.
 
-## 17. Strategic boundary for the initial federal proposal
+## 15. Strategic boundary for federal-facing use
 
-The initial Commission-facing brief should emphasize the defensible core: capability qualification, transfer, complementary crew research, human performance, delayed-support/autonomous operations, multidisciplinary prediction, provenance/reconciliation, successive-cohort learning, and integration with existing infrastructure.
+This document supports the defensible core: capability qualification, transfer, complementary crew research, human performance, delayed-support/autonomous operations, multidisciplinary prediction, provenance/reconciliation, successive-cohort learning, and integration with existing infrastructure.
 
-The UAP/anomalous-observation and experiencer-cohort sections remain later research tracks. They should not be allowed to obscure the initial testable Academy architecture or be presented as evidence for it.
+Frontier research topics are intentionally maintained in `frontier-research-annex.md` and should not be included in the initial Commission/NASA package or used as evidence supporting this framework.
