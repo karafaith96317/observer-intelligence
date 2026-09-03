@@ -3,7 +3,7 @@ from pathlib import Path
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from src.oi_live_pilot import *
 
-def ev(i="1"): return Evidence("E"+i, "local://fixture", "2026-09-03T00:00:00Z", "payload"+i)
+def ev(i="1", relation="SUPPORTS"): return Evidence("E"+i, "local://fixture", "2026-09-03T00:00:00Z", "payload"+i, relation, "Fixture directly supports claim")
 def signed(rec, key, nonce="n"):
     p=token_payload(rec["claim_id"], "scope:pilot:dry-run", "local-pilot", nonce, 9999999999, rec["evidence_hashes"])
     return p, sign_token(key,p)
@@ -18,6 +18,12 @@ class AcceptanceTests(unittest.TestCase):
     def test_unsupported_contradiction_does_not_demote(self):
         e=ev(); c=Challenge("shadow","C","x",("missing",),("missing",))
         self.assertEqual(reconcile("C",[e],[c])["state"],"SUPPORTED")
+    def test_weak_evidence_defaults_unresolved_and_denied(self):
+        with tempfile.TemporaryDirectory() as d:
+            e=ev(relation="INSUFFICIENT_FOR"); r=reconcile("C",[e],[]); self.assertEqual(r["state"],"UNRESOLVED")
+            k=Ed25519PrivateKey.generate(); p,s=signed(r,k)
+            a=authorize(r,p,s,k.public_key(),NonceStore(Path(d)/"n.db"),"scope:pilot:dry-run","local-pilot")
+            self.assertEqual(a["decision"],"DENY"); self.assertFalse(a["checks"]["state_supported"]); self.assertTrue(a["checks"]["nonce_fresh"])
     def test_nonce_replay_rejected_after_restart(self):
         with tempfile.TemporaryDirectory() as d:
             path=Path(d)/"n.db"; e=ev(); r=reconcile("C",[e],[]); k=Ed25519PrivateKey.generate(); p,s=signed(r,k)
