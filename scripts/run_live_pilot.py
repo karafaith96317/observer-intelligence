@@ -10,9 +10,12 @@ from src.oi_live_pilot import Evidence, Ledger, NonceStore, authorize, reconcile
 
 p = argparse.ArgumentParser()
 p.add_argument("--claim", required=True); p.add_argument("--source", required=True); p.add_argument("--observation", required=True)
+p.add_argument("--relation", choices=["SUPPORTS", "CONTRADICTS", "CONTEXTUALIZES", "INSUFFICIENT_FOR"], default="INSUFFICIENT_FOR")
+p.add_argument("--rationale", default="No support relationship established")
 p.add_argument("--state-dir", default=".oi-live-state")
 args = p.parse_args(); state = Path(args.state_dir); state.mkdir(parents=True, exist_ok=True)
-e = Evidence("OBS-" + secrets.token_hex(4), args.source, datetime.now(timezone.utc).isoformat(), args.observation)
+e = Evidence("OBS-" + secrets.token_hex(4), args.source, datetime.now(timezone.utc).isoformat(), args.observation,
+             args.relation, args.rationale)
 claim_id = "CLAIM-" + secrets.token_hex(4); rec = reconcile(claim_id, [e], [])
 private = Ed25519PrivateKey.generate(); payload = token_payload(claim_id, "scope:pilot:dry-run", "local-pilot", secrets.token_hex(16),
                                                                 datetime.now(timezone.utc).timestamp() + 300, [e.content_hash])
