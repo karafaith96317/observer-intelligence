@@ -23,6 +23,8 @@ class Evidence:
     source_uri: str
     captured_at_utc: str
     payload: str
+    relation: str = "INSUFFICIENT_FOR"
+    relation_rationale: str = "No support relationship established"
     classification: str = "OBSERVED_TEST_RUN"
 
     @property
@@ -52,6 +54,9 @@ class NonceStore:
             return True
         except sqlite3.IntegrityError:
             return False
+
+    def is_fresh(self, nonce: str) -> bool:
+        return self.db.execute("SELECT 1 FROM consumed WHERE nonce = ?", (nonce,)).fetchone() is None
 
 
 class Ledger:
@@ -100,8 +105,11 @@ def reconcile(claim_id: str, evidence: list[Evidence], challenges: list[Challeng
         elif not set(c.counterevidence_hashes).issubset(store): reason = "unknown_counterevidence"
         elif not set(c.counterevidence_hashes).issubset(set(c.isolated_input_hashes)): reason = "isolation_manifest_breach"
         (rejected if reason else valid).append({"observer_id": c.observer_id, **({"reason": reason} if reason else {"findings": c.findings})})
-    state = "CONTESTED" if valid else ("SUPPORTED" if evidence else "UNRESOLVED")
-    return {"claim_id": claim_id, "state": state, "evidence_hashes": sorted(store), "valid_challenges": valid, "rejected_challenges": rejected}
+    relations = {e.content_hash: e.relation for e in evidence}
+    has_support = any(e.relation == "SUPPORTS" and e.relation_rationale.strip() for e in evidence)
+    state = "CONTESTED" if valid else ("SUPPORTED" if has_support else "UNRESOLVED")
+    return {"claim_id": claim_id, "state": state, "evidence_hashes": sorted(store), "evidence_relations": relations,
+            "valid_challenges": valid, "rejected_challenges": rejected}
 
 
 def authorize(rec: dict, payload: dict, signature: str, public_key: Ed25519PublicKey, nonces: NonceStore,
@@ -110,7 +118,9 @@ def authorize(rec: dict, payload: dict, signature: str, public_key: Ed25519Publi
     checks = {"signature_valid": verify_token(public_key, payload, signature),
               "claim_bound": payload["claim_id"] == rec["claim_id"], "scope_exact": payload["scope"] == required_scope,
               "resource_exact": payload["resource"] == resource, "not_expired": now <= payload["expires"],
-              "evidence_bound": payload["evidence_hashes"] == rec["evidence_hashes"], "state_supported": rec["state"] == "SUPPORTED"}
-    allowed = all(checks.values()) and nonces.consume(payload["nonce"])
-    checks["nonce_fresh"] = allowed or False
+              "evidence_bound": payload["evidence_hashes"] == rec["evidence_hashes"], "state_supported": rec["state"] == "SUPPORTED",
+              "nonce_fresh": nonces.is_fresh(payload["nonce"])}
+    allowed = all(checks.values())
+    if allowed:
+        allowed = nonces.consume(payload["nonce"])
     return {"decision": "ALLOW_DRY_RUN" if allowed else "DENY", "checks": checks, "execution_attempted": False}
