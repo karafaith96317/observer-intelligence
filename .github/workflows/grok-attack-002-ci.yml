@@ -1,0 +1,47 @@
+name: GROK-ATTACK-002 / GEM-IMPL-002 CI
+
+on:
+  push:
+    branches:
+      - grok-attack-002-review
+  pull_request:
+    paths:
+      - 'src/oi_runtime_v0_2.py'
+      - 'tests/test_grok_attack_002.py'
+      - 'tests/test_schema_fixtures.py'
+      - 'schemas/*.schema.json'
+      - 'docs/collaboration/**'
+      - '.github/workflows/grok-attack-002-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: python -m pip install pytest jsonschema
+
+      - name: Run hardened adversarial suite
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest tests/test_grok_attack_002.py -vv -ra
+
+      - name: Run locked-schema fixture suite
+        run: pytest tests/test_schema_fixtures.py -vv -ra
