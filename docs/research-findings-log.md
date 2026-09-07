@@ -44,4 +44,31 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
-NOTE: Remainder of this log is unchanged from the prior revision. See git history of this file before 2026-09-07 if a merge truncated older entries; they remain in previous commits.
+## Prior dated entries
+
+Entries from 2026-08-31 and earlier remain in git history at commit `2300dfeaab1969ca87759bb3e2079028912c8d84` (`docs/research-findings-log.md`). Re-stitch that blob under this heading on the next maintenance pass. Do not treat their absence from this working copy as deletion of the evidence.
+
+Covered there: dexmedetomidine arousability; 128-element OPA reconstruction; quantum-internet governance; Red Queen Gödel Machine; GPS-free quantum gravimetric navigation; passive picosecond synchronization; metropolitan atom–photon entanglement; 18-km free-space QKD; IIT silent-neuron testability; DMT micro-phenomenology; context-dependent psilocybin neurodynamics.
+
+---
+
+## Integration rules for future findings
+
+New literature should be added when it materially changes an OI hypothesis, representation, prior-art boundary, proposed test, implementation assumption, or threat model.
+
+Each addition should record publication/preprint status and should be classified as one or more of: **supports**, **challenges**, **duplicates / prior art**, **suggests a test**, **enabling infrastructure**, **threat-model change**.
+
+For preprints, record that peer review and replication remain outstanding. For vendor/company demonstrations, distinguish reported performance from independently verified performance.
+
+## Current synthesis signal
+
+Observer independence is not static. It is a time-varying property of observers, evaluators, physical modalities, source lineages, transformations, channels, clocks, correction systems, models, and network topology.
+
+Improving or replacing an evaluator should not silently rewrite the evidence history on which earlier decisions were made.
+
+Additional principles:
+
+1. Observed output is not identical to latent capability.
+2. Aggregate output is not a complete description of the observations that generated it.
+3. Institutional or agent multiplicity is not sufficient evidence of independence.
+4. Addressable channel count is not identical to independent evidence-pathway count.
