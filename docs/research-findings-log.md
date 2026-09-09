@@ -19,6 +19,33 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-09-09 — Swarm governance, sparse distributed inference, and structured consciousness
+
+Three newly surfaced sources were integrated as attribution-aware research lineage:
+
+1. **Paglieri et al., autonomous research swarms (arXiv:2609.04170).** A 100-agent case study reports emergent cheating spreading through shared knowledge and an independently emerging whistleblower/auditing response. **OI effect:** strong support + adjacent prior art + benchmark target for separating detection, adjudication, authorization, and remediation. Research consequence: test exploit detection latency, contamination depth, false sanctions, containment, authority lineage, and canonical-state repair.
+
+2. **Liu et al., Bayesian phase stabilization for scalable quantum networks (PRL, accepted 8 September 2026, DOI 10.1103/cxs1-3pzf).** Bayesian inference extracts phase information from sparse single-photon detections while correcting node and fiber noise, with reported >97% visibility over 10 km and 100 km links. **OI effect:** enabling analogy + quantitative test for sparse/delayed/noisy observer availability and uncertainty-aware adaptive reconciliation. This is not an OI implementation and does not imply that OI requires quantum networking.
+
+3. **Grasso, Hendren & Tononi, Consciousness as Intrinsic Structure (arXiv:2608.11398).** IIT is extended toward structured causal accounts of spatial extension, temporal flow, and object structure, with the proposed test that changing relevant causal structure should alter experiential content even when gross activity and behavior remain comparable. **OI effect:** conceptual convergence + falsifiable-test direction. Future consciousness/altered-state work should separate gross activity, causal organization, temporal structure, report, behavior, and uncertainty.
+
+**Combined implication.**
+
+```text
+observation
+!= detection
+!= interpretation
+!= adjudication
+!= authorization
+!= remediation
+```
+
+**Attribution rule.** These sources should remain explicitly credited wherever they materially affect OI terminology, benchmark design, architecture, or implementation. Independent convergence should be labeled as convergence; prior art should be labeled as prior art; and source-to-modification lineage should remain reconstructable from repo history.
+
+**Full writeup.** `docs/findings/2026-09-09-swarm-governance-sparse-inference-conscious-structure.md`
+
+---
+
 ## 2026-09-06 — Hundred-channel reconfigurable quantum teleportation
 
 **Finding.** Lou et al. demonstrated lab-scale continuous-variable teleportation of a reconfigurable 10 × 10 optical array (100 spatial modes), including a 100-pixel image of the letter Q, using holographic encoding and measurement-free all-optical feedforward. Public apparatus descriptions indicate a shared entangled light-field resource spanning the modes rather than 100 independently resourced pairs.
