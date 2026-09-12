@@ -19,6 +19,32 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-09-12 — Dynamic link quality, independent certification, and HPPD state separation
+
+Three sources were integrated as attribution-aware research lineage:
+
+1. **Caleffi, d'Avossa & Cacciapuoti, Engineering Quantum Links (arXiv:2609.11359).** Experimental measurements on a 7.3 km deployed metropolitan fiber loop quantify intrinsic noise, classical-traffic interference, modality-specific degradation, and temporal drift. **OI effect:** supports dynamic evidence-path quality and suggests benchmarks where observer/channel reliability varies with time, modality, environment, and shared interference rather than being represented by a permanent trust scalar. Preprint; peer review and independent replication remain outstanding.
+
+2. **Cortés, Pereira & Delgado, Self-guided certification of nonlocality in quantum networks (arXiv:2609.11451).** The protocol uses an adaptive/device-dependent search for measurement settings, then independently re-evaluates the resulting inequality from observed statistics and network causal structure. **OI effect:** strong architectural analogy and test direction for `discovery/search != certification/authorization`. Preprint with numerical validation; peer review and experimental replication remain outstanding.
+
+3. **Notani, Srinivasa, Chaudhry & Weiss, HPPD young-adult case report, Case Reports in Psychiatry (2026), DOI 10.1155/crps/6605265, PMID 42694657.** In a single clinical case, mood and psychosis remitted while persistent perceptual disturbances including visual snow remained. **OI effect:** methodological support for keeping perceptual alteration, salience, belief/interpretation, mood, psychotic symptoms, functional impairment, and treatment response as separate longitudinal variables. Single case; it does not establish prevalence, mechanism, or general treatment efficacy.
+
+**Combined implication.**
+
+```text
+observer identity != current evidence-path quality
+search/discovery != certification/authorization
+perceptual experience != interpretation != independently established external cause
+```
+
+**Sources.**
+- https://arxiv.org/abs/2609.11359
+- https://arxiv.org/abs/2609.11451
+- https://pubmed.ncbi.nlm.nih.gov/42694657/
+- Full writeup: `docs/findings/2026-09-12-link-quality-independent-certification-hppd.md`
+
+---
+
 ## 2026-09-09 — Swarm governance, sparse distributed inference, and structured consciousness
 
 Three newly surfaced sources were integrated as attribution-aware research lineage:
@@ -99,3 +125,5 @@ Additional principles:
 2. Aggregate output is not a complete description of the observations that generated it.
 3. Institutional or agent multiplicity is not sufficient evidence of independence.
 4. Addressable channel count is not identical to independent evidence-pathway count.
+5. Observer or channel identity is not identical to current evidence-path quality.
+6. Discovery/search should not automatically certify or authorize its own result.
