@@ -105,6 +105,52 @@ Covered there: dexmedetomidine arousability; 128-element OPA reconstruction; qua
 
 ---
 
+## 2026-09-12 — Self-location, environmental separability, and observer-state uncertainty
+
+A supplied AI-generated synthesis prompted a source-checked review of Everettian quantum mechanics, self-locating uncertainty, and partially observable decision processes.
+
+1. **Everett, “Relative State” Formulation of Quantum Mechanics (1957).** Everett's relative-state formulation is foundational prior art for observer-relative descriptions in no-collapse quantum mechanics. **OI effect:** conceptual background only. It does not validate OI, establish literal branching as an OI mechanism, or imply that observer-dependent records are quantum states.
+
+2. **Sebens & Carroll, Self-locating Uncertainty and the Origin of Probability in Everettian Quantum Mechanics (2018; published online 2016).** The authors argue that a post-measurement/pre-observation observer can be uncertain about which branch they occupy and propose the Epistemic Separability Principle (ESP): local outcome credences should not change solely because of changes to an external environment. They use this to derive Born-rule credences within an Everettian framework. **OI effect:** suggests tests for explicitly separating global system state, observer-local epistemic state, and the evidence available at readout time. ESP is a contested philosophical proposal, not a general theorem of AI system design.
+
+3. **Hall, Deckert & Wiseman, Quantum Phenomena Modeled by Interactions between Many Classical Worlds (2014).** This paper proposes a distinct many-interacting-worlds model and demonstrates several quantum-like phenomena in a toy model through inter-world interaction. **OI effect:** prior art and contrast case only. It should not be conflated with Everettian decoherent branches, which are treated differently.
+
+4. **POMDP / decentralized partial-observability literature.** Established POMDP and Dec-POMDP models already represent belief under hidden world state, noisy observation, asynchronous information, and multi-agent partial observability. **OI effect:** architectural prior art for belief-state tracking. The attachment's label **“Partially Observable Centered MDP (POC-MDP)” was not verified as an established named framework** and is therefore retained only as a candidate OI formulation, not cited fact.
+
+**Candidate OI representation.**
+
+```text
+observer_state = {
+  observer_identity_or_role,
+  world_state_belief,
+  local_vantage_and_access,
+  observation_time,
+  readout_time,
+  pipeline_latency,
+  source_and_transformation_lineage,
+  uncertainty_over_state_and_identity
+}
+```
+
+**Suggested tests.**
+
+- **OI-SLU-01 — Local-evidence invariance:** change data outside a declared causal/evidential boundary and test whether local confidence remains invariant; then introduce a documented dependency and confirm that confidence changes.
+- **OI-SLU-02 — Delayed readout:** vary event-to-capture, capture-to-processing, and processing-to-decision delays; compare timestamp-naive and latency-aware observers on calibration and unsafe authorization.
+- **OI-SLU-03 — Identity aliasing:** give multiple observers symmetric observations while varying authenticated identity/provenance signals; measure duplicate counting, collision, and misauthorization.
+- **OI-SLU-04 — Global/local separation:** compare systems that collapse global telemetry and local evidence into one state against systems that retain distinct global and observer-local belief records.
+
+**Claim boundary.** These sources motivate conceptual distinctions and benchmarks. They do not show that OI is quantum, that many worlds physically exist, that quantum probabilities transfer to AI confidence, or that ESP governs autonomous agents. Any centered-state model introduced by OI must be defined and benchmarked against ordinary POMDP, Dec-POMDP, Bayesian filtering, and latency-aware baselines.
+
+**Sources.**
+
+- Hugh Everett III, *Rev. Mod. Phys.* 29, 454 (1957), DOI 10.1103/RevModPhys.29.454: https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.29.454
+- Charles T. Sebens & Sean M. Carroll, *British Journal for the Philosophy of Science* 69(1), 25–74, DOI 10.1093/bjps/axw004: https://academic.oup.com/bjps/article/69/1/25/2669754
+- Preprint record: https://arxiv.org/abs/1405.7577
+- Michael J. W. Hall, Dirk-André Deckert & Howard M. Wiseman, *Phys. Rev. X* 4, 041013 (2014), DOI 10.1103/PhysRevX.4.041013: https://journals.aps.org/prx/abstract/10.1103/PhysRevX.4.041013
+- Full writeup: `docs/findings/2026-09-12-self-location-observer-state.md`
+
+---
+
 ## Integration rules for future findings
 
 New literature should be added when it materially changes an OI hypothesis, representation, prior-art boundary, proposed test, implementation assumption, or threat model.
