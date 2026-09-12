@@ -8,6 +8,31 @@ The central principle is:
 
 OI is an **epistemic-control architecture**, not a voting or consensus system. It preserves what each observer could know, what it actually observed, how observations became interpretations and claims, how independent the supporting evidence really is, what information was disclosed during reconciliation, and what operational authority should follow.
 
+## Current implementation status
+
+OI is an **experimental research architecture with an executable reference prototype**. The repository contains `src/oi_runtime_v0_1.py`, which implements observation records, scoped and expiring authority tokens, shadow evaluation, reconciliation records, and an action-authorization revalidation gate.
+
+The repository also contains `tests/test_runtime_v0_1.py`, including deterministic tests for:
+
+- adversarial/shadow refutation blocking execution;
+- replayed authority-token nonce rejection; and
+- prevention of scope escalation from inference authority to execution authority.
+
+These tests demonstrate that the current implementation behaves as specified for those fixtures. They **do not** establish production safety, general validity, empirical superiority over alternative architectures, security against all attacks, or correctness outside the tested conditions.
+
+## Evidence-status convention
+
+Repository claims should be interpreted using the following statuses. See `docs/EVIDENCE_STATUS.md` for the canonical policy.
+
+- **VERIFIED EXTERNAL EVIDENCE** — supported by a traceable primary or high-quality secondary source.
+- **REPRODUCED REPOSITORY RESULT** — produced by executable code/tests in this repository with a reproducible procedure.
+- **EXPERIMENTAL RESULT** — generated under defined experimental or synthetic conditions; informative but not necessarily externally generalizable.
+- **ARCHITECTURAL HYPOTHESIS** — a proposed mechanism, design principle, or research prediction that remains subject to testing.
+- **SPECULATIVE / UNVERIFIED** — an idea, analogy, report, or interpretation that has not crossed the evidence threshold required for stronger classification.
+- **SUPERSEDED** — retained for provenance but replaced by a later correction, implementation, or evidence assessment.
+
+A source being real does not automatically validate the OI interpretation attached to it. A passing test demonstrates only the tested behavior. A timestamp or cryptographic commitment demonstrates lineage/integrity properties, not truth, authorship, originality, or external-world correctness.
+
 ## Current extensions
 
 OI now includes research branches for distributed observation, measurement integrity, altered-state/human-observer modeling, and **Prospective Independent Idea Emergence (PIIE)**.
@@ -18,7 +43,7 @@ See `projects/prospective-independent-idea-emergence/README.md`.
 
 ## Living evidence integration
 
-External research that materially supports, challenges, duplicates, or suggests a test of OI is maintained in `docs/research-findings-log.md`. Entries preserve publication status, source, OI connection, and research consequence so that later similarities are not retroactively treated as proof.
+External research that materially supports, challenges, duplicates, or suggests a test of OI is maintained in `docs/research-findings-log.md`. Entries should preserve publication status, source, OI connection, evidence boundary, and research consequence so that later similarities are not retroactively treated as proof.
 
 The prior-art boundary remains separately maintained in `docs/prior-art-and-novelty.md`.
 
@@ -129,7 +154,7 @@ The current novelty target is the coupling of observer-specific access state, ty
 
 ## Status
 
-**Early research / specification stage — v2.2, August 2026.** Terminology, formulas, schemas, experiments, and novelty boundaries remain subject to falsification and revision.
+**Experimental research architecture with an executable reference prototype.** Specifications, formulas, schemas, experiments, novelty boundaries, and implementation remain subject to falsification and revision. The current repository demonstrates selected mechanisms under controlled tests; it is not a production-safe autonomous decision system and should not be represented as independently validated deployment technology.
 
 ## Author
 
