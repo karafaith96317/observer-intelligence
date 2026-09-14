@@ -158,4 +158,4 @@ The current novelty target is the coupling of observer-specific access state, ty
 
 ## Author
 
-Kara Faith — independent researcher and originator of the Observer Intelligence framework.
+Kara Sypen— independent researcher and originator of the Observer Intelligence framework.
