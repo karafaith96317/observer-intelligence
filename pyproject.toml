@@ -1,0 +1,16 @@
+[project]
+name = "observer-intelligence"
+version = "0.2.2"
+description = "Research framework for provenance-preserving multi-observer AI evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Kara Faith Sypen" }]
+license = { text = "All Rights Reserved" }
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+llm = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
