@@ -19,6 +19,35 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-09-14 — Time-varying evidence-path provenance
+
+Recent quantum-networking and heterogeneous communications work reinforces an architectural distinction already emerging in OI: observer identity should not be treated as equivalent to current evidence-path quality or evidence independence.
+
+**Architectural refinement.** OI should model trust as a property of the evidence pathway at the time an observation was produced and transported, including source modality, transport medium, channel state, synchronization quality, calibration state, authentication method, shared dependencies, transformation lineage, and evidence hash.
+
+**Core distinction.**
+
+```text
+observer identity
+!= channel identity
+!= channel quality
+!= evidence independence
+!= evidentiary support
+!= authorization
+```
+
+**OI effect.** Strengthens distributed observer trust, synchronization provenance, authentication boundaries, provenance-preserving reconciliation, and runtime separation of authority. It also sharpens Blind Observer Sampling: blinded observers can still be non-independent if they share an upstream sensor, stream, model, clock, network path, or correction subsystem.
+
+**Research consequence.** Add benchmarks that hold observer count constant while varying shared-source coupling, transport dependencies, clock dependencies, path quality, latency, staleness, and one compromised/degraded path. Compare blinded and socially exposed observers under identical physical-path conditions.
+
+**Framework rule.** Trust should attach to the evidence pathway at the time of the event, not permanently to the observer.
+
+**Claim boundary.** Quantum networking, QKD, photonic timing, and heterogeneous communications are enabling analogues and test inspirations; they do not validate OI, and heterogeneous channels do not automatically establish independent evidence.
+
+**Full writeup.** `docs/findings/2026-09-14-time-varying-evidence-path-provenance.md`
+
+---
+
 ## 2026-09-12 — Dynamic link quality, independent certification, and HPPD state separation
 
 Three sources were integrated as attribution-aware research lineage:
@@ -173,3 +202,5 @@ Additional principles:
 4. Addressable channel count is not identical to independent evidence-pathway count.
 5. Observer or channel identity is not identical to current evidence-path quality.
 6. Discovery/search should not automatically certify or authorize its own result.
+7. Blinding reduces informational contamination but does not by itself establish source or pathway independence.
+8. Authentication of an observer or channel does not establish measurement quality, evidentiary sufficiency, or operational authority.
