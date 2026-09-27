@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "If you use Observer Intelligence, please cite this research repository and relevant original sources."
+title: "Observer Intelligence: Experimental Research Architecture"
+authors:
+  - family-names: Sypen
+    given-names: Kara Faith
+repository-code: "https://github.com/karafaith96317/observer-intelligence"
+license: "LicenseRef-Proprietary"
