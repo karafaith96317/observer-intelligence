@@ -10,7 +10,7 @@ Thank you for your interest in the experimental Observer Intelligence (OI) resea
 - Disclose any relevant license restrictions on contributed material.
 
 ## Licensing status
-The current repository remains all rights reserved until the project owner explicitly approves and merges a new license. Do not assume that opening a pull request grants permission to reuse unpublished repository content. A future public release may adopt Apache-2.0 for original software after ownership and third-party-license review. Research citations and contributor recognition do not imply financial compensation.
+The proposed public-release branch adopts Apache-2.0 for original OI software. Until this branch is merged and the repository is published, check the applicable license on the branch or revision you access. Third-party materials remain subject to their original terms. Publication still requires an ownership, third-party-license, and security review. Research citations and contributor recognition do not imply financial compensation.
 
 ## Review
 Contributions are reviewed for technical reproducibility, provenance, security, privacy, and compatibility with the project architecture. Submission does not guarantee acceptance or compensation.
