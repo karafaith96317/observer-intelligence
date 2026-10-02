@@ -19,6 +19,33 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-10-01 — Shared fibre sensing/communication substrate and failure-domain independence
+
+**Finding.** Hu et al. (*Nature Communications*, published 25 September 2026, DOI 10.1038/s41467-026-78056-0) demonstrate a holistically co-designed fibre architecture that shares signal, hardware, and network resources between coherent communication and distributed acoustic sensing. Reported results include multi-point frequency synchronization accuracy of 1.56 MHz, acoustic sensing response to 12 kHz, and extension to 28 kHz with on-chip modulators.
+
+**OI effect.** **Adjacent technological prior art + suggests a test.** A network path can also participate in environmental observation, but shared physical infrastructure creates common failure domains. Different sensors or observers must therefore not be counted as independent solely because their logical identities or modalities differ.
+
+**Research consequence.** Add **failure-domain independence** to quorum/provenance benchmarks. Hold observer count constant while varying independent infrastructure, shared communications substrate, sensing embedded in transport infrastructure, common clocks/synchronization, and one degraded or corrupted shared path. Measure false corroboration, dependency detection, provenance completeness, calibration, and authorization error.
+
+**Framework refinement.**
+
+```text
+different sensors != independent evidence
+different observers != independent evidence
+shared physical substrate -> possible shared failure domain
+```
+
+Preserve physical substrate, transport path, clock/synchronization dependencies, transformations, and shared upstream dependencies in evidence-path provenance where available.
+
+**Claim boundary.** The paper demonstrates fibre-optic sensing/communication co-design. It does not validate OI, provenance-aware reconciliation, or adaptive observer quorums; it supplies physical prior art and a concrete shared-dependency test case.
+
+**Sources.**
+- Hu, Z. et al., “Holistic co-design of fibre-optic distributed acoustic sensing and coherent communication,” *Nature Communications* (2026), DOI 10.1038/s41467-026-78056-0: https://doi.org/10.1038/s41467-026-78056-0
+- Primary article: https://www.nature.com/articles/s41467-026-78056-0
+- Full writeup: `docs/findings/2026-10-01-fibre-sensing-communication-shared-substrate.md`
+
+---
+
 ## 2026-09-14 — Time-varying evidence-path provenance
 
 Recent quantum-networking and heterogeneous communications work reinforces an architectural distinction already emerging in OI: observer identity should not be treated as equivalent to current evidence-path quality or evidence independence.
