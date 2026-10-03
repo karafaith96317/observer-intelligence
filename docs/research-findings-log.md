@@ -19,6 +19,28 @@ A paper that resembles an OI idea does not establish that OI is correct, nor doe
 
 ---
 
+## 2026-10-03 — Candidate idea: dependency-aware distributed sensor quorum
+
+An active $600,000 NSF project led by Hyeongrak “Chuck” Choi (Stony Brook University) and Bo-Han Wu (University of Hawaiʻi at Mānoa) is developing **Quantum Intelligent Sensor Networks (QISNs)** that coordinate spatially distributed quantum sensors and investigate distributing quantum resources across sensing nodes.
+
+**OI effect.** **Adjacent convergence + enabling research direction + suggests a test.** The project supplies a physical distributed-sensing comparison case; it does not validate OI.
+
+**Candidate OI hypothesis.** Quorum confidence should depend on the dependency structure behind observations, not sensor/observer count alone. Test whether dependency-aware reconciliation correctly discounts correlated sensors sharing clocks, calibration, transport, physical substrate, or environmental noise while preserving genuinely independent minority evidence.
+
+```text
+N observers != N independent evidence pathways
+```
+
+**Research consequence.** Hold observer count constant and vary failure-domain independence. Measure false corroboration, dependency detection, calibration, provenance completeness, minority-evidence retention, and unsafe authorization.
+
+**Source.**
+- Stony Brook University, “Choi Co-Leads Research on Next Generation Quantum Sensors,” 17 September 2026: https://news.stonybrook.edu/?p=264312
+- Full idea: `docs/ideas/OI-QISN-01-dependency-aware-distributed-sensor-quorum.md`
+
+**Claim boundary.** Quantum entanglement is not proposed as a mechanism for AI consensus or epistemic authority. The external project motivates a distributed-observation test architecture only.
+
+---
+
 ## 2026-10-01 — Shared fibre sensing/communication substrate and failure-domain independence
 
 **Finding.** Hu et al. (*Nature Communications*, published 25 September 2026, DOI 10.1038/s41467-026-78056-0) demonstrate a holistically co-designed fibre architecture that shares signal, hardware, and network resources between coherent communication and distributed acoustic sensing. Reported results include multi-point frequency synchronization accuracy of 1.56 MHz, acoustic sensing response to 12 kHz, and extension to 28 kHz with on-chip modulators.
