@@ -159,3 +159,8 @@ The current novelty target is the coupling of observer-specific access state, ty
 ## Author
 
 Kara Sypen— independent researcher and originator of the Observer Intelligence framework.
+
+
+## LucidFluence provenance study
+
+The [historical dataset and paced simulation](projects/lucidfluence-study/README.md) preserves the supplied weekly resonance reports and architecture notes, with source-bound records, integrity verification, and a read-only streaming replay. All imported metrics remain simulated/unverified; no live deployment is asserted.
