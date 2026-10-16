@@ -164,3 +164,7 @@ Kara Sypen— independent researcher and originator of the Observer Intelligence
 ## LucidFluence provenance study
 
 The [historical dataset and paced simulation](projects/lucidfluence-study/README.md) preserves the supplied weekly resonance reports and architecture notes, with source-bound records, integrity verification, and a read-only streaming replay. All imported metrics remain simulated/unverified; no live deployment is asserted.
+
+## Continuous monitoring collector
+
+See [continuous monitoring setup](docs/continuous-monitoring.md) for the read-only GitHub and optional HTTPS uptime collector, persistent alerts, webhook retries, and a systemd deployment unit. Deployment and alert destination configuration are required for continuous notifications.

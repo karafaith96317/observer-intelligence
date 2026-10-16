@@ -1,0 +1,22 @@
+[Unit]
+Description=OI read-only repository and uptime monitor
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+WorkingDirectory=/opt/observer-intelligence
+ExecStart=/usr/bin/python3 /opt/observer-intelligence/src/oi_monitor.py --config /etc/oi-monitor/config.json --state-dir /var/lib/oi-monitor
+EnvironmentFile=-/etc/oi-monitor/secrets.env
+StateDirectory=oi-monitor
+Restart=on-failure
+RestartSec=15
+UMask=0077
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
