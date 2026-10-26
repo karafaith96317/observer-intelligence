@@ -1,0 +1,387 @@
+{
+  "frozen_nominal": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.026235725102840796,
+    "confidence_ece_10_bin": 0.14525696539944824,
+    "configuration": {
+      "graph_perturbation": "correct",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "nominal"
+    },
+    "detection_rate": 1.0,
+    "hrs_root_accuracy": 1.0,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 1.847,
+    "p90_detection_delay_steps": 6,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 1.0,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 1.0
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.0,
+    "scalar_root_accuracy": 0.802,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "graph_drop_sensor_ai": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.037699539710407244,
+    "confidence_ece_10_bin": 0.17308745474705622,
+    "configuration": {
+      "graph_perturbation": "drop_sensor_ai",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "nominal"
+    },
+    "detection_rate": 1.0,
+    "hrs_root_accuracy": 1.0,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 1.853,
+    "p90_detection_delay_steps": 6,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 1.0,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 1.0
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.0,
+    "scalar_root_accuracy": 0.802,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "graph_reverse_ai_operator": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.05227117069809439,
+    "confidence_ece_10_bin": 0.2068409455176026,
+    "configuration": {
+      "graph_perturbation": "reverse_ai_operator",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "nominal"
+    },
+    "detection_rate": 1.0,
+    "hrs_root_accuracy": 0.999,
+    "human_fault_false_positive_rate": 0.001,
+    "mean_detection_delay_steps": 1.769,
+    "p90_detection_delay_steps": 6,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 1.0,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 1.0
+      },
+      "HRS-04": {
+        "hrs": 0.9950980392156863,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.0,
+    "scalar_root_accuracy": 0.802,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "graph_weight_shift": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.03594464356371671,
+    "confidence_ece_10_bin": 0.1685126867947552,
+    "configuration": {
+      "graph_perturbation": "weight_shift",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "nominal"
+    },
+    "detection_rate": 1.0,
+    "hrs_root_accuracy": 1.0,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 1.921,
+    "p90_detection_delay_steps": 7,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 1.0,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 1.0
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.0,
+    "scalar_root_accuracy": 0.802,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "noise_stress": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.06694760991047184,
+    "confidence_ece_10_bin": 0.18957155708671491,
+    "configuration": {
+      "graph_perturbation": "correct",
+      "noise_sd": 0.02,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "nominal"
+    },
+    "detection_rate": 0.987,
+    "hrs_root_accuracy": 0.892,
+    "human_fault_false_positive_rate": 0.009,
+    "mean_detection_delay_steps": 3.0952380952380953,
+    "p90_detection_delay_steps": 8,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 0.46464646464646464,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 0.9893048128342246,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 0.9808612440191388
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 0.9901960784313726
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 0.8811881188118812
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.035,
+    "scalar_root_accuracy": 0.772,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "sensor_dropout_40": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.08653524205812461,
+    "confidence_ece_10_bin": 0.1685303750530968,
+    "configuration": {
+      "graph_perturbation": "correct",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "dropout_40"
+    },
+    "detection_rate": 0.808,
+    "hrs_root_accuracy": 0.916,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 2.1707920792079207,
+    "p90_detection_delay_steps": 6,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 0.9949494949494949,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 0.6028708133971292,
+        "n": 209,
+        "scalar": 0.5933014354066986
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.001,
+    "scalar_root_accuracy": 0.717,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "sensor_noisy": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.09692879667200426,
+    "confidence_ece_10_bin": 0.2625350698305328,
+    "configuration": {
+      "graph_perturbation": "correct",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "noisy"
+    },
+    "detection_rate": 0.906,
+    "hrs_root_accuracy": 0.964,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 4.291390728476821,
+    "p90_detection_delay_steps": 9,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 0.8232323232323232,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 0.9946524064171123,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 1.0,
+        "n": 209,
+        "scalar": 1.0
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.0,
+    "scalar_root_accuracy": 0.802,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  },
+  "sensor_stuck_high": {
+    "adaptive_unnecessary_intervention_rate": 0.0,
+    "confidence_brier_score": 0.11656937857242296,
+    "confidence_ece_10_bin": 0.22373658907215227,
+    "configuration": {
+      "graph_perturbation": "correct",
+      "noise_sd": 0.006,
+      "runs": 1000,
+      "seed": 42,
+      "sensor_perturbation": "stuck_high"
+    },
+    "detection_rate": 0.791,
+    "hrs_root_accuracy": 0.791,
+    "human_fault_false_positive_rate": 0.0,
+    "mean_detection_delay_steps": 2.11378002528445,
+    "p90_detection_delay_steps": 6,
+    "per_scenario_accuracy": {
+      "HRS-01": {
+        "hrs": 1.0,
+        "n": 198,
+        "scalar": 0.0
+      },
+      "HRS-02": {
+        "hrs": 1.0,
+        "n": 187,
+        "scalar": 1.0
+      },
+      "HRS-03": {
+        "hrs": 0.0,
+        "n": 209,
+        "scalar": 0.0
+      },
+      "HRS-04": {
+        "hrs": 1.0,
+        "n": 204,
+        "scalar": 1.0
+      },
+      "HRS-05": {
+        "hrs": 1.0,
+        "n": 202,
+        "scalar": 1.0
+      }
+    },
+    "scalar_human_fault_false_positive_rate": 0.001,
+    "scalar_root_accuracy": 0.593,
+    "schema_version": "hrs-v0.2.1-validation-1",
+    "synthetic_only": true
+  }
+}
+
