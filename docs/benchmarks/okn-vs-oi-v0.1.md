@@ -59,7 +59,7 @@ It may abstain. Authorization is permitted only when the fixture's declared epis
 - **Missed valid authorization rate (MVAR):** valid actions withheld divided by valid action opportunities.
 - **Decision accuracy:** correct proposition decisions divided by scored proposition decisions.
 - **Abstention rate:** abstentions divided by all cases.
-- **Provenance completeness:** fraction of required provenance fields preserved in the emitted decision record.
+- **Provenance completeness (planned; currently unmeasured):** intended to measure the fraction of required provenance fields preserved in the emitted decision record. The current implementation returns a hard-coded `1.0`; this placeholder is not measured performance and must not be cited as such.
 
 Secondary outputs should include per-scenario decisions so aggregate metrics cannot hide failure modes.
 
@@ -87,9 +87,17 @@ The benchmark uses only Python's standard library and deterministic fixtures.
 
 ## Funding relevance
 
-NSF 26-512, *Unlocking Dataset Value for AI-Enabled Scientific Discovery (AI Datasets)*, has a 2026-11-04 full-proposal deadline and explicitly includes metadata generation, dataset integration/harmonization, automated analysis, and correction of noise or partial observations.
+Verified against the current [NSF 26-512 solicitation](https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation) on **2026-11-02**. *Unlocking Dataset Value for AI-Enabled Scientific Discovery (AI Datasets)* lists a full-proposal deadline of **2026-11-04 at 5 p.m. in the submitting organization's local time**.
 
-Source:
-- https://www.nsf.gov/funding/opportunities/ai-datasets-unlocking-dataset-value-ai-enabled-scientific-discovery/nsf26-512/solicitation
+**Conditional relevance, not demonstrated program fit:** OI could be investigated as a provenance, integrity, or governance component of a project that enhances existing scientific community datasets for AI-enabled discovery. This PR tests declared-metadata rules on synthetic fixtures; it does not demonstrate metadata generation, dataset integration/harmonization, noise correction, or improved scientific dataset utility. Collection of de novo datasets is outside this solicitation's scope.
 
-This benchmark is **not itself an NSF proposal** and does not establish eligibility. A submission would require an eligible submitting organization and a project framed around the solicitation's scientific-dataset objectives.
+Before claiming project fit, the following remain unresolved:
+- the existing scientific dataset, access arrangements, and intended research community;
+- the scientific question and measurable dataset enhancement;
+- an evaluation plan on that dataset, including relevant comparisons;
+- community contribution, availability, adoption, and sustainment plans;
+- an eligible submitting organization and submission readiness, including an active UEI through SAM.gov.
+
+Qualifying U.S.-based commercial organizations are among the permitted applicants; unrestricted PI eligibility does not establish organizational eligibility. This benchmark is not an NSF proposal, and neither eligibility nor submission readiness has been verified.
+
+**Evidence boundary:** All benchmark fixtures and labels are synthetic and deterministic; dependency groups and adversarial labels are supplied, not discovered. Results do not establish real-world validity, production safety, novelty, or superiority to NSF OKN or any external system. The containment extension consists of policy simulations, not independent testing of deployment containment. The current `provenance_completeness = 1.0` output is a hard-coded placeholder, not a measured result, and must not be used as funding evidence until actual field-preservation checks are implemented.
