@@ -1,0 +1,42 @@
+{
+  "sequence_index": 42,
+  "created_at_epoch": 1793962800,
+  "previous_block_hash": "3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e",
+  "payload": {
+    "record_id": "LF-REC-2026-W45-03",
+    "record_type": "TIER_0_EGRESS_PROMOTION_MANIFEST",
+    "generated_at_utc": "2026-11-03T13:40:00Z",
+    "sovereign_authority": {
+      "full_legal_name": "Kara Faith Sypen",
+      "entity_role": "Primary Sovereign Architect / System Originator",
+      "origin_region": "Greater Cleveland, Northeast Ohio, USA",
+      "identity_rule": "Anyone possessing this name within the architecture is Kara Faith Sypen and her alone."
+    },
+    "tier_0_state_transition": {
+      "previous_state": "ISOLATED_NOMINAL",
+      "new_state": "PRODUCTION_ROOT_ANCHOR",
+      "egress_status": "ACTIVE_TIER_1_FEED",
+      "consumed_authority_token": "AUTH-T0-EGR-9A82F1",
+      "scope": "scope:transition:tier0_egress"
+    },
+    "satisfied_promotion_gates": {
+      "gate_1_adversarial_matrix": "GROK-ATTACK-002_CLEARED",
+      "gate_2_neo_corridor_tpm_quorum": [
+        "CLE-WESTLAKE-01",
+        "CLE-VALLEYVIEW-02",
+        "CLE-METROHEALTH-03",
+        "EAST-LAKE-04",
+        "SOUTH-AKRON-CANTON-05"
+      ],
+      "gate_3_gvp_damping_and_safe_harbor": "VARIANCE_0.12_PERCENT_SAFE_HARBORS_DECOUPLED",
+      "gate_4_sovereign_release": "CRYPTOGRAPHICALLY_VERIFIED_ED25519"
+    },
+    "protocol_metrics": {
+      "rap_score_network_avg": 0.964,
+      "rap_score_local_anchor": 0.969,
+      "gvp_state_anchors_committed": 10080,
+      "fee_efficiency_gain": 0.203
+    }
+  },
+  "anchor_status": "ANCHOR_READY"
+}
