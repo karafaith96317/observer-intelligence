@@ -1,5 +1,8 @@
 # Independent Authorization Benchmark v0.1 — draft specification
 
+> **Implementation update — 2026-11-08:** Added `tests/test_authorization_research_v0_1.py` with six isolated pytest cases for allow/deny, policy-version mismatch and fail-closed observer exceptions. This is a *toy deterministic policy gate*, not yet an independently isolated observer. The tests have **not been executed in GitHub CI or independently validated**. Current event records are in-memory lists, **not** tamper-evident hash-chained audit records. Replay protection, durable audit/checkpoints, process isolation, benchmark baselines and performance measurements remain future work. See [research method v0.2](../methodology/evidence_to_experiment_v0_2.md).
+
+
 **Status:** Proposed offline experiment. Not an implementation, safety certification, or evidence of superiority. Keep separate from live OI runtime, hardware attestation, production policy and ledger promotion gates.
 
 ## Research question
