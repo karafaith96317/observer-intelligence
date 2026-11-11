@@ -1,0 +1,24 @@
+name: HRS v0.2.1 prototype
+
+on:
+  push:
+    branches: ["hrs-v0.2"]
+  pull_request:
+    paths:
+      - "projects/human-resilience-state-system/**"
+      - ".github/workflows/hrs-v021.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run tests
+        run: python -m unittest projects/human-resilience-state-system/tests/test_hrs_v0_2_1.py -v
+      - name: Verify frozen validation benchmark
+        run: |
+          python projects/human-resilience-state-system/run_validation.py > /tmp/hrs-v021.json
+          diff -u projects/human-resilience-state-system/benchmarks/v0.2.1-seed42.json /tmp/hrs-v021.json
