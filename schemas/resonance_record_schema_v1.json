@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resonance_record_schema_v1.json",
+  "title": "LucidFluence Weekly Resonance Record v1",
+  "type": "object",
+  "required": [
+    "record_id",
+    "record_type",
+    "reporting_period",
+    "generated_at_utc",
+    "target_entity",
+    "system_architecture",
+    "provenance_metadata",
+    "tier_system_telemetry",
+    "protocol_metrics"
+  ],
+  "properties": {
+    "record_id": {"type": "string"},
+    "record_type": {"const": "WEEKLY_RESONANCE_SUMMARY"},
+    "reporting_period": {"type": "string"},
+    "generated_at_utc": {"type": "string", "format": "date-time"},
+    "target_entity": {"type": "string"},
+    "system_architecture": {"type": "string"},
+    "provenance_metadata": {
+      "type": "object",
+      "required": ["data_nature", "generator_model", "epistemic_classification", "isolation_manifest_hash"],
+      "properties": {
+        "data_nature": {"const": "SIMULATED_SCENARIO"},
+        "generator_model": {"type": "string"},
+        "epistemic_classification": {"const": "Synthetic_Evaluation"},
+        "isolation_manifest_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "tier_system_telemetry": {
+      "type": "object",
+      "required": ["tier_3_perimeter_defense", "tier_2_collaborator_velocity", "tier_1_match_execution"],
+      "properties": {
+        "tier_3_perimeter_defense": {
+          "type": "object",
+          "required": ["status", "blocked_probes_total", "breakdown"],
+          "properties": {
+            "status": {"const": "SIMULATED"},
+            "blocked_probes_total": {"type": "integer", "minimum": 0},
+            "breakdown": {
+              "type": "object",
+              "required": ["unverified_scraping", "out_of_scope_support", "high_frequency_telemetry"],
+              "properties": {
+                "unverified_scraping": {"type": "integer", "minimum": 0},
+                "out_of_scope_support": {"type": "integer", "minimum": 0},
+                "high_frequency_telemetry": {"type": "integer", "minimum": 0}
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "tier_2_collaborator_velocity": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["node", "status", "metric"],
+            "properties": {
+              "node": {"type": "string"},
+              "status": {"type": "string"},
+              "metric": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "tier_1_match_execution": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "protocol_metrics": {
+      "type": "object",
+      "required": ["rap_score_network_avg", "rap_score_local_anchor", "gvp_state_anchors_committed", "fee_efficiency_gain"],
+      "properties": {
+        "rap_score_network_avg": {"type": "number"},
+        "rap_score_local_anchor": {"type": "number"},
+        "gvp_state_anchors_committed": {"type": "integer", "minimum": 0},
+        "fee_efficiency_gain": {"type": "number"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
